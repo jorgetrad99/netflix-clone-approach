@@ -1,21 +1,21 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import HomePage from './page';
-import { sections } from '@/content/generated/content';
 
 describe('<HomePage>', () => {
-  it('renders the brand title', () => {
+  it('renders the featured hero with the overview tagline', () => {
     render(<HomePage />);
-    expect(screen.getByRole('heading', { level: 1, name: /netflix docs viewer/i })).toBeVisible();
+    expect(screen.getByRole('heading', { level: 1, name: /visión general/i })).toBeVisible();
   });
 
-  it('renders one card per parsed section', () => {
+  it('shows at least 4 distinct rows', () => {
     render(<HomePage />);
-    expect(screen.getAllByTestId('section-card')).toHaveLength(sections.length);
+    const rows = screen.getAllByRole('heading', { level: 2 });
+    expect(rows.length).toBeGreaterThanOrEqual(4);
   });
 
-  it('shows the section title for the architecture section', () => {
+  it('renders the Top 10 row', () => {
     render(<HomePage />);
-    expect(screen.getByText(/^Arquitectura$/)).toBeVisible();
+    expect(screen.getByRole('heading', { level: 2, name: /top 10/i })).toBeVisible();
   });
 });

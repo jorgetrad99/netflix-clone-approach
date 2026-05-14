@@ -1,0 +1,76 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import type { Section } from '@/content/types';
+import { PosterCanvas } from '@/components/poster/PosterCanvas';
+import { CardPreview } from './CardPreview';
+import { cn } from '@/lib/utils/cn';
+
+const PREVIEW_DELAY_MS = 400;
+
+interface CardProps {
+  section: Section;
+  className?: string;
+  rank?: number;
+}
+
+export function Card({ section, className, rank }: Readonly<CardProps>) {
+  const [showPreview, setShowPreview] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const open = () => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setShowPreview(true), PREVIEW_DELAY_MS);
+  };
+  const close = () => {
+    if (timer.current) clearTimeout(timer.current);
+    setShowPreview(false);
+  };
+
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
+
+  return (
+    <div className={cn('group relative shrink-0', className)}>
+      {rank != null && (
+        <span
+          aria-hidden
+          className="text-fg-subtle absolute -bottom-2 -left-1 z-0 font-black tracking-tighter select-none"
+          style={{
+            fontSize: 'clamp(5rem, 10vw, 9rem)',
+            WebkitTextStroke: '2px var(--color-bg-elevated)',
+            color: 'transparent',
+            lineHeight: 1,
+          }}
+        >
+          {rank}
+        </span>
+      )}
+      <Link
+        href={`/title/${section.slug}`}
+        aria-label={`Abrir ${section.title}`}
+        data-testid="section-card"
+        onMouseEnter={open}
+        onMouseLeave={close}
+        onFocus={open}
+        onBlur={close}
+        className={cn(
+          'rounded-card relative block aspect-video w-56 overflow-hidden md:w-64',
+          'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] outline-none',
+          'motion-safe:hover:scale-110 motion-safe:focus-visible:scale-110',
+          'focus-visible:ring-brand focus-visible:ring-2',
+          'group-hover:z-30',
+          rank != null && 'ml-16',
+        )}
+      >
+        <PosterCanvas spec={section.hero.poster} />
+        <CardPreview section={section} visible={showPreview} />
+      </Link>
+    </div>
+  );
+}
