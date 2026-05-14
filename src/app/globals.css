@@ -88,6 +88,43 @@ body {
   margin-block: 1rem;
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.animate-shimmer {
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* Mermaid diagrams — dark theme overrides */
+.mermaid-host svg {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Shiki code blocks */
+.docs-code pre.shiki {
+  margin-block: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border: 1px solid var(--color-border);
+  background: #0d1117 !important;
+}
+.docs-code pre.shiki code {
+  background: transparent;
+  padding: 0;
+  font-family: var(--font-mono);
+}
+
 /* Hide scrollbars on horizontal rows but keep functionality */
 .scrollbar-none {
   scrollbar-width: none;
