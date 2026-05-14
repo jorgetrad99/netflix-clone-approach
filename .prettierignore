@@ -1,0 +1,15 @@
+.next
+node_modules
+out
+build
+coverage
+playwright-report
+test-results
+src/content/generated
+public
+PLAN_NETFLIX_CLONE.md
+PLAN_DOCS_VIEWER.md
+nextjs.md
+CLAUDE.md
+AGENTS.md
+README.md
