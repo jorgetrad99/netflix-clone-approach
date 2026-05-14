@@ -43,6 +43,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Prose styles for rendered markdown blocks */
+.docs-prose p {
+  margin-block: 1rem;
+}
+.docs-prose ul,
+.docs-prose ol {
+  margin-block: 1rem;
+  padding-inline-start: 1.25rem;
+}
+.docs-prose ul {
+  list-style: disc;
+}
+.docs-prose ol {
+  list-style: decimal;
+}
+.docs-prose li {
+  margin-block: 0.25rem;
+}
+.docs-prose code {
+  background: var(--color-bg-elevated);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-fg);
+}
+.docs-prose strong {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+.docs-prose a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.docs-prose a:hover {
+  color: var(--color-brand-hover);
+}
+.docs-prose blockquote {
+  border-inline-start: 3px solid var(--color-brand);
+  padding-inline-start: 1rem;
+  color: var(--color-fg-muted);
+  margin-block: 1rem;
+}
+
 /* Hide scrollbars on horizontal rows but keep functionality */
 .scrollbar-none {
   scrollbar-width: none;

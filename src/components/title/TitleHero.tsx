@@ -1,0 +1,83 @@
+import Link from 'next/link';
+import { Play, Plus, Info } from 'lucide-react';
+import type { Section } from '@/content/types';
+import { PosterCanvas } from '@/components/poster/PosterCanvas';
+
+interface TitleHeroProps {
+  section: Section;
+}
+
+export function TitleHero({ section }: Readonly<TitleHeroProps>) {
+  const totalEpisodes = section.episodes.length;
+  return (
+    <header className="relative h-[80vh] min-h-150 w-full overflow-hidden">
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <PosterCanvas spec={section.hero.backdrop} variant="backdrop" />
+      </div>
+      <div className="from-bg via-bg/40 absolute inset-0 -z-10 bg-linear-to-t to-transparent" />
+      <div className="from-bg via-bg/30 absolute inset-0 -z-10 bg-linear-to-r to-transparent" />
+
+      <div className="mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-16 md:px-8 md:pb-24">
+        <p className="text-fg-muted text-xs font-bold tracking-[0.3em] uppercase">
+          {section.category} · capítulo {section.number}
+        </p>
+        <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">
+          {section.title}
+        </h1>
+        <p className="text-fg mt-4 max-w-2xl text-lg md:text-xl">{section.hero.tagline}</p>
+
+        <div className="text-fg-muted mt-3 flex flex-wrap items-center gap-3 text-sm">
+          <span className="text-success font-semibold">{rating(section)}</span>
+          <span>{section.meta.runtime} min</span>
+          {totalEpisodes > 0 && (
+            <span>
+              {totalEpisodes} {totalEpisodes === 1 ? 'episodio' : 'episodios'}
+            </span>
+          )}
+          {section.meta.badges.map((b) => (
+            <span
+              key={b}
+              className="border-border text-fg-muted rounded border px-2 py-0.5 text-xs tracking-widest uppercase"
+            >
+              {b}
+            </span>
+          ))}
+        </div>
+
+        <p className="text-fg-muted mt-4 max-w-2xl text-base md:text-lg">{section.excerpt}</p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <Link
+            href={`/watch/${section.slug}`}
+            className="hover:bg-fg-muted inline-flex items-center gap-2 rounded bg-white px-6 py-2.5 text-sm font-semibold text-black transition md:text-base"
+          >
+            <Play className="h-5 w-5 fill-current" strokeWidth={0} />
+            Reproducir
+          </Link>
+          <button
+            type="button"
+            className="hover:bg-bg-elevated/80 bg-bg-elevated/60 text-fg inline-flex items-center gap-2 rounded border border-white/30 px-6 py-2.5 text-sm font-semibold backdrop-blur transition md:text-base"
+            aria-label={`Más información sobre ${section.title}`}
+          >
+            <Info className="h-5 w-5" />
+            Más información
+          </button>
+          <button
+            type="button"
+            aria-label={`Agregar ${section.title} a Mi lista`}
+            className="hover:border-fg flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-black/30 text-white backdrop-blur transition"
+          >
+            <Plus className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function rating(section: Section): string {
+  if (section.meta.rank) return `★ Top ${section.meta.rank}`;
+  if (section.meta.rating === 'P0') return '● Esencial';
+  if (section.meta.rating === 'P1') return '● Importante';
+  return '● Recomendado';
+}
