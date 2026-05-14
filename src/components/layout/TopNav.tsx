@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Logo } from './Logo';
+import { SearchBar } from '@/components/search/SearchBar';
 import { cn } from '@/lib/utils/cn';
 
 const NAV_LINKS = [
@@ -49,6 +50,11 @@ export function TopNav() {
             </li>
           ))}
         </ul>
+        <div className="ml-auto">
+          <Suspense fallback={<div className="h-9 w-9" aria-hidden />}>
+            <SearchBar />
+          </Suspense>
+        </div>
       </nav>
     </header>
   );
