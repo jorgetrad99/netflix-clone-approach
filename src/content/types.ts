@@ -64,17 +64,31 @@ export interface Episode {
   blocks: Block[];
 }
 
+export interface LocalizedSection {
+  title: string;
+  tagline: string;
+  excerpt: string;
+  intro: Block[];
+  episodes: Episode[];
+}
+
 export interface Section {
   id: SectionId;
   slug: string;
+  /** ES title kept at top-level for backwards compatibility with search index + tests. */
   title: string;
   number: number;
   category: Category;
   hero: SectionHero;
   meta: SectionMeta;
+  /** ES excerpt kept at top-level for the same reason. */
   excerpt: string;
+  /** ES intro kept at top-level; consumers should prefer `localized[locale].intro`. */
   intro: Block[];
+  /** ES episodes kept at top-level; consumers should prefer `localized[locale].episodes`. */
   episodes: Episode[];
+  /** Full per-locale content: title, tagline, excerpt, intro blocks, and episodes. */
+  localized: { es: LocalizedSection; en: LocalizedSection };
 }
 
 export interface SearchDoc {

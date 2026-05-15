@@ -1,13 +1,17 @@
 import type { Block, Section } from '@/content/types';
+import { categoryLabel, localizedSection } from '@/content/localized';
+import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/dictionaries/es';
 
 interface IntroProps {
   section: Section;
+  locale: Locale;
   dict: Dictionary;
 }
 
-export function Intro({ section, dict }: Readonly<IntroProps>) {
-  const proseBlocks = section.intro.filter(
+export function Intro({ section, locale, dict }: Readonly<IntroProps>) {
+  const loc = localizedSection(section, locale);
+  const proseBlocks = loc.intro.filter(
     (b): b is Extract<Block, { kind: 'prose' }> => b.kind === 'prose',
   );
   if (proseBlocks.length === 0) return null;
@@ -27,7 +31,10 @@ export function Intro({ section, dict }: Readonly<IntroProps>) {
           ))}
         </div>
         <aside className="text-fg-muted space-y-3 text-sm">
-          <SidebarRow label={dict.title.sidebar.category} value={section.category} />
+          <SidebarRow
+            label={dict.title.sidebar.category}
+            value={categoryLabel(section.category, dict)}
+          />
           <SidebarRow label={dict.title.sidebar.chapter} value={String(section.number)} />
           <SidebarRow
             label={dict.title.sidebar.readingTime}

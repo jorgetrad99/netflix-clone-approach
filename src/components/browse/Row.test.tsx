@@ -18,6 +18,10 @@ const makeSection = (id: string, title: string, rank?: number): Section => ({
   excerpt: '',
   intro: [],
   episodes: [],
+  localized: {
+    es: { title, tagline: `${title} tagline`, excerpt: '', intro: [], episodes: [] },
+    en: { title, tagline: `${title} tagline`, excerpt: '', intro: [], episodes: [] },
+  },
 });
 
 describe('<Row>', () => {

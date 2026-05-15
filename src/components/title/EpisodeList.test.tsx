@@ -4,6 +4,28 @@ import { EpisodeList } from './EpisodeList';
 import { es } from '@/i18n/dictionaries/es';
 import type { Section } from '@/content/types';
 
+import type { Episode } from '@/content/types';
+
+const episodes: Episode[] = [
+  {
+    id: 'flows/1',
+    number: 1,
+    title: 'Sign-in OAuth',
+    runtime: 3,
+    blocks: [
+      { kind: 'mermaid', source: 'sequenceDiagram\nA->>B: hi', id: 'm1' },
+      { kind: 'prose', html: '<p>x</p>' },
+    ],
+  },
+  {
+    id: 'flows/2',
+    number: 2,
+    title: 'Validar sesión',
+    runtime: 2,
+    blocks: [{ kind: 'code', lang: 'ts', html: '<pre/>', raw: 'const x = 1;' }],
+  },
+];
+
 const baseSection: Section = {
   id: 'flows',
   slug: 'flows',
@@ -18,25 +40,11 @@ const baseSection: Section = {
   meta: { runtime: 1, badges: [] },
   excerpt: '',
   intro: [],
-  episodes: [
-    {
-      id: 'flows/1',
-      number: 1,
-      title: 'Sign-in OAuth',
-      runtime: 3,
-      blocks: [
-        { kind: 'mermaid', source: 'sequenceDiagram\nA->>B: hi', id: 'm1' },
-        { kind: 'prose', html: '<p>x</p>' },
-      ],
-    },
-    {
-      id: 'flows/2',
-      number: 2,
-      title: 'Validar sesión',
-      runtime: 2,
-      blocks: [{ kind: 'code', lang: 'ts', html: '<pre/>', raw: 'const x = 1;' }],
-    },
-  ],
+  episodes,
+  localized: {
+    es: { title: 'Flujos Principales', tagline: 't', excerpt: '', intro: [], episodes },
+    en: { title: 'Main Flows', tagline: 't', excerpt: '', intro: [], episodes },
+  },
 };
 
 describe('<EpisodeList>', () => {
@@ -60,7 +68,15 @@ describe('<EpisodeList>', () => {
   });
 
   it('falls back to a no-episodes message when episodes is empty', () => {
-    const empty: Section = { ...baseSection, episodes: [] };
+    const empty: Section = {
+      ...baseSection,
+      episodes: [],
+      localized: {
+        ...baseSection.localized,
+        es: { ...baseSection.localized.es, episodes: [] },
+        en: { ...baseSection.localized.en, episodes: [] },
+      },
+    };
     render(<EpisodeList section={empty} locale="es" dict={es} />);
     expect(screen.getByRole('heading', { level: 2, name: /sin episodios/i })).toBeVisible();
   });

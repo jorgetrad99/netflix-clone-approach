@@ -19,6 +19,7 @@ import {
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const SOURCE_PATH = resolve(ROOT, 'PLAN_NETFLIX_CLONE.md');
+const SOURCE_PATH_EN = resolve(ROOT, 'PLAN_NETFLIX_CLONE.en.md');
 const OUT_DIR = resolve(import.meta.dirname, 'generated');
 const WORDS_PER_MINUTE = 220;
 
@@ -168,11 +169,10 @@ function readingTimeMinutes(text: string): number {
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
-async function buildSection(raw: RawSection): Promise<Section | null> {
-  const id = sectionIdForNumber(raw.number);
-  if (!id) return null;
-  const augment = SECTION_AUGMENT[id];
-
+async function buildLocaleContent(
+  raw: RawSection,
+  id: SectionId,
+): Promise<{ intro: Block[]; episodes: Episode[]; introText: string; epsText: string }> {
   const intro = await nodesToBlocks(raw.intro, id);
   const episodes: Episode[] = [];
   for (const ep of raw.episodes) {
@@ -186,26 +186,57 @@ async function buildSection(raw: RawSection): Promise<Section | null> {
       blocks,
     });
   }
-
   const introText = nodesToText(raw.intro);
   const epsText = raw.episodes.map((ep) => nodesToText(ep.body)).join(' ');
-  const fullText = `${introText} ${epsText}`.trim();
+  return { intro, episodes, introText, epsText };
+}
+
+async function buildSection(rawEs: RawSection, rawEn: RawSection | null): Promise<Section | null> {
+  const id = sectionIdForNumber(rawEs.number);
+  if (!id) return null;
+  const augment = SECTION_AUGMENT[id];
+
+  const esContent = await buildLocaleContent(rawEs, id);
+  const enContent = rawEn ? await buildLocaleContent(rawEn, id) : esContent;
+  const enRawTitle = rawEn?.title ?? augment.en.title;
+
+  const fullText = `${esContent.introText} ${esContent.epsText}`.trim();
+  const runtime = readingTimeMinutes(fullText);
+
+  const esExcerpt = augment.excerpt || makeExcerpt(esContent.introText);
+  const enExcerpt = augment.en.excerpt || makeExcerpt(enContent.introText);
 
   return {
     id,
     slug: id,
-    title: raw.title,
-    number: raw.number,
+    title: rawEs.title,
+    number: rawEs.number,
     category: augment.category,
     hero: { tagline: augment.tagline, poster: augment.poster, backdrop: augment.backdrop },
     meta: {
-      runtime: readingTimeMinutes(fullText),
+      runtime,
       rank: augment.rank,
       badges: augment.badges ?? [],
     },
-    excerpt: augment.excerpt || makeExcerpt(introText),
-    intro,
-    episodes,
+    excerpt: esExcerpt,
+    intro: esContent.intro,
+    episodes: esContent.episodes,
+    localized: {
+      es: {
+        title: rawEs.title,
+        tagline: augment.tagline,
+        excerpt: esExcerpt,
+        intro: esContent.intro,
+        episodes: esContent.episodes,
+      },
+      en: {
+        title: augment.en.title || enRawTitle,
+        tagline: augment.en.tagline,
+        excerpt: enExcerpt,
+        intro: enContent.intro,
+        episodes: enContent.episodes,
+      },
+    },
   };
 }
 
@@ -273,14 +304,29 @@ export const SECTION_SLUGS = ${JSON.stringify(slugs)} as const;
 `;
 }
 
+async function readMarkdown(path: string): Promise<RawSection[] | null> {
+  try {
+    const source = await readFile(path, 'utf8');
+    const tree = unified().use(remarkParse).use(remarkGfm).parse(source);
+    return splitSections(tree);
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return null;
+    throw err;
+  }
+}
+
 export async function parsePlan(): Promise<{ sections: Section[]; index: SearchDoc[] }> {
-  const source = await readFile(SOURCE_PATH, 'utf8');
-  const tree = unified().use(remarkParse).use(remarkGfm).parse(source) as Root;
-  const raws = splitSections(tree);
+  const esRaws = await readMarkdown(SOURCE_PATH);
+  if (!esRaws) throw new Error(`Missing ${SOURCE_PATH}`);
+  const enRaws = await readMarkdown(SOURCE_PATH_EN);
+  if (!enRaws) {
+    console.warn(`⚠️  ${SOURCE_PATH_EN} not found — English will fall back to Spanish content.`);
+  }
+  const enByNumber = new Map(enRaws?.map((r) => [r.number, r]) ?? []);
 
   const sections: Section[] = [];
-  for (const raw of raws) {
-    const section = await buildSection(raw);
+  for (const raw of esRaws) {
+    const section = await buildSection(raw, enByNumber.get(raw.number) ?? null);
     if (section) sections.push(section);
   }
   sections.sort((a, b) => a.number - b.number);

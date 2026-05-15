@@ -19,6 +19,22 @@ const stub: Section = {
   excerpt: '',
   intro: [],
   episodes: [],
+  localized: {
+    es: {
+      title: 'Flujos Principales',
+      tagline: 'Seis flujos críticos.',
+      excerpt: '',
+      intro: [],
+      episodes: [],
+    },
+    en: {
+      title: 'Main Flows',
+      tagline: 'Six critical flows.',
+      excerpt: '',
+      intro: [],
+      episodes: [],
+    },
+  },
 };
 
 describe('<WatchHeader>', () => {

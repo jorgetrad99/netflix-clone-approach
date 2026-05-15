@@ -20,6 +20,10 @@ function stub(id: string, category: Section['category']): Section {
     excerpt: '',
     intro: [],
     episodes: [],
+    localized: {
+      es: { title: id, tagline: 't', excerpt: '', intro: [], episodes: [] },
+      en: { title: id, tagline: 't', excerpt: '', intro: [], episodes: [] },
+    },
   };
 }
 

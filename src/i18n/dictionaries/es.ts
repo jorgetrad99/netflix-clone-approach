@@ -99,6 +99,15 @@ export const es = {
     fatalRetry: 'Reintentar',
     fatalHome: 'Ir al inicio',
   },
+  categories: {
+    product: 'producto',
+    architecture: 'arquitectura',
+    flows: 'flujos',
+    security: 'seguridad',
+    testing: 'testing',
+    stack: 'stack',
+    roadmap: 'cronograma',
+  },
   myList: {
     pageTitle: 'Mi lista',
     metaDescription: 'Tus títulos guardados, sincronizados con este navegador.',

@@ -7,6 +7,7 @@ import { ScrollProgressBar } from '@/components/watch/ScrollProgressBar';
 import { BlockRenderer } from '@/components/watch/BlockRenderer';
 import { LOCALES, isLocale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { localizedSection } from '@/content/localized';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -20,10 +21,12 @@ export async function generateMetadata({ params }: Readonly<PageProps>): Promise
   const { locale, slug } = await params;
   const section = sectionsBySlug[slug];
   if (!section) return { title: 'No encontrado' };
-  const dict = isLocale(locale) ? getDictionary(locale) : getDictionary('es');
+  const validLocale = isLocale(locale) ? locale : 'es';
+  const dict = getDictionary(validLocale);
+  const loc = localizedSection(section, validLocale);
   return {
-    title: `${dict.title.play} · ${section.title}`,
-    description: section.excerpt,
+    title: `${dict.title.play} · ${loc.title}`,
+    description: loc.excerpt,
     robots: { index: false, follow: true },
   };
 }
@@ -34,6 +37,7 @@ export default async function WatchPage({ params }: Readonly<PageProps>) {
   const section = sectionsBySlug[slug];
   if (!section) notFound();
   const dict = getDictionary(locale);
+  const loc = localizedSection(section, locale);
 
   return (
     <>
@@ -43,18 +47,18 @@ export default async function WatchPage({ params }: Readonly<PageProps>) {
         <WatchHeader section={section} locale={locale} dict={dict} />
 
         <article className="mx-auto max-w-5xl px-4 py-10 md:px-8">
-          {section.intro.length > 0 && (
+          {loc.intro.length > 0 && (
             <section aria-labelledby="intro" className="space-y-6">
               <h2 id="intro" className="sr-only">
                 {dict.watch.introHeading}
               </h2>
-              {section.intro.map((block, i) => (
+              {loc.intro.map((block, i) => (
                 <BlockRenderer key={`intro-${i}`} block={block} />
               ))}
             </section>
           )}
 
-          {section.episodes.map((ep) => (
+          {loc.episodes.map((ep) => (
             <section
               key={ep.id}
               id={`ep-${ep.number}`}

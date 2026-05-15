@@ -18,6 +18,6 @@ describe('/[locale]/watch/[slug]', () => {
     const en = await generateMetadata({
       params: Promise.resolve({ locale: 'en', slug: 'flows' }),
     });
-    expect(en.title).toBe('Play · Flujos Principales');
+    expect(en.title).toBe('Play · Main Flows');
   });
 });

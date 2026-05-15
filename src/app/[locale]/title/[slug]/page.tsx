@@ -8,6 +8,7 @@ import { EpisodeList } from '@/components/title/EpisodeList';
 import { MoreLikeThis } from '@/components/title/MoreLikeThis';
 import { LOCALES, isLocale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { localizedSection } from '@/content/localized';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -18,21 +19,24 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Readonly<PageProps>): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const section = sectionsBySlug[slug];
   if (!section) return { title: 'No encontrado' };
+  const loc = isLocale(locale)
+    ? localizedSection(section, locale)
+    : { title: section.title, excerpt: section.excerpt, tagline: section.hero.tagline };
   return {
-    title: section.title,
-    description: section.excerpt,
+    title: loc.title,
+    description: loc.excerpt,
     openGraph: {
-      title: section.title,
-      description: section.excerpt,
+      title: loc.title,
+      description: loc.excerpt,
       type: 'video.tv_show',
     },
     twitter: {
       card: 'summary_large_image',
-      title: section.title,
-      description: section.excerpt,
+      title: loc.title,
+      description: loc.excerpt,
     },
   };
 }
@@ -49,7 +53,7 @@ export default async function TitlePage({ params }: Readonly<PageProps>) {
       <TopNav />
       <main id="main-content">
         <TitleHero section={section} locale={locale} dict={dict} />
-        <Intro section={section} dict={dict} />
+        <Intro section={section} locale={locale} dict={dict} />
         <EpisodeList section={section} locale={locale} dict={dict} />
         <MoreLikeThis current={section} locale={locale} dict={dict} />
       </main>

@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import type { SearchHit } from '@/lib/search';
 import { getSearchEngine } from '@/lib/search';
-import type { SearchDoc, Section } from '@/content/types';
+import { sectionsById } from '@/content/generated/content';
+import type { SearchDoc, Section, SectionId } from '@/content/types';
+import { categoryLabel, localizedSection } from '@/content/localized';
+import type { Dictionary } from '@/i18n/dictionaries/es';
+import type { Locale } from '@/i18n/config';
 import { useDictionary, useLocale } from '@/i18n/LocaleProvider';
 
 interface SearchResultsProps {
@@ -55,21 +59,24 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
         </div>
         <p className="text-fg-muted">{dict.search.recommendedIntro}</p>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {recommended.map((s) => (
-            <li key={s.id}>
-              <Link
-                href={`/${locale}/title/${s.slug}`}
-                className="bg-bg-elevated hover:bg-bg-elevated/70 focus-visible:outline-brand block rounded-md p-4 transition-colors outline-none focus-visible:outline-2"
-              >
-                <p className="text-fg-subtle text-xs tracking-widest uppercase">
-                  {s.category}
-                  {s.meta.rank != null && ` · ${dict.title.rankBadge(s.meta.rank)}`}
-                </p>
-                <p className="mt-1 text-lg font-semibold">{s.title}</p>
-                <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{s.hero.tagline}</p>
-              </Link>
-            </li>
-          ))}
+          {recommended.map((s) => {
+            const sLoc = localizedSection(s, locale);
+            return (
+              <li key={s.id}>
+                <Link
+                  href={`/${locale}/title/${s.slug}`}
+                  className="bg-bg-elevated hover:bg-bg-elevated/70 focus-visible:outline-brand block rounded-md p-4 transition-colors outline-none focus-visible:outline-2"
+                >
+                  <p className="text-fg-subtle text-xs tracking-widest uppercase">
+                    {categoryLabel(s.category, dict)}
+                    {s.meta.rank != null && ` · ${dict.title.rankBadge(s.meta.rank)}`}
+                  </p>
+                  <p className="mt-1 text-lg font-semibold">{sLoc.title}</p>
+                  <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{sLoc.tagline}</p>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
     );
@@ -87,7 +94,7 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
     return (
       <section className="space-y-6 py-8">
         <p className="text-fg-muted text-lg">{dict.search.noResults(query)}</p>
-        <Recommended sections={recommended} title={dict.search.maybe} locale={locale} />
+        <Recommended sections={recommended} title={dict.search.maybe} locale={locale} dict={dict} />
       </section>
     );
   }
@@ -98,7 +105,7 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
       <ul className="space-y-3">
         {hits.map(({ doc }) => (
           <li key={doc.id}>
-            <ResultLink doc={doc} locale={locale} episodeBadge={dict.search.episodeBadge} />
+            <ResultLink doc={doc} locale={locale} dict={dict} />
           </li>
         ))}
       </ul>
@@ -108,23 +115,28 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
 
 interface ResultLinkProps {
   doc: SearchDoc;
-  locale: string;
-  episodeBadge: string;
+  locale: Locale;
+  dict: Dictionary;
 }
 
-function ResultLink({ doc, locale, episodeBadge }: Readonly<ResultLinkProps>) {
+function ResultLink({ doc, locale, dict }: Readonly<ResultLinkProps>) {
+  const section = sectionsById[doc.sectionId as SectionId];
+  const sLoc = section ? localizedSection(section, locale) : null;
   const href = doc.episodeId
     ? `/${locale}/watch/${doc.sectionId}#ep-${doc.episodeId.split('/')[1]}`
     : `/${locale}/title/${doc.sectionId}`;
+  // Episode docs keep the parsed episode title (deep content not translated);
+  // section-level docs swap to the localized title.
+  const displayTitle = sLoc && !doc.episodeId ? sLoc.title : doc.title;
   return (
     <Link
       href={href}
       className="bg-bg-elevated/40 hover:bg-bg-elevated focus-visible:outline-brand block rounded-md p-4 transition-colors outline-none focus-visible:outline-2"
     >
       <p className="text-fg-subtle text-xs tracking-widest uppercase">
-        {doc.category} {doc.episodeId && episodeBadge}
+        {categoryLabel(doc.category, dict)} {doc.episodeId && dict.search.episodeBadge}
       </p>
-      <p className="mt-1 text-base font-semibold md:text-lg">{doc.title}</p>
+      <p className="mt-1 text-base font-semibold md:text-lg">{displayTitle}</p>
       {doc.excerpt && <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{doc.excerpt}</p>}
     </Link>
   );
@@ -133,26 +145,32 @@ function ResultLink({ doc, locale, episodeBadge }: Readonly<ResultLinkProps>) {
 interface RecommendedProps {
   sections: Section[];
   title: string;
-  locale: string;
+  locale: Locale;
+  dict: Dictionary;
 }
 
-function Recommended({ sections, title, locale }: Readonly<RecommendedProps>) {
+function Recommended({ sections, title, locale, dict }: Readonly<RecommendedProps>) {
   return (
     <div>
       <h3 className="mb-3 text-lg font-semibold">{title}</h3>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {sections.map((s) => (
-          <li key={s.id}>
-            <Link
-              href={`/${locale}/title/${s.slug}`}
-              className="bg-bg-elevated hover:bg-bg-elevated/70 block rounded-md p-4"
-            >
-              <p className="text-fg-subtle text-xs tracking-widest uppercase">{s.category}</p>
-              <p className="mt-1 font-semibold">{s.title}</p>
-              <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{s.hero.tagline}</p>
-            </Link>
-          </li>
-        ))}
+        {sections.map((s) => {
+          const sLoc = localizedSection(s, locale);
+          return (
+            <li key={s.id}>
+              <Link
+                href={`/${locale}/title/${s.slug}`}
+                className="bg-bg-elevated hover:bg-bg-elevated/70 block rounded-md p-4"
+              >
+                <p className="text-fg-subtle text-xs tracking-widest uppercase">
+                  {categoryLabel(s.category, dict)}
+                </p>
+                <p className="mt-1 font-semibold">{sLoc.title}</p>
+                <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{sLoc.tagline}</p>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

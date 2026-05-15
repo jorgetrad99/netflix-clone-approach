@@ -1,5 +1,11 @@
 import type { Category, PosterSpec, SectionId } from './types';
 
+export interface LocalizedFields {
+  title: string;
+  tagline: string;
+  excerpt: string;
+}
+
 export interface SectionAugment {
   category: Category;
   tagline: string;
@@ -8,6 +14,8 @@ export interface SectionAugment {
   backdrop: PosterSpec;
   rank?: number;
   badges?: string[];
+  /** English variants (title comes from H2 in es; provide a translated title here) */
+  en: LocalizedFields;
 }
 
 const NETFLIX_RED = '#e50914';
@@ -22,6 +30,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: [NETFLIX_RED, '#7a040a'], icon: 'Film' },
     backdrop: { gradient: [DEEP_BLACK, NETFLIX_RED], icon: 'Film', pattern: 'noise' },
     badges: ['Featured'],
+    en: {
+      title: 'Overview',
+      tagline: 'The complete product blueprint, in a single take.',
+      excerpt:
+        'Build a functional Netflix clone with auth, profiles, browse, player, search, lists, recommendations, and subscriptions.',
+    },
   },
   features: {
     category: 'product',
@@ -32,6 +46,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: [NETFLIX_RED, '#220505'], icon: 'Star', pattern: 'grid' },
     rank: 1,
     badges: ['Top 10'],
+    en: {
+      title: 'Key Features',
+      tagline: 'The 17 features that define the product, ranked.',
+      excerpt:
+        'Auth, profiles, browse, HLS player, search, lists, ratings, subscriptions, parental controls and more.',
+    },
   },
   stack: {
     category: 'stack',
@@ -42,6 +62,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: ['#1f4ed8', DEEP_BLACK], icon: 'Layers', pattern: 'grid' },
     rank: 4,
     badges: ['Tech'],
+    en: {
+      title: 'Tech Stack',
+      tagline: "Next.js 16, Postgres, Mux, Stripe — the platform's cast.",
+      excerpt:
+        'Next.js 16 + RSC, strict TypeScript, Tailwind, Drizzle, Auth.js, Mux, Stripe, Meilisearch, Vercel.',
+    },
   },
   architecture: {
     category: 'architecture',
@@ -52,6 +78,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: ['#0e7490', DEEP_BLACK], icon: 'Network', pattern: 'dots' },
     rank: 2,
     badges: ['Featured'],
+    en: {
+      title: 'Architecture',
+      tagline: 'How browser, edge, RSC, DB, and external services fit together.',
+      excerpt:
+        'High-level diagram: edge proxy, App Router, Server Functions, Postgres, Mux, Stripe, Meilisearch.',
+    },
   },
   'data-model': {
     category: 'architecture',
@@ -61,6 +93,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: ['#7c3aed', '#2e1065'], icon: 'Database' },
     backdrop: { gradient: ['#7c3aed', DEEP_BLACK], icon: 'Database', pattern: 'grid' },
     badges: ['Schema'],
+    en: {
+      title: 'Data Model',
+      tagline: 'Every table, every relation, in Drizzle.',
+      excerpt:
+        'Users, accounts, profiles, subscriptions, titles, episodes, watchlist, watch_progress, ratings.',
+    },
   },
   routes: {
     category: 'architecture',
@@ -70,6 +108,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: ['#0891b2', '#083344'], icon: 'GitBranch' },
     backdrop: { gradient: ['#0891b2', DEEP_BLACK], icon: 'GitBranch', pattern: 'dots' },
     badges: [],
+    en: {
+      title: 'Route Map',
+      tagline: 'The full App Router: static, RSC, dynamic.',
+      excerpt:
+        'app/(auth), app/(app)/browse, /title/[id], /watch/[id], /api, proxy.ts and per-route caching strategy.',
+    },
   },
   flows: {
     category: 'flows',
@@ -80,6 +124,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: [NETFLIX_RED, DEEP_BLACK], icon: 'Workflow', pattern: 'noise' },
     rank: 3,
     badges: ['Series', 'P0'],
+    en: {
+      title: 'Main Flows',
+      tagline: 'Six critical flows sequenced with Mermaid.',
+      excerpt:
+        'Sign-in OAuth + PKCE, session validation, profile selection, playback, Stripe webhook, sign out.',
+    },
   },
   'cross-cutting': {
     category: 'architecture',
@@ -89,6 +139,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: ['#475569', '#0f172a'], icon: 'Settings' },
     backdrop: { gradient: ['#475569', DEEP_BLACK], icon: 'Settings', pattern: 'grid' },
     badges: [],
+    en: {
+      title: 'Cross-cutting Concerns',
+      tagline: 'Caching, mutations, proxy, images, and SEO.',
+      excerpt:
+        'Cache Components with cacheTag, Server Functions, proxy.ts guard, next/image, and SEO metadata.',
+    },
   },
   components: {
     category: 'architecture',
@@ -98,6 +154,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: ['#059669', '#022c22'], icon: 'Component' },
     backdrop: { gradient: ['#059669', DEEP_BLACK], icon: 'Component', pattern: 'grid' },
     badges: [],
+    en: {
+      title: 'Component Inventory',
+      tagline: 'Every Server and Client Component, mapped.',
+      excerpt:
+        'Layout, Browse, Title detail, Player, Search, Auth & Profiles, Account, and System components.',
+    },
   },
   testing: {
     category: 'testing',
@@ -108,6 +170,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: ['#16a34a', DEEP_BLACK], icon: 'TestTube', pattern: 'dots' },
     rank: 5,
     badges: ['Quality'],
+    en: {
+      title: 'Testing Strategy',
+      tagline: 'The full pyramid: unit, component, integration, E2E, security.',
+      excerpt:
+        'Vitest + RTL + Testcontainers + Playwright + axe + Lighthouse + k6 + Snyk. Coverage gate ≥ 80%.',
+    },
   },
   security: {
     category: 'security',
@@ -118,6 +186,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: ['#b45309', DEEP_BLACK], icon: 'Shield', pattern: 'grid' },
     rank: 6,
     badges: ['Critical'],
+    en: {
+      title: 'Security',
+      tagline: '20 threats, 20 mitigations — defense in depth.',
+      excerpt:
+        'CSRF, PKCE, JWT in httpOnly, strict CSP, rate limiting, signed Mux URLs, webhook idempotency.',
+    },
   },
   roadmap: {
     category: 'roadmap',
@@ -128,6 +202,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     backdrop: { gradient: ['#9333ea', DEEP_BLACK], icon: 'Calendar', pattern: 'dots' },
     rank: 7,
     badges: ['Schedule'],
+    en: {
+      title: 'Roadmap',
+      tagline: '11 phases, each shippable, in 28 days.',
+      excerpt:
+        'Foundation → Auth → Catalog → Browse → Title → Player → Search → Subscriptions → Parental → Polish → Tests.',
+    },
   },
   risks: {
     category: 'product',
@@ -137,6 +217,12 @@ export const SECTION_AUGMENT: Record<SectionId, SectionAugment> = {
     poster: { gradient: ['#525252', '#171717'], icon: 'AlertTriangle' },
     backdrop: { gradient: ['#525252', DEEP_BLACK], icon: 'AlertTriangle', pattern: 'noise' },
     badges: ['Coming Soon'],
+    en: {
+      title: 'Risks & Open Questions',
+      tagline: 'What can go wrong, and the unanswered questions.',
+      excerpt:
+        'Licensed content, TMDB rate limits, Cache Components canary, JWT revocation, open scope.',
+    },
   },
 };
 

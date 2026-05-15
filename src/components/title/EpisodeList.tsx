@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Play } from 'lucide-react';
 import type { Episode, Section } from '@/content/types';
+import { localizedSection } from '@/content/localized';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/dictionaries/es';
 import { cn } from '@/lib/utils/cn';
@@ -12,7 +13,8 @@ interface EpisodeListProps {
 }
 
 export function EpisodeList({ section, locale, dict }: Readonly<EpisodeListProps>) {
-  if (section.episodes.length === 0) {
+  const loc = localizedSection(section, locale);
+  if (loc.episodes.length === 0) {
     return (
       <section aria-labelledby="episodes-heading" className="mx-auto max-w-7xl px-4 py-10 md:px-8">
         <h2 id="episodes-heading" className="text-2xl font-bold tracking-tight">
@@ -30,11 +32,11 @@ export function EpisodeList({ section, locale, dict }: Readonly<EpisodeListProps
           {dict.title.episodesHeading}
         </h2>
         <span className="text-fg-muted text-sm">
-          {dict.title.seasonSummary(section.episodes.length)}
+          {dict.title.seasonSummary(loc.episodes.length)}
         </span>
       </div>
       <ol className="border-border divide-border divide-y border-y">
-        {section.episodes.map((ep) => (
+        {loc.episodes.map((ep) => (
           <EpisodeRow
             key={ep.id}
             episode={ep}

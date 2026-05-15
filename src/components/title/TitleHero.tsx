@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { Play, Info } from 'lucide-react';
 import type { Section } from '@/content/types';
+import { categoryLabel, localizedSection } from '@/content/localized';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/dictionaries/es';
-import { PosterCanvas } from '@/components/poster/PosterCanvas';
+import { HeroBackdrop } from '@/components/poster/HeroBackdrop';
 import { AddToListButton } from '@/components/my-list/AddToListButton';
 
 interface TitleHeroProps {
@@ -13,23 +14,22 @@ interface TitleHeroProps {
 }
 
 export function TitleHero({ section, locale, dict }: Readonly<TitleHeroProps>) {
-  const totalEpisodes = section.episodes.length;
+  const loc = localizedSection(section, locale);
+  const totalEpisodes = loc.episodes.length;
   return (
     <header className="relative h-[80vh] min-h-150 w-full overflow-hidden">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <PosterCanvas spec={section.hero.backdrop} variant="backdrop" />
-      </div>
+      <HeroBackdrop section={section} locale={locale} />
       <div className="from-bg via-bg/40 absolute inset-0 -z-10 bg-linear-to-t to-transparent" />
       <div className="from-bg via-bg/30 absolute inset-0 -z-10 bg-linear-to-r to-transparent" />
 
       <div className="mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-16 md:px-8 md:pb-24">
         <p className="text-fg-muted text-xs font-bold tracking-[0.3em] uppercase">
-          {dict.title.chapter(section.number, section.category)}
+          {dict.title.chapter(section.number, categoryLabel(section.category, dict))}
         </p>
         <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">
-          {section.title}
+          {loc.title}
         </h1>
-        <p className="text-fg mt-4 max-w-2xl text-lg md:text-xl">{section.hero.tagline}</p>
+        <p className="text-fg mt-4 max-w-2xl text-lg md:text-xl">{loc.tagline}</p>
 
         <div className="text-fg-muted mt-3 flex flex-wrap items-center gap-3 text-sm">
           <span className="text-success font-semibold">{rating(section, dict)}</span>
@@ -45,7 +45,7 @@ export function TitleHero({ section, locale, dict }: Readonly<TitleHeroProps>) {
           ))}
         </div>
 
-        <p className="text-fg-muted mt-4 max-w-2xl text-base md:text-lg">{section.excerpt}</p>
+        <p className="text-fg-muted mt-4 max-w-2xl text-base md:text-lg">{loc.excerpt}</p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <Link
@@ -58,7 +58,7 @@ export function TitleHero({ section, locale, dict }: Readonly<TitleHeroProps>) {
           <button
             type="button"
             className="hover:bg-bg-elevated/80 bg-bg-elevated/60 text-fg inline-flex items-center gap-2 rounded border border-white/30 px-6 py-2.5 text-sm font-semibold backdrop-blur transition md:text-base"
-            aria-label={dict.title.moreInfoFor(section.title)}
+            aria-label={dict.title.moreInfoFor(loc.title)}
           >
             <Info className="h-5 w-5" />
             {dict.title.moreInfo}

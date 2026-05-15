@@ -3,7 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { TitleHero } from './TitleHero';
 import { es } from '@/i18n/dictionaries/es';
 import { en } from '@/i18n/dictionaries/en';
-import type { Section } from '@/content/types';
+import type { Episode, Section } from '@/content/types';
+
+const episodes: Episode[] = [
+  { id: 'flows/1', number: 1, title: 'Sign-in OAuth', runtime: 3, blocks: [] },
+  { id: 'flows/2', number: 2, title: 'Validar sesión', runtime: 2, blocks: [] },
+];
 
 const flowsSection: Section = {
   id: 'flows',
@@ -19,10 +24,23 @@ const flowsSection: Section = {
   meta: { runtime: 12, badges: ['Series', 'P0'], rank: 3 },
   excerpt: 'Sign-in, validación de sesión, perfil, reproducción, webhook Stripe, sign out.',
   intro: [],
-  episodes: [
-    { id: 'flows/1', number: 1, title: 'Sign-in OAuth', runtime: 3, blocks: [] },
-    { id: 'flows/2', number: 2, title: 'Validar sesión', runtime: 2, blocks: [] },
-  ],
+  episodes,
+  localized: {
+    es: {
+      title: 'Flujos Principales',
+      tagline: 'Seis flujos críticos secuenciados con Mermaid.',
+      excerpt: 'Sign-in, validación de sesión, perfil, reproducción, webhook Stripe, sign out.',
+      intro: [],
+      episodes,
+    },
+    en: {
+      title: 'Main Flows',
+      tagline: 'Six critical flows sequenced with Mermaid.',
+      excerpt: 'Sign-in, session validation, profile, playback, Stripe webhook, sign out.',
+      intro: [],
+      episodes,
+    },
+  },
 };
 
 describe('<TitleHero>', () => {

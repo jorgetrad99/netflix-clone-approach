@@ -19,6 +19,10 @@ const stub: Section = {
   excerpt: '',
   intro: [],
   episodes: [],
+  localized: {
+    es: { title: 'Visión General', tagline: 't', excerpt: '', intro: [], episodes: [] },
+    en: { title: 'Overview', tagline: 't', excerpt: '', intro: [], episodes: [] },
+  },
 };
 
 describe('<AddToListButton>', () => {

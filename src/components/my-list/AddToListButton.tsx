@@ -2,7 +2,8 @@
 
 import { Plus, Check } from 'lucide-react';
 import type { Section } from '@/content/types';
-import { useDictionary } from '@/i18n/LocaleProvider';
+import { localizedSection } from '@/content/localized';
+import { useDictionary, useLocale } from '@/i18n/LocaleProvider';
 import { useIsInMyList, useMyListStore } from '@/lib/store/my-list';
 import { cn } from '@/lib/utils/cn';
 
@@ -18,6 +19,8 @@ export function AddToListButton({
   className,
 }: Readonly<AddToListButtonProps>) {
   const dict = useDictionary();
+  const locale = useLocale();
+  const loc = localizedSection(section, locale);
   const inList = useIsInMyList(section.id);
   const toggle = useMyListStore((s) => s.toggle);
   const dim = size === 'sm' ? 'h-8 w-8' : 'h-11 w-11';
@@ -26,9 +29,7 @@ export function AddToListButton({
   return (
     <button
       type="button"
-      aria-label={
-        inList ? dict.title.removeFromList(section.title) : dict.title.addToList(section.title)
-      }
+      aria-label={inList ? dict.title.removeFromList(loc.title) : dict.title.addToList(loc.title)}
       aria-pressed={inList}
       onClick={() => toggle(section.id)}
       className={cn(

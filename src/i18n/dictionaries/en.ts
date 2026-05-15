@@ -100,6 +100,15 @@ export const en: Dictionary = {
     fatalRetry: 'Try again',
     fatalHome: 'Go home',
   },
+  categories: {
+    product: 'product',
+    architecture: 'architecture',
+    flows: 'flows',
+    security: 'security',
+    testing: 'testing',
+    stack: 'stack',
+    roadmap: 'roadmap',
+  },
   myList: {
     pageTitle: 'My List',
     metaDescription: 'Your saved titles, synced with this browser.',

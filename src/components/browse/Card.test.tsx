@@ -18,6 +18,10 @@ const stubSection: Section = {
   excerpt: 'excerpt',
   intro: [],
   episodes: [],
+  localized: {
+    es: { title: 'Visión General', tagline: 'tag', excerpt: 'excerpt', intro: [], episodes: [] },
+    en: { title: 'Overview', tagline: 'tag en', excerpt: 'excerpt en', intro: [], episodes: [] },
+  },
 };
 
 function getPreview(link: HTMLElement): HTMLElement | null {

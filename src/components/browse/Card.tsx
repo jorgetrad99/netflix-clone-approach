@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import type { Section } from '@/content/types';
+import { localizedSection } from '@/content/localized';
 import type { Locale } from '@/i18n/config';
 import { useDictionary } from '@/i18n/LocaleProvider';
 import { PosterCanvas } from '@/components/poster/PosterCanvas';
@@ -21,6 +22,7 @@ interface CardProps {
 export function Card({ section, locale, className, rank }: Readonly<CardProps>) {
   const [showPreview, setShowPreview] = useState(false);
   const dict = useDictionary();
+  const loc = localizedSection(section, locale);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const open = () => {
@@ -57,7 +59,7 @@ export function Card({ section, locale, className, rank }: Readonly<CardProps>) 
       )}
       <Link
         href={`/${locale}/title/${section.slug}`}
-        aria-label={dict.title.moreInfoFor(section.title)}
+        aria-label={dict.title.moreInfoFor(loc.title)}
         data-testid="section-card"
         onMouseEnter={open}
         onMouseLeave={close}
@@ -73,7 +75,21 @@ export function Card({ section, locale, className, rank }: Readonly<CardProps>) 
         )}
       >
         <PosterCanvas spec={section.hero.poster} />
-        <CardPreview section={section} visible={showPreview} dict={dict} />
+        {/* Always-visible title strip — fades when preview opens */}
+        <div
+          aria-hidden
+          className={cn(
+            'pointer-events-none absolute inset-x-0 bottom-0 px-3 pt-8 pb-2',
+            'bg-linear-to-t from-black/85 via-black/45 to-transparent',
+            'transition-opacity duration-200',
+            showPreview && 'opacity-0',
+          )}
+        >
+          <p className="line-clamp-2 text-sm leading-tight font-semibold text-white drop-shadow-sm">
+            {loc.title}
+          </p>
+        </div>
+        <CardPreview section={section} visible={showPreview} dict={dict} locale={locale} />
       </Link>
     </div>
   );

@@ -39,7 +39,33 @@ export const sections: Section[] = [
         "html": "<p>Construir un clon funcional de Netflix con las features que definen el producto: autenticación, perfiles, navegación de catálogo, página de detalle, player de video, búsqueda, listas, recomendaciones y subscripciones.</p>\n<p><strong>Principios rectores:</strong></p>\n<ul>\n<li><strong>Server-first</strong>: la mayoría del trabajo ocurre en React Server Components; el cliente solo recibe los componentes interactivos.</li>\n<li><strong>Cache agresivo, invalidación precisa</strong>: catálogo cacheado con <code>use cache</code> + <code>cacheTag</code>; mutaciones invalidan tags específicos.</li>\n<li><strong>Seguridad por defecto</strong>: cookies <code>httpOnly</code> + <code>secure</code>, validación en el servidor, CSP estricta, OAuth con PKCE.</li>\n<li><strong>Testeable en todas las capas</strong>: unit, component, integration y E2E.</li>\n</ul>\n<p><strong>Alcance excluido (clone, no Netflix real):</strong> DRM (Widevine/PlayReady/FairPlay), CDN multi-región propietario, recomendaciones ML production-grade, downloads offline, apps nativas.</p>"
       }
     ],
-    "episodes": []
+    "episodes": [],
+    "localized": {
+      "es": {
+        "title": "Visión General",
+        "tagline": "El blueprint completo del producto en una sola toma.",
+        "excerpt": "Construir un clon funcional de Netflix con auth, perfiles, browse, player, búsqueda, listas, recomendaciones y subscripciones.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p>Construir un clon funcional de Netflix con las features que definen el producto: autenticación, perfiles, navegación de catálogo, página de detalle, player de video, búsqueda, listas, recomendaciones y subscripciones.</p>\n<p><strong>Principios rectores:</strong></p>\n<ul>\n<li><strong>Server-first</strong>: la mayoría del trabajo ocurre en React Server Components; el cliente solo recibe los componentes interactivos.</li>\n<li><strong>Cache agresivo, invalidación precisa</strong>: catálogo cacheado con <code>use cache</code> + <code>cacheTag</code>; mutaciones invalidan tags específicos.</li>\n<li><strong>Seguridad por defecto</strong>: cookies <code>httpOnly</code> + <code>secure</code>, validación en el servidor, CSP estricta, OAuth con PKCE.</li>\n<li><strong>Testeable en todas las capas</strong>: unit, component, integration y E2E.</li>\n</ul>\n<p><strong>Alcance excluido (clone, no Netflix real):</strong> DRM (Widevine/PlayReady/FairPlay), CDN multi-región propietario, recomendaciones ML production-grade, downloads offline, apps nativas.</p>"
+          }
+        ],
+        "episodes": []
+      },
+      "en": {
+        "title": "Overview",
+        "tagline": "The complete product blueprint, in a single take.",
+        "excerpt": "Build a functional Netflix clone with auth, profiles, browse, player, search, lists, recommendations, and subscriptions.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p>Build a functional Netflix clone with the features that define the product: authentication, profiles, catalog browsing, detail page, video player, search, lists, recommendations, and subscriptions.</p>\n<p><strong>Guiding principles:</strong></p>\n<ul>\n<li><strong>Server-first</strong>: most work happens in React Server Components; the client only receives interactive components.</li>\n<li><strong>Aggressive caching, precise invalidation</strong>: catalog cached with <code>use cache</code> + <code>cacheTag</code>; mutations invalidate specific tags.</li>\n<li><strong>Security by default</strong>: <code>httpOnly</code> + <code>secure</code> cookies, server-side validation, strict CSP, OAuth with PKCE.</li>\n<li><strong>Testable at every layer</strong>: unit, component, integration, and E2E.</li>\n</ul>\n<p><strong>Excluded scope (clone, not real Netflix):</strong> DRM (Widevine/PlayReady/FairPlay), proprietary multi-region CDN, production-grade ML recommendations, offline downloads, native apps.</p>"
+          }
+        ],
+        "episodes": []
+      }
+    }
   },
   {
     "id": "features",
@@ -79,7 +105,33 @@ export const sections: Section[] = [
         "html": "<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Feature</th>\n<th>Prioridad</th>\n<th>Descripción</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td><strong>Autenticación con Google (OAuth 2.0 + PKCE)</strong></td>\n<td>P0</td>\n<td>Sign in/up con un click. Sesión vía JWT en cookie <code>httpOnly</code>.</td>\n</tr>\n<tr>\n<td>2</td>\n<td><strong>Múltiples perfiles por cuenta</strong></td>\n<td>P0</td>\n<td>Hasta 5 perfiles. Flag de kids. PIN opcional.</td>\n</tr>\n<tr>\n<td>3</td>\n<td><strong>Browse / Home</strong></td>\n<td>P0</td>\n<td>Hero + filas (Trending, Continue Watching, New Releases, Genre rows).</td>\n</tr>\n<tr>\n<td>4</td>\n<td><strong>Página de detalle</strong></td>\n<td>P0</td>\n<td>Sinopsis, cast, trailer, episodios (TV), \"More Like This\".</td>\n</tr>\n<tr>\n<td>5</td>\n<td><strong>Video Player</strong></td>\n<td>P0</td>\n<td>HLS adaptativo, play/pause, seek, subtítulos, calidad, resume.</td>\n</tr>\n<tr>\n<td>6</td>\n<td><strong>Búsqueda</strong></td>\n<td>P0</td>\n<td>Type-ahead por título, género, actor.</td>\n</tr>\n<tr>\n<td>7</td>\n<td><strong>My List</strong></td>\n<td>P0</td>\n<td>Watchlist por perfil.</td>\n</tr>\n<tr>\n<td>8</td>\n<td><strong>Continue Watching</strong></td>\n<td>P0</td>\n<td>Resume points por perfil/episodio.</td>\n</tr>\n<tr>\n<td>9</td>\n<td><strong>Páginas de género</strong></td>\n<td>P1</td>\n<td><code>/genre/[slug]</code>.</td>\n</tr>\n<tr>\n<td>10</td>\n<td><strong>Ratings</strong> (👍/👎/❤️)</td>\n<td>P1</td>\n<td>Alimenta recomendaciones.</td>\n</tr>\n<tr>\n<td>11</td>\n<td><strong>Subscripciones (Stripe)</strong></td>\n<td>P1</td>\n<td>Basic / Standard / Premium.</td>\n</tr>\n<tr>\n<td>12</td>\n<td><strong>Ajustes de cuenta</strong></td>\n<td>P1</td>\n<td>Idioma, dispositivos, billing.</td>\n</tr>\n<tr>\n<td>13</td>\n<td><strong>Kids mode + control parental</strong></td>\n<td>P1</td>\n<td>PIN, filtro de age rating.</td>\n</tr>\n<tr>\n<td>14</td>\n<td><strong>Recomendaciones \"Because you watched\"</strong></td>\n<td>P2</td>\n<td>Content-based primero, collaborative después.</td>\n</tr>\n<tr>\n<td>15</td>\n<td><strong>Trailer autoplay on hover</strong></td>\n<td>P2</td>\n<td>Preview en hover de card.</td>\n</tr>\n<tr>\n<td>16</td>\n<td><strong>Notificaciones</strong></td>\n<td>P2</td>\n<td>Nuevos episodios.</td>\n</tr>\n<tr>\n<td>17</td>\n<td><strong>Downloads offline</strong></td>\n<td>Excluido</td>\n<td>Fuera de scope web.</td>\n</tr>\n</tbody>\n</table>"
       }
     ],
-    "episodes": []
+    "episodes": [],
+    "localized": {
+      "es": {
+        "title": "Key Features",
+        "tagline": "Las 17 features que definen el producto, ranked.",
+        "excerpt": "Auth, perfiles, browse, player HLS, búsqueda, listas, ratings, subscripciones, parental controls y más.",
+        "intro": [
+          {
+            "kind": "table",
+            "html": "<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Feature</th>\n<th>Prioridad</th>\n<th>Descripción</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td><strong>Autenticación con Google (OAuth 2.0 + PKCE)</strong></td>\n<td>P0</td>\n<td>Sign in/up con un click. Sesión vía JWT en cookie <code>httpOnly</code>.</td>\n</tr>\n<tr>\n<td>2</td>\n<td><strong>Múltiples perfiles por cuenta</strong></td>\n<td>P0</td>\n<td>Hasta 5 perfiles. Flag de kids. PIN opcional.</td>\n</tr>\n<tr>\n<td>3</td>\n<td><strong>Browse / Home</strong></td>\n<td>P0</td>\n<td>Hero + filas (Trending, Continue Watching, New Releases, Genre rows).</td>\n</tr>\n<tr>\n<td>4</td>\n<td><strong>Página de detalle</strong></td>\n<td>P0</td>\n<td>Sinopsis, cast, trailer, episodios (TV), \"More Like This\".</td>\n</tr>\n<tr>\n<td>5</td>\n<td><strong>Video Player</strong></td>\n<td>P0</td>\n<td>HLS adaptativo, play/pause, seek, subtítulos, calidad, resume.</td>\n</tr>\n<tr>\n<td>6</td>\n<td><strong>Búsqueda</strong></td>\n<td>P0</td>\n<td>Type-ahead por título, género, actor.</td>\n</tr>\n<tr>\n<td>7</td>\n<td><strong>My List</strong></td>\n<td>P0</td>\n<td>Watchlist por perfil.</td>\n</tr>\n<tr>\n<td>8</td>\n<td><strong>Continue Watching</strong></td>\n<td>P0</td>\n<td>Resume points por perfil/episodio.</td>\n</tr>\n<tr>\n<td>9</td>\n<td><strong>Páginas de género</strong></td>\n<td>P1</td>\n<td><code>/genre/[slug]</code>.</td>\n</tr>\n<tr>\n<td>10</td>\n<td><strong>Ratings</strong> (👍/👎/❤️)</td>\n<td>P1</td>\n<td>Alimenta recomendaciones.</td>\n</tr>\n<tr>\n<td>11</td>\n<td><strong>Subscripciones (Stripe)</strong></td>\n<td>P1</td>\n<td>Basic / Standard / Premium.</td>\n</tr>\n<tr>\n<td>12</td>\n<td><strong>Ajustes de cuenta</strong></td>\n<td>P1</td>\n<td>Idioma, dispositivos, billing.</td>\n</tr>\n<tr>\n<td>13</td>\n<td><strong>Kids mode + control parental</strong></td>\n<td>P1</td>\n<td>PIN, filtro de age rating.</td>\n</tr>\n<tr>\n<td>14</td>\n<td><strong>Recomendaciones \"Because you watched\"</strong></td>\n<td>P2</td>\n<td>Content-based primero, collaborative después.</td>\n</tr>\n<tr>\n<td>15</td>\n<td><strong>Trailer autoplay on hover</strong></td>\n<td>P2</td>\n<td>Preview en hover de card.</td>\n</tr>\n<tr>\n<td>16</td>\n<td><strong>Notificaciones</strong></td>\n<td>P2</td>\n<td>Nuevos episodios.</td>\n</tr>\n<tr>\n<td>17</td>\n<td><strong>Downloads offline</strong></td>\n<td>Excluido</td>\n<td>Fuera de scope web.</td>\n</tr>\n</tbody>\n</table>"
+          }
+        ],
+        "episodes": []
+      },
+      "en": {
+        "title": "Key Features",
+        "tagline": "The 17 features that define the product, ranked.",
+        "excerpt": "Auth, profiles, browse, HLS player, search, lists, ratings, subscriptions, parental controls and more.",
+        "intro": [
+          {
+            "kind": "table",
+            "html": "<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Feature</th>\n<th>Priority</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td><strong>Authentication with Google (OAuth 2.0 + PKCE)</strong></td>\n<td>P0</td>\n<td>One-click sign in/up. Session via JWT in <code>httpOnly</code> cookie.</td>\n</tr>\n<tr>\n<td>2</td>\n<td><strong>Multiple profiles per account</strong></td>\n<td>P0</td>\n<td>Up to 5 profiles. Kids flag. Optional PIN.</td>\n</tr>\n<tr>\n<td>3</td>\n<td><strong>Browse / Home</strong></td>\n<td>P0</td>\n<td>Hero + rows (Trending, Continue Watching, New Releases, Genre rows).</td>\n</tr>\n<tr>\n<td>4</td>\n<td><strong>Detail page</strong></td>\n<td>P0</td>\n<td>Synopsis, cast, trailer, episodes (TV), \"More Like This\".</td>\n</tr>\n<tr>\n<td>5</td>\n<td><strong>Video Player</strong></td>\n<td>P0</td>\n<td>Adaptive HLS, play/pause, seek, subtitles, quality, resume.</td>\n</tr>\n<tr>\n<td>6</td>\n<td><strong>Search</strong></td>\n<td>P0</td>\n<td>Type-ahead by title, genre, actor.</td>\n</tr>\n<tr>\n<td>7</td>\n<td><strong>My List</strong></td>\n<td>P0</td>\n<td>Watchlist per profile.</td>\n</tr>\n<tr>\n<td>8</td>\n<td><strong>Continue Watching</strong></td>\n<td>P0</td>\n<td>Resume points per profile/episode.</td>\n</tr>\n<tr>\n<td>9</td>\n<td><strong>Genre pages</strong></td>\n<td>P1</td>\n<td><code>/genre/[slug]</code>.</td>\n</tr>\n<tr>\n<td>10</td>\n<td><strong>Ratings</strong> (👍/👎/❤️)</td>\n<td>P1</td>\n<td>Feeds recommendations.</td>\n</tr>\n<tr>\n<td>11</td>\n<td><strong>Subscriptions (Stripe)</strong></td>\n<td>P1</td>\n<td>Basic / Standard / Premium.</td>\n</tr>\n<tr>\n<td>12</td>\n<td><strong>Account settings</strong></td>\n<td>P1</td>\n<td>Language, devices, billing.</td>\n</tr>\n<tr>\n<td>13</td>\n<td><strong>Kids mode + parental controls</strong></td>\n<td>P1</td>\n<td>PIN, age rating filter.</td>\n</tr>\n<tr>\n<td>14</td>\n<td><strong>\"Because you watched\" recommendations</strong></td>\n<td>P2</td>\n<td>Content-based first, collaborative later.</td>\n</tr>\n<tr>\n<td>15</td>\n<td><strong>Trailer autoplay on hover</strong></td>\n<td>P2</td>\n<td>Preview on card hover.</td>\n</tr>\n<tr>\n<td>16</td>\n<td><strong>Notifications</strong></td>\n<td>P2</td>\n<td>New episodes.</td>\n</tr>\n<tr>\n<td>17</td>\n<td><strong>Offline downloads</strong></td>\n<td>Excluded</td>\n<td>Out of web scope.</td>\n</tr>\n</tbody>\n</table>"
+          }
+        ],
+        "episodes": []
+      }
+    }
   },
   {
     "id": "stack",
@@ -177,7 +229,149 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Stack Tecnológico y Servicios",
+        "tagline": "Next.js 16, Postgres, Mux, Stripe — el cast de la plataforma.",
+        "excerpt": "Next.js 16 + RSC, TypeScript estricto, Tailwind, Drizzle, Auth.js, Mux, Stripe, Meilisearch, Vercel.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "stack/1",
+            "number": 1,
+            "title": "Capa de aplicación",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Elección</th>\n<th>Razón</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Framework</td>\n<td><strong>Next.js 16</strong> (App Router, Cache Components)</td>\n<td>RSC + streaming + Server Functions (<a href=\"nextjs.md\">nextjs.md §6</a>).</td>\n</tr>\n<tr>\n<td>Lenguaje</td>\n<td><strong>TypeScript estricto</strong></td>\n<td>Type safety server+client.</td>\n</tr>\n<tr>\n<td>Styling</td>\n<td><strong>Tailwind CSS + CSS variables</strong></td>\n<td>Sin runtime cost.</td>\n</tr>\n<tr>\n<td>UI primitives</td>\n<td><strong>Radix UI + shadcn/ui</strong></td>\n<td>Accesibles, headless, dark mode fácil.</td>\n</tr>\n<tr>\n<td>Forms</td>\n<td><strong>React Hook Form + Zod</strong></td>\n<td>Schemas Zod reutilizados en Server Functions.</td>\n</tr>\n<tr>\n<td>Estado cliente</td>\n<td><strong>Zustand</strong> (solo player + UI shell)</td>\n<td>Resto del estado en RSC / URL.</td>\n</tr>\n<tr>\n<td>Hosting</td>\n<td><strong>Vercel</strong></td>\n<td>Cache nativo + edge proxy.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/2",
+            "number": 2,
+            "title": "Datos e identidad",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Elección</th>\n<th>Razón</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Base de datos</td>\n<td><strong>PostgreSQL (Neon)</strong></td>\n<td>Serverless, branchable.</td>\n</tr>\n<tr>\n<td>ORM</td>\n<td><strong>Drizzle ORM</strong></td>\n<td>Edge-friendly, SQL-first.</td>\n</tr>\n<tr>\n<td>Auth</td>\n<td><strong>Auth.js v5 (NextAuth)</strong> con provider Google</td>\n<td>Maneja PKCE/state/nonce automático.</td>\n</tr>\n<tr>\n<td>Sesión</td>\n<td><strong>JWT en cookie httpOnly</strong></td>\n<td>Sin DB lookup por request.</td>\n</tr>\n<tr>\n<td>Adapter</td>\n<td><code>@auth/drizzle-adapter</code></td>\n<td>Tablas <code>users</code>, <code>accounts</code>.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/3",
+            "number": 3,
+            "title": "Catálogo, video, búsqueda, pagos",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Elección</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Metadata de títulos</td>\n<td><strong>TMDB API</strong> (sync nocturno a Postgres)</td>\n</tr>\n<tr>\n<td>Hosting de video</td>\n<td><strong>Mux</strong> (HLS + signed URLs + thumbnails)</td>\n</tr>\n<tr>\n<td>Player</td>\n<td><code>hls.js</code> + shell propio</td>\n</tr>\n<tr>\n<td>Search</td>\n<td><strong>Meilisearch Cloud</strong> (fallback Postgres <code>tsvector</code>)</td>\n</tr>\n<tr>\n<td>Pagos</td>\n<td><strong>Stripe</strong> (Checkout + Portal + Webhooks)</td>\n</tr>\n<tr>\n<td>Imágenes</td>\n<td><code>next/image</code> + <code>image.tmdb.org</code></td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/4",
+            "number": 4,
+            "title": "Infraestructura cross-cutting",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Elección</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Cron</td>\n<td>Vercel Cron → Route Handlers</td>\n</tr>\n<tr>\n<td>Background jobs</td>\n<td><code>after()</code> de Next.js (<a href=\"nextjs.md\">nextjs.md §16</a>)</td>\n</tr>\n<tr>\n<td>Rate limiting</td>\n<td>Upstash Redis</td>\n</tr>\n<tr>\n<td>Logs</td>\n<td>Axiom</td>\n</tr>\n<tr>\n<td>Analytics</td>\n<td>PostHog</td>\n</tr>\n<tr>\n<td>Error tracking</td>\n<td>Sentry</td>\n</tr>\n<tr>\n<td>Secrets</td>\n<td>Vercel env vars</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/5",
+            "number": 5,
+            "title": "Variables de entorno",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "bash",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\"># Core</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AUTH_SECRET</span><span style=\"color:#F97583\">=</span><span style=\"color:#6A737D\">                  # openssl rand -base64 32</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AUTH_URL</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">https://app.com</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">DATABASE_URL</span><span style=\"color:#F97583\">=</span><span style=\"color:#6A737D\">                 # Neon</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Google OAuth</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">GOOGLE_CLIENT_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">GOOGLE_CLIENT_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Mux</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_TOKEN_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_TOKEN_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_SIGNING_KEY_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_SIGNING_PRIVATE_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Stripe</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">STRIPE_SECRET_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">STRIPE_WEBHOOK_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># TMDB</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">TMDB_API_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">TMDB_READ_TOKEN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Search</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MEILISEARCH_HOST</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MEILISEARCH_API_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Observability</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">SENTRY_DSN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">NEXT_PUBLIC_POSTHOG_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AXIOM_TOKEN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Rate limit</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">UPSTASH_REDIS_REST_URL</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">UPSTASH_REDIS_REST_TOKEN</span><span style=\"color:#F97583\">=</span></span></code></pre>",
+                "raw": "# Core\nAUTH_SECRET=                  # openssl rand -base64 32\nAUTH_URL=https://app.com\nDATABASE_URL=                 # Neon\n# Google OAuth\nGOOGLE_CLIENT_ID=\nGOOGLE_CLIENT_SECRET=\n# Mux\nMUX_TOKEN_ID=\nMUX_TOKEN_SECRET=\nMUX_SIGNING_KEY_ID=\nMUX_SIGNING_PRIVATE_KEY=\n# Stripe\nSTRIPE_SECRET_KEY=\nSTRIPE_WEBHOOK_SECRET=\nNEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=\n# TMDB\nTMDB_API_KEY=\nTMDB_READ_TOKEN=\n# Search\nMEILISEARCH_HOST=\nMEILISEARCH_API_KEY=\n# Observability\nSENTRY_DSN=\nNEXT_PUBLIC_POSTHOG_KEY=\nAXIOM_TOKEN=\n# Rate limit\nUPSTASH_REDIS_REST_URL=\nUPSTASH_REDIS_REST_TOKEN="
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Tech Stack",
+        "tagline": "Next.js 16, Postgres, Mux, Stripe — the platform's cast.",
+        "excerpt": "Next.js 16 + RSC, strict TypeScript, Tailwind, Drizzle, Auth.js, Mux, Stripe, Meilisearch, Vercel.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "stack/1",
+            "number": 1,
+            "title": "Application layer",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Choice</th>\n<th>Reason</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Framework</td>\n<td><strong>Next.js 16</strong> (App Router, Cache Components)</td>\n<td>RSC + streaming + Server Functions (<a href=\"nextjs.md\">nextjs.md §6</a>).</td>\n</tr>\n<tr>\n<td>Language</td>\n<td><strong>Strict TypeScript</strong></td>\n<td>Type safety server+client.</td>\n</tr>\n<tr>\n<td>Styling</td>\n<td><strong>Tailwind CSS + CSS variables</strong></td>\n<td>No runtime cost.</td>\n</tr>\n<tr>\n<td>UI primitives</td>\n<td><strong>Radix UI + shadcn/ui</strong></td>\n<td>Accessible, headless, easy dark mode.</td>\n</tr>\n<tr>\n<td>Forms</td>\n<td><strong>React Hook Form + Zod</strong></td>\n<td>Zod schemas reused in Server Functions.</td>\n</tr>\n<tr>\n<td>Client state</td>\n<td><strong>Zustand</strong> (player + UI shell only)</td>\n<td>Rest of state in RSC / URL.</td>\n</tr>\n<tr>\n<td>Hosting</td>\n<td><strong>Vercel</strong></td>\n<td>Native cache + edge proxy.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/2",
+            "number": 2,
+            "title": "Data and identity",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Choice</th>\n<th>Reason</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Database</td>\n<td><strong>PostgreSQL (Neon)</strong></td>\n<td>Serverless, branchable.</td>\n</tr>\n<tr>\n<td>ORM</td>\n<td><strong>Drizzle ORM</strong></td>\n<td>Edge-friendly, SQL-first.</td>\n</tr>\n<tr>\n<td>Auth</td>\n<td><strong>Auth.js v5 (NextAuth)</strong> with Google provider</td>\n<td>Handles PKCE/state/nonce automatically.</td>\n</tr>\n<tr>\n<td>Session</td>\n<td><strong>JWT in httpOnly cookie</strong></td>\n<td>No DB lookup per request.</td>\n</tr>\n<tr>\n<td>Adapter</td>\n<td><code>@auth/drizzle-adapter</code></td>\n<td><code>users</code>, <code>accounts</code> tables.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/3",
+            "number": 3,
+            "title": "Catalog, video, search, payments",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Choice</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Title metadata</td>\n<td><strong>TMDB API</strong> (nightly sync to Postgres)</td>\n</tr>\n<tr>\n<td>Video hosting</td>\n<td><strong>Mux</strong> (HLS + signed URLs + thumbnails)</td>\n</tr>\n<tr>\n<td>Player</td>\n<td><code>hls.js</code> + custom shell</td>\n</tr>\n<tr>\n<td>Search</td>\n<td><strong>Meilisearch Cloud</strong> (fallback Postgres <code>tsvector</code>)</td>\n</tr>\n<tr>\n<td>Payments</td>\n<td><strong>Stripe</strong> (Checkout + Portal + Webhooks)</td>\n</tr>\n<tr>\n<td>Images</td>\n<td><code>next/image</code> + <code>image.tmdb.org</code></td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/4",
+            "number": 4,
+            "title": "Cross-cutting infrastructure",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Concern</th>\n<th>Choice</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Cron</td>\n<td>Vercel Cron → Route Handlers</td>\n</tr>\n<tr>\n<td>Background jobs</td>\n<td>Next.js <code>after()</code> (<a href=\"nextjs.md\">nextjs.md §16</a>)</td>\n</tr>\n<tr>\n<td>Rate limiting</td>\n<td>Upstash Redis</td>\n</tr>\n<tr>\n<td>Logs</td>\n<td>Axiom</td>\n</tr>\n<tr>\n<td>Analytics</td>\n<td>PostHog</td>\n</tr>\n<tr>\n<td>Error tracking</td>\n<td>Sentry</td>\n</tr>\n<tr>\n<td>Secrets</td>\n<td>Vercel env vars</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "stack/5",
+            "number": 5,
+            "title": "Environment variables",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "bash",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\"># Core</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AUTH_SECRET</span><span style=\"color:#F97583\">=</span><span style=\"color:#6A737D\">                  # openssl rand -base64 32</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AUTH_URL</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">https://app.com</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">DATABASE_URL</span><span style=\"color:#F97583\">=</span><span style=\"color:#6A737D\">                 # Neon</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Google OAuth</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">GOOGLE_CLIENT_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">GOOGLE_CLIENT_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Mux</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_TOKEN_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_TOKEN_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_SIGNING_KEY_ID</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MUX_SIGNING_PRIVATE_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Stripe</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">STRIPE_SECRET_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">STRIPE_WEBHOOK_SECRET</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># TMDB</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">TMDB_API_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">TMDB_READ_TOKEN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Search</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MEILISEARCH_HOST</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">MEILISEARCH_API_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Observability</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">SENTRY_DSN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">NEXT_PUBLIC_POSTHOG_KEY</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">AXIOM_TOKEN</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#6A737D\"># Rate limit</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">UPSTASH_REDIS_REST_URL</span><span style=\"color:#F97583\">=</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">UPSTASH_REDIS_REST_TOKEN</span><span style=\"color:#F97583\">=</span></span></code></pre>",
+                "raw": "# Core\nAUTH_SECRET=                  # openssl rand -base64 32\nAUTH_URL=https://app.com\nDATABASE_URL=                 # Neon\n# Google OAuth\nGOOGLE_CLIENT_ID=\nGOOGLE_CLIENT_SECRET=\n# Mux\nMUX_TOKEN_ID=\nMUX_TOKEN_SECRET=\nMUX_SIGNING_KEY_ID=\nMUX_SIGNING_PRIVATE_KEY=\n# Stripe\nSTRIPE_SECRET_KEY=\nSTRIPE_WEBHOOK_SECRET=\nNEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=\n# TMDB\nTMDB_API_KEY=\nTMDB_READ_TOKEN=\n# Search\nMEILISEARCH_HOST=\nMEILISEARCH_API_KEY=\n# Observability\nSENTRY_DSN=\nNEXT_PUBLIC_POSTHOG_KEY=\nAXIOM_TOKEN=\n# Rate limit\nUPSTASH_REDIS_REST_URL=\nUPSTASH_REDIS_REST_TOKEN="
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "architecture",
@@ -222,7 +416,43 @@ export const sections: Section[] = [
         "html": "<p><strong>Runtimes:</strong></p>\n<ul>\n<li><code>proxy.ts</code> y rutas estáticas → <strong>Edge runtime</strong>.</li>\n<li>Rutas que tocan DB/Mux → <strong>Node runtime</strong> (driver Postgres).</li>\n</ul>"
       }
     ],
-    "episodes": []
+    "episodes": [],
+    "localized": {
+      "es": {
+        "title": "Arquitectura",
+        "tagline": "Cómo encajan navegador, edge, RSC, DB y servicios externos.",
+        "excerpt": "Diagrama de alto nivel: proxy edge, App Router, Server Functions, Postgres, Mux, Stripe, Meilisearch.",
+        "intro": [
+          {
+            "kind": "mermaid",
+            "source": "flowchart LR\n    U[Browser<br/>RSC + hls.js]\n    subgraph Next[\"Next.js 16 (Vercel)\"]\n        P[proxy.ts<br/>auth + profile + geo]\n        APP[\"app/&ast;<br/>RSC + Server Functions\"]\n        API[\"api/&ast;<br/>Route Handlers\"]\n    end\n    DB[(PostgreSQL<br/>Neon)]\n    G[Google OAuth]\n    M[Mux Video]\n    S[Stripe]\n    T[TMDB API]\n    MS[Meilisearch]\n    R[(Upstash Redis<br/>rate limit)]\n\n    U -->|HTTPS| P\n    P --> APP\n    P --> API\n    APP --> DB\n    APP --> M\n    APP --> MS\n    API -->|sign in callback| G\n    API -->|webhook| S\n    API -->|cron sync| T\n    API --> DB\n    APP <-.->|rate limit| R\n    M -.->|signed playback URL| U",
+            "id": "architecture-mermaid-1"
+          },
+          {
+            "kind": "prose",
+            "html": "<p><strong>Runtimes:</strong></p>\n<ul>\n<li><code>proxy.ts</code> y rutas estáticas → <strong>Edge runtime</strong>.</li>\n<li>Rutas que tocan DB/Mux → <strong>Node runtime</strong> (driver Postgres).</li>\n</ul>"
+          }
+        ],
+        "episodes": []
+      },
+      "en": {
+        "title": "Architecture",
+        "tagline": "How browser, edge, RSC, DB, and external services fit together.",
+        "excerpt": "High-level diagram: edge proxy, App Router, Server Functions, Postgres, Mux, Stripe, Meilisearch.",
+        "intro": [
+          {
+            "kind": "mermaid",
+            "source": "flowchart LR\n    U[Browser<br/>RSC + hls.js]\n    subgraph Next[\"Next.js 16 (Vercel)\"]\n        P[proxy.ts<br/>auth + profile + geo]\n        APP[\"app/&ast;<br/>RSC + Server Functions\"]\n        API[\"api/&ast;<br/>Route Handlers\"]\n    end\n    DB[(PostgreSQL<br/>Neon)]\n    G[Google OAuth]\n    M[Mux Video]\n    S[Stripe]\n    T[TMDB API]\n    MS[Meilisearch]\n    R[(Upstash Redis<br/>rate limit)]\n\n    U -->|HTTPS| P\n    P --> APP\n    P --> API\n    APP --> DB\n    APP --> M\n    APP --> MS\n    API -->|sign in callback| G\n    API -->|webhook| S\n    API -->|cron sync| T\n    API --> DB\n    APP <-.->|rate limit| R\n    M -.->|signed playback URL| U",
+            "id": "architecture-mermaid-1"
+          },
+          {
+            "kind": "prose",
+            "html": "<p><strong>Runtimes:</strong></p>\n<ul>\n<li><code>proxy.ts</code> and static routes → <strong>Edge runtime</strong>.</li>\n<li>Routes touching DB/Mux → <strong>Node runtime</strong> (Postgres driver).</li>\n</ul>"
+          }
+        ],
+        "episodes": []
+      }
+    }
   },
   {
     "id": "data-model",
@@ -263,7 +493,37 @@ export const sections: Section[] = [
         "raw": "// db/schema/index.ts (Drizzle)\n\n// --- Auth (estándar Auth.js) ---\nusers (\n  id            uuid PK,\n  email         text UNIQUE NOT NULL,\n  emailVerified timestamptz,\n  name          text,\n  image         text,\n  createdAt     timestamptz default now()\n)\n\naccounts (\n  userId             uuid FK → users.id ON DELETE CASCADE,\n  type               text,        -- 'oauth'\n  provider           text,        -- 'google'\n  providerAccountId  text,        -- sub del ID token\n  id_token           text,\n  access_token       text,\n  refresh_token      text,\n  expires_at         bigint,\n  scope              text,\n  PRIMARY KEY (provider, providerAccountId)\n)\nCREATE INDEX ON accounts(userId);\n\n// --- Producto ---\nprofiles (\n  id        uuid PK,\n  userId    uuid FK → users.id ON DELETE CASCADE,\n  name      text,\n  avatar    text,\n  isKid     boolean default false,\n  pinHash   text             -- bcrypt, nullable\n)\nCREATE INDEX ON profiles(userId);\n\nsubscriptions (\n  id                   uuid PK,\n  userId               uuid FK → users.id,\n  stripeCustomerId     text UNIQUE,\n  stripeSubscriptionId text UNIQUE,\n  plan                 text,    -- 'basic' | 'standard' | 'premium'\n  status               text,    -- 'active' | 'past_due' | 'canceled' | ...\n  currentPeriodEnd     timestamptz\n)\n\n// --- Catálogo ---\ntitles (\n  id            uuid PK,\n  tmdbId        bigint UNIQUE,\n  type          text,           -- 'movie' | 'tv'\n  title         text,\n  slug          text UNIQUE,\n  overview      text,\n  posterPath    text,\n  backdropPath  text,\n  releaseDate   date,\n  runtime       int,\n  ageRating     text,           -- 'G' | 'PG' | 'PG-13' | 'R' | 'TV-MA' ...\n  playbackId    text,           -- Mux\n  searchTerms   tsvector\n)\nCREATE INDEX ON titles(slug);\nCREATE INDEX ON titles USING gin(searchTerms);\n\ngenres        (id, name, slug)\ntitle_genres  (titleId, genreId)  -- M:N\nepisodes      (id, titleId, season, number, name, overview, runtime, playbackId)\n\n// --- Interacción por perfil ---\nwatchlist (\n  profileId  uuid FK → profiles.id ON DELETE CASCADE,\n  titleId    uuid FK → titles.id,\n  addedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)\n\nwatch_progress (\n  profileId    uuid FK → profiles.id,\n  titleId      uuid FK → titles.id,\n  episodeId    uuid NULL,\n  positionSec  int,\n  durationSec  int,\n  updatedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId, episodeId)\n)\nCREATE INDEX ON watch_progress(profileId, updatedAt DESC);\n\nratings (\n  profileId  uuid,\n  titleId    uuid,\n  value      text,        -- 'up' | 'down' | 'love'\n  createdAt  timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)"
       }
     ],
-    "episodes": []
+    "episodes": [],
+    "localized": {
+      "es": {
+        "title": "Modelo de Datos",
+        "tagline": "Cada tabla, cada relación, en Drizzle.",
+        "excerpt": "Users, accounts, profiles, subscriptions, titles, episodes, watchlist, watch_progress, ratings.",
+        "intro": [
+          {
+            "kind": "code",
+            "lang": "ts",
+            "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// db/schema/index.ts (Drizzle)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Auth (estándar Auth.js) ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">users</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id            uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  email         text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#79B8FF\"> NOT</span><span style=\"color:#79B8FF\"> NULL</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  emailVerified timestamptz,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  name          text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  image         text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  createdAt     timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">accounts</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId             uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  type               text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'oauth'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  provider           text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'google'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  providerAccountId  text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> sub del </span><span style=\"color:#79B8FF\">ID</span><span style=\"color:#E1E4E8\"> token</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id_token           text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  access_token       text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  refresh_token      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  expires_at         bigint,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  scope              text,</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (provider, providerAccountId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> accounts</span><span style=\"color:#E1E4E8\">(userId);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Producto ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">profiles</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id        uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  name      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  avatar    text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  isKid     boolean default </span><span style=\"color:#79B8FF\">false</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  pinHash   text             </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> bcrypt, nullable</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> profiles</span><span style=\"color:#E1E4E8\">(userId);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">subscriptions</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id                   uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId               uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  stripeCustomerId     text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  stripeSubscriptionId text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  plan                 text,    </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'basic'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'standard'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'premium'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  status               text,    </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'active'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'past_due'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'canceled'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#F97583\"> ...</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  currentPeriodEnd     timestamptz</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Catálogo ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">titles</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id            uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  tmdbId        bigint </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  type          text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'movie'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'tv'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  title         text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  slug          text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  overview      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  posterPath    text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  backdropPath  text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  releaseDate   date,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  runtime       int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  ageRating     text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'G'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'PG'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'PG-13'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'R'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'TV-MA'</span><span style=\"color:#F97583\"> ...</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  playbackId    text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> Mux</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  searchTerms   tsvector</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> titles</span><span style=\"color:#E1E4E8\">(slug);</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#E1E4E8\"> titles </span><span style=\"color:#79B8FF\">USING</span><span style=\"color:#B392F0\"> gin</span><span style=\"color:#E1E4E8\">(searchTerms);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">genres</span><span style=\"color:#E1E4E8\">        (id, name, slug)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">title_genres</span><span style=\"color:#E1E4E8\">  (titleId, genreId)  </span><span style=\"color:#F97583\">--</span><span style=\"color:#B392F0\"> M</span><span style=\"color:#E1E4E8\">:</span><span style=\"color:#79B8FF\">N</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">episodes</span><span style=\"color:#E1E4E8\">      (id, titleId, season, number, name, overview, runtime, playbackId)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Interacción por perfil ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">watchlist</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId  uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → profiles.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → titles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  addedAt    timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">watch_progress</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → profiles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId      uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → titles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  episodeId    uuid </span><span style=\"color:#79B8FF\">NULL</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  positionSec  int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  durationSec  int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  updatedAt    timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId, episodeId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> watch_progress</span><span style=\"color:#E1E4E8\">(profileId, updatedAt </span><span style=\"color:#79B8FF\">DESC</span><span style=\"color:#E1E4E8\">);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">ratings</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId  uuid,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId    uuid,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  value      text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'up'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'down'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'love'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  createdAt  timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span></code></pre>",
+            "raw": "// db/schema/index.ts (Drizzle)\n\n// --- Auth (estándar Auth.js) ---\nusers (\n  id            uuid PK,\n  email         text UNIQUE NOT NULL,\n  emailVerified timestamptz,\n  name          text,\n  image         text,\n  createdAt     timestamptz default now()\n)\n\naccounts (\n  userId             uuid FK → users.id ON DELETE CASCADE,\n  type               text,        -- 'oauth'\n  provider           text,        -- 'google'\n  providerAccountId  text,        -- sub del ID token\n  id_token           text,\n  access_token       text,\n  refresh_token      text,\n  expires_at         bigint,\n  scope              text,\n  PRIMARY KEY (provider, providerAccountId)\n)\nCREATE INDEX ON accounts(userId);\n\n// --- Producto ---\nprofiles (\n  id        uuid PK,\n  userId    uuid FK → users.id ON DELETE CASCADE,\n  name      text,\n  avatar    text,\n  isKid     boolean default false,\n  pinHash   text             -- bcrypt, nullable\n)\nCREATE INDEX ON profiles(userId);\n\nsubscriptions (\n  id                   uuid PK,\n  userId               uuid FK → users.id,\n  stripeCustomerId     text UNIQUE,\n  stripeSubscriptionId text UNIQUE,\n  plan                 text,    -- 'basic' | 'standard' | 'premium'\n  status               text,    -- 'active' | 'past_due' | 'canceled' | ...\n  currentPeriodEnd     timestamptz\n)\n\n// --- Catálogo ---\ntitles (\n  id            uuid PK,\n  tmdbId        bigint UNIQUE,\n  type          text,           -- 'movie' | 'tv'\n  title         text,\n  slug          text UNIQUE,\n  overview      text,\n  posterPath    text,\n  backdropPath  text,\n  releaseDate   date,\n  runtime       int,\n  ageRating     text,           -- 'G' | 'PG' | 'PG-13' | 'R' | 'TV-MA' ...\n  playbackId    text,           -- Mux\n  searchTerms   tsvector\n)\nCREATE INDEX ON titles(slug);\nCREATE INDEX ON titles USING gin(searchTerms);\n\ngenres        (id, name, slug)\ntitle_genres  (titleId, genreId)  -- M:N\nepisodes      (id, titleId, season, number, name, overview, runtime, playbackId)\n\n// --- Interacción por perfil ---\nwatchlist (\n  profileId  uuid FK → profiles.id ON DELETE CASCADE,\n  titleId    uuid FK → titles.id,\n  addedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)\n\nwatch_progress (\n  profileId    uuid FK → profiles.id,\n  titleId      uuid FK → titles.id,\n  episodeId    uuid NULL,\n  positionSec  int,\n  durationSec  int,\n  updatedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId, episodeId)\n)\nCREATE INDEX ON watch_progress(profileId, updatedAt DESC);\n\nratings (\n  profileId  uuid,\n  titleId    uuid,\n  value      text,        -- 'up' | 'down' | 'love'\n  createdAt  timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)"
+          }
+        ],
+        "episodes": []
+      },
+      "en": {
+        "title": "Data Model",
+        "tagline": "Every table, every relation, in Drizzle.",
+        "excerpt": "Users, accounts, profiles, subscriptions, titles, episodes, watchlist, watch_progress, ratings.",
+        "intro": [
+          {
+            "kind": "code",
+            "lang": "ts",
+            "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// db/schema/index.ts (Drizzle)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Auth (standard Auth.js) ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">users</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id            uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  email         text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#79B8FF\"> NOT</span><span style=\"color:#79B8FF\"> NULL</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  emailVerified timestamptz,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  name          text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  image         text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  createdAt     timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">accounts</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId             uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  type               text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'oauth'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  provider           text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'google'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  providerAccountId  text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> sub from </span><span style=\"color:#79B8FF\">ID</span><span style=\"color:#E1E4E8\"> token</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id_token           text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  access_token       text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  refresh_token      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  expires_at         bigint,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  scope              text,</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (provider, providerAccountId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> accounts</span><span style=\"color:#E1E4E8\">(userId);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Product ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">profiles</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id        uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  name      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  avatar    text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  isKid     boolean default </span><span style=\"color:#79B8FF\">false</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  pinHash   text             </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> bcrypt, nullable</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> profiles</span><span style=\"color:#E1E4E8\">(userId);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">subscriptions</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id                   uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  userId               uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → users.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  stripeCustomerId     text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  stripeSubscriptionId text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  plan                 text,    </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'basic'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'standard'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'premium'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  status               text,    </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'active'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'past_due'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'canceled'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#F97583\"> ...</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  currentPeriodEnd     timestamptz</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Catalog ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">titles</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  id            uuid </span><span style=\"color:#79B8FF\">PK</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  tmdbId        bigint </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  type          text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'movie'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'tv'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  title         text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  slug          text </span><span style=\"color:#79B8FF\">UNIQUE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  overview      text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  posterPath    text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  backdropPath  text,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  releaseDate   date,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  runtime       int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  ageRating     text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'G'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'PG'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'PG-13'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'R'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'TV-MA'</span><span style=\"color:#F97583\"> ...</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  playbackId    text,           </span><span style=\"color:#F97583\">--</span><span style=\"color:#E1E4E8\"> Mux</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  searchTerms   tsvector</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> titles</span><span style=\"color:#E1E4E8\">(slug);</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#E1E4E8\"> titles </span><span style=\"color:#79B8FF\">USING</span><span style=\"color:#B392F0\"> gin</span><span style=\"color:#E1E4E8\">(searchTerms);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">genres</span><span style=\"color:#E1E4E8\">        (id, name, slug)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">title_genres</span><span style=\"color:#E1E4E8\">  (titleId, genreId)  </span><span style=\"color:#F97583\">--</span><span style=\"color:#B392F0\"> M</span><span style=\"color:#E1E4E8\">:</span><span style=\"color:#79B8FF\">N</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">episodes</span><span style=\"color:#E1E4E8\">      (id, titleId, season, number, name, overview, runtime, playbackId)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#6A737D\">// --- Per-profile interaction ---</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">watchlist</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId  uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → profiles.id </span><span style=\"color:#79B8FF\">ON</span><span style=\"color:#79B8FF\"> DELETE</span><span style=\"color:#79B8FF\"> CASCADE</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → titles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  addedAt    timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">watch_progress</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId    uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → profiles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId      uuid </span><span style=\"color:#79B8FF\">FK</span><span style=\"color:#E1E4E8\"> → titles.id,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  episodeId    uuid </span><span style=\"color:#79B8FF\">NULL</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  positionSec  int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  durationSec  int,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  updatedAt    timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId, episodeId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">CREATE</span><span style=\"color:#79B8FF\"> INDEX</span><span style=\"color:#79B8FF\"> ON</span><span style=\"color:#B392F0\"> watch_progress</span><span style=\"color:#E1E4E8\">(profileId, updatedAt </span><span style=\"color:#79B8FF\">DESC</span><span style=\"color:#E1E4E8\">);</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">ratings</span><span style=\"color:#E1E4E8\"> (</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  profileId  uuid,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  titleId    uuid,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  value      text,        </span><span style=\"color:#F97583\">--</span><span style=\"color:#9ECBFF\"> 'up'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'down'</span><span style=\"color:#F97583\"> |</span><span style=\"color:#9ECBFF\"> 'love'</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  createdAt  timestamptz default </span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">(),</span></span>\n<span class=\"line\"><span style=\"color:#79B8FF\">  PRIMARY</span><span style=\"color:#B392F0\"> KEY</span><span style=\"color:#E1E4E8\"> (profileId, titleId)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">)</span></span></code></pre>",
+            "raw": "// db/schema/index.ts (Drizzle)\n\n// --- Auth (standard Auth.js) ---\nusers (\n  id            uuid PK,\n  email         text UNIQUE NOT NULL,\n  emailVerified timestamptz,\n  name          text,\n  image         text,\n  createdAt     timestamptz default now()\n)\n\naccounts (\n  userId             uuid FK → users.id ON DELETE CASCADE,\n  type               text,        -- 'oauth'\n  provider           text,        -- 'google'\n  providerAccountId  text,        -- sub from ID token\n  id_token           text,\n  access_token       text,\n  refresh_token      text,\n  expires_at         bigint,\n  scope              text,\n  PRIMARY KEY (provider, providerAccountId)\n)\nCREATE INDEX ON accounts(userId);\n\n// --- Product ---\nprofiles (\n  id        uuid PK,\n  userId    uuid FK → users.id ON DELETE CASCADE,\n  name      text,\n  avatar    text,\n  isKid     boolean default false,\n  pinHash   text             -- bcrypt, nullable\n)\nCREATE INDEX ON profiles(userId);\n\nsubscriptions (\n  id                   uuid PK,\n  userId               uuid FK → users.id,\n  stripeCustomerId     text UNIQUE,\n  stripeSubscriptionId text UNIQUE,\n  plan                 text,    -- 'basic' | 'standard' | 'premium'\n  status               text,    -- 'active' | 'past_due' | 'canceled' | ...\n  currentPeriodEnd     timestamptz\n)\n\n// --- Catalog ---\ntitles (\n  id            uuid PK,\n  tmdbId        bigint UNIQUE,\n  type          text,           -- 'movie' | 'tv'\n  title         text,\n  slug          text UNIQUE,\n  overview      text,\n  posterPath    text,\n  backdropPath  text,\n  releaseDate   date,\n  runtime       int,\n  ageRating     text,           -- 'G' | 'PG' | 'PG-13' | 'R' | 'TV-MA' ...\n  playbackId    text,           -- Mux\n  searchTerms   tsvector\n)\nCREATE INDEX ON titles(slug);\nCREATE INDEX ON titles USING gin(searchTerms);\n\ngenres        (id, name, slug)\ntitle_genres  (titleId, genreId)  -- M:N\nepisodes      (id, titleId, season, number, name, overview, runtime, playbackId)\n\n// --- Per-profile interaction ---\nwatchlist (\n  profileId  uuid FK → profiles.id ON DELETE CASCADE,\n  titleId    uuid FK → titles.id,\n  addedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)\n\nwatch_progress (\n  profileId    uuid FK → profiles.id,\n  titleId      uuid FK → titles.id,\n  episodeId    uuid NULL,\n  positionSec  int,\n  durationSec  int,\n  updatedAt    timestamptz default now(),\n  PRIMARY KEY (profileId, titleId, episodeId)\n)\nCREATE INDEX ON watch_progress(profileId, updatedAt DESC);\n\nratings (\n  profileId  uuid,\n  titleId    uuid,\n  value      text,        -- 'up' | 'down' | 'love'\n  createdAt  timestamptz default now(),\n  PRIMARY KEY (profileId, titleId)\n)"
+          }
+        ],
+        "episodes": []
+      }
+    }
   },
   {
     "id": "routes",
@@ -315,7 +575,63 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Mapa de Rutas (App Router)",
+        "tagline": "El App Router completo: estática, RSC, dinámica.",
+        "excerpt": "app/(auth), app/(app)/browse, /title/[id], /watch/[id], /api, proxy.ts y estrategia de cache por ruta.",
+        "intro": [
+          {
+            "kind": "code",
+            "lang": "text",
+            "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>app/</span></span>\n<span class=\"line\"><span>├── layout.tsx                       # html shell, fonts (S)</span></span>\n<span class=\"line\"><span>├── page.tsx                         # marketing landing (static)</span></span>\n<span class=\"line\"><span>├── (auth)/</span></span>\n<span class=\"line\"><span>│   ├── layout.tsx                   # logo-only chrome</span></span>\n<span class=\"line\"><span>│   ├── signin/page.tsx              # botón \"Continuar con Google\"</span></span>\n<span class=\"line\"><span>│   └── signup/page.tsx</span></span>\n<span class=\"line\"><span>├── (app)/                           # auth + perfil requeridos</span></span>\n<span class=\"line\"><span>│   ├── layout.tsx                   # TopNav + ProfileMenu</span></span>\n<span class=\"line\"><span>│   ├── profiles/</span></span>\n<span class=\"line\"><span>│   │   ├── page.tsx                 # \"Who's watching?\"</span></span>\n<span class=\"line\"><span>│   │   ├── manage/page.tsx</span></span>\n<span class=\"line\"><span>│   │   └── actions.ts               # 'use server'</span></span>\n<span class=\"line\"><span>│   ├── browse/</span></span>\n<span class=\"line\"><span>│   │   ├── page.tsx                 # home (use cache + cacheTag)</span></span>\n<span class=\"line\"><span>│   │   ├── tv/page.tsx</span></span>\n<span class=\"line\"><span>│   │   ├── movies/page.tsx</span></span>\n<span class=\"line\"><span>│   │   ├── new/page.tsx</span></span>\n<span class=\"line\"><span>│   │   └── my-list/page.tsx         # NO cacheado</span></span>\n<span class=\"line\"><span>│   ├── genre/[slug]/page.tsx        # generateStaticParams</span></span>\n<span class=\"line\"><span>│   ├── search/page.tsx</span></span>\n<span class=\"line\"><span>│   ├── title/[id]/page.tsx          # generateMetadata</span></span>\n<span class=\"line\"><span>│   ├── watch/[id]/page.tsx          # signed Mux URL + after()</span></span>\n<span class=\"line\"><span>│   └── account/</span></span>\n<span class=\"line\"><span>│       ├── page.tsx</span></span>\n<span class=\"line\"><span>│       └── devices/page.tsx</span></span>\n<span class=\"line\"><span>├── api/</span></span>\n<span class=\"line\"><span>│   ├── auth/[...nextauth]/route.ts  # Auth.js handlers</span></span>\n<span class=\"line\"><span>│   ├── stripe/webhook/route.ts</span></span>\n<span class=\"line\"><span>│   ├── sync/tmdb/route.ts           # cron</span></span>\n<span class=\"line\"><span>│   ├── search/route.ts</span></span>\n<span class=\"line\"><span>│   ├── progress/route.ts            # heartbeat del player</span></span>\n<span class=\"line\"><span>│   └── playback/[id]/route.ts       # signed playback URL</span></span>\n<span class=\"line\"><span>└── proxy.ts                         # guard global</span></span></code></pre>",
+            "raw": "app/\n├── layout.tsx                       # html shell, fonts (S)\n├── page.tsx                         # marketing landing (static)\n├── (auth)/\n│   ├── layout.tsx                   # logo-only chrome\n│   ├── signin/page.tsx              # botón \"Continuar con Google\"\n│   └── signup/page.tsx\n├── (app)/                           # auth + perfil requeridos\n│   ├── layout.tsx                   # TopNav + ProfileMenu\n│   ├── profiles/\n│   │   ├── page.tsx                 # \"Who's watching?\"\n│   │   ├── manage/page.tsx\n│   │   └── actions.ts               # 'use server'\n│   ├── browse/\n│   │   ├── page.tsx                 # home (use cache + cacheTag)\n│   │   ├── tv/page.tsx\n│   │   ├── movies/page.tsx\n│   │   ├── new/page.tsx\n│   │   └── my-list/page.tsx         # NO cacheado\n│   ├── genre/[slug]/page.tsx        # generateStaticParams\n│   ├── search/page.tsx\n│   ├── title/[id]/page.tsx          # generateMetadata\n│   ├── watch/[id]/page.tsx          # signed Mux URL + after()\n│   └── account/\n│       ├── page.tsx\n│       └── devices/page.tsx\n├── api/\n│   ├── auth/[...nextauth]/route.ts  # Auth.js handlers\n│   ├── stripe/webhook/route.ts\n│   ├── sync/tmdb/route.ts           # cron\n│   ├── search/route.ts\n│   ├── progress/route.ts            # heartbeat del player\n│   └── playback/[id]/route.ts       # signed playback URL\n└── proxy.ts                         # guard global"
+          }
+        ],
+        "episodes": [
+          {
+            "id": "routes/1",
+            "number": 1,
+            "title": "Estrategia de rendering",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Ruta</th>\n<th>Estrategia</th>\n<th>Cache</th>\n<th>Primitiva Next.js</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>/</code></td>\n<td>Estática</td>\n<td><code>force-cache</code></td>\n<td><code>&#x3C;Image priority></code></td>\n</tr>\n<tr>\n<td><code>/signin</code>, <code>/signup</code></td>\n<td>Dinámica</td>\n<td>—</td>\n<td>Auth.js</td>\n</tr>\n<tr>\n<td><code>/profiles</code></td>\n<td>Dinámica por user</td>\n<td>—</td>\n<td><code>cookies()</code></td>\n</tr>\n<tr>\n<td><code>/browse</code></td>\n<td>RSC streaming</td>\n<td><code>cacheTag('catalog')</code> + <code>cacheLife('hours')</code></td>\n<td><code>use cache</code> + <code>&#x3C;Suspense></code></td>\n</tr>\n<tr>\n<td><code>/browse/my-list</code></td>\n<td>Dinámica por profile</td>\n<td>—</td>\n<td><code>cookies()</code></td>\n</tr>\n<tr>\n<td><code>/genre/[slug]</code></td>\n<td><code>generateStaticParams</code> top 30</td>\n<td><code>cacheTag('catalog')</code></td>\n<td><a href=\"nextjs.md\">nextjs.md §13</a></td>\n</tr>\n<tr>\n<td><code>/title/[id]</code></td>\n<td><code>generateStaticParams</code> top 500</td>\n<td><code>cacheTag('title:{id}')</code></td>\n<td><code>generateMetadata</code></td>\n</tr>\n<tr>\n<td><code>/search</code></td>\n<td>Dinámica</td>\n<td>—</td>\n<td><code>useSearchParams</code></td>\n</tr>\n<tr>\n<td><code>/watch/[id]</code></td>\n<td>Dinámica</td>\n<td>—</td>\n<td><code>after()</code> para logs</td>\n</tr>\n<tr>\n<td><code>/account</code></td>\n<td>Dinámica</td>\n<td><code>cacheTag('sub:{userId}')</code></td>\n<td>—</td>\n</tr>\n<tr>\n<td><code>/api/stripe/webhook</code></td>\n<td>Route Handler</td>\n<td>—</td>\n<td><code>revalidateTag</code></td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Route Map",
+        "tagline": "The full App Router: static, RSC, dynamic.",
+        "excerpt": "app/(auth), app/(app)/browse, /title/[id], /watch/[id], /api, proxy.ts and per-route caching strategy.",
+        "intro": [
+          {
+            "kind": "code",
+            "lang": "text",
+            "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>app/</span></span>\n<span class=\"line\"><span>├── layout.tsx                       # html shell, fonts (S)</span></span>\n<span class=\"line\"><span>├── page.tsx                         # marketing landing (static)</span></span>\n<span class=\"line\"><span>├── (auth)/</span></span>\n<span class=\"line\"><span>│   ├── layout.tsx                   # logo-only chrome</span></span>\n<span class=\"line\"><span>│   ├── signin/page.tsx              # \"Continue with Google\" button</span></span>\n<span class=\"line\"><span>│   └── signup/page.tsx</span></span>\n<span class=\"line\"><span>├── (app)/                           # auth + profile required</span></span>\n<span class=\"line\"><span>│   ├── layout.tsx                   # TopNav + ProfileMenu</span></span>\n<span class=\"line\"><span>│   ├── profiles/</span></span>\n<span class=\"line\"><span>│   │   ├── page.tsx                 # \"Who's watching?\"</span></span>\n<span class=\"line\"><span>│   │   ├── manage/page.tsx</span></span>\n<span class=\"line\"><span>│   │   └── actions.ts               # 'use server'</span></span>\n<span class=\"line\"><span>│   ├── browse/</span></span>\n<span class=\"line\"><span>│   │   ├── page.tsx                 # home (use cache + cacheTag)</span></span>\n<span class=\"line\"><span>│   │   ├── tv/page.tsx</span></span>\n<span class=\"line\"><span>│   │   ├── movies/page.tsx</span></span>\n<span class=\"line\"><span>│   │   ├── new/page.tsx</span></span>\n<span class=\"line\"><span>│   │   └── my-list/page.tsx         # NOT cached</span></span>\n<span class=\"line\"><span>│   ├── genre/[slug]/page.tsx        # generateStaticParams</span></span>\n<span class=\"line\"><span>│   ├── search/page.tsx</span></span>\n<span class=\"line\"><span>│   ├── title/[id]/page.tsx          # generateMetadata</span></span>\n<span class=\"line\"><span>│   ├── watch/[id]/page.tsx          # signed Mux URL + after()</span></span>\n<span class=\"line\"><span>│   └── account/</span></span>\n<span class=\"line\"><span>│       ├── page.tsx</span></span>\n<span class=\"line\"><span>│       └── devices/page.tsx</span></span>\n<span class=\"line\"><span>├── api/</span></span>\n<span class=\"line\"><span>│   ├── auth/[...nextauth]/route.ts  # Auth.js handlers</span></span>\n<span class=\"line\"><span>│   ├── stripe/webhook/route.ts</span></span>\n<span class=\"line\"><span>│   ├── sync/tmdb/route.ts           # cron</span></span>\n<span class=\"line\"><span>│   ├── search/route.ts</span></span>\n<span class=\"line\"><span>│   ├── progress/route.ts            # player heartbeat</span></span>\n<span class=\"line\"><span>│   └── playback/[id]/route.ts       # signed playback URL</span></span>\n<span class=\"line\"><span>└── proxy.ts                         # global guard</span></span></code></pre>",
+            "raw": "app/\n├── layout.tsx                       # html shell, fonts (S)\n├── page.tsx                         # marketing landing (static)\n├── (auth)/\n│   ├── layout.tsx                   # logo-only chrome\n│   ├── signin/page.tsx              # \"Continue with Google\" button\n│   └── signup/page.tsx\n├── (app)/                           # auth + profile required\n│   ├── layout.tsx                   # TopNav + ProfileMenu\n│   ├── profiles/\n│   │   ├── page.tsx                 # \"Who's watching?\"\n│   │   ├── manage/page.tsx\n│   │   └── actions.ts               # 'use server'\n│   ├── browse/\n│   │   ├── page.tsx                 # home (use cache + cacheTag)\n│   │   ├── tv/page.tsx\n│   │   ├── movies/page.tsx\n│   │   ├── new/page.tsx\n│   │   └── my-list/page.tsx         # NOT cached\n│   ├── genre/[slug]/page.tsx        # generateStaticParams\n│   ├── search/page.tsx\n│   ├── title/[id]/page.tsx          # generateMetadata\n│   ├── watch/[id]/page.tsx          # signed Mux URL + after()\n│   └── account/\n│       ├── page.tsx\n│       └── devices/page.tsx\n├── api/\n│   ├── auth/[...nextauth]/route.ts  # Auth.js handlers\n│   ├── stripe/webhook/route.ts\n│   ├── sync/tmdb/route.ts           # cron\n│   ├── search/route.ts\n│   ├── progress/route.ts            # player heartbeat\n│   └── playback/[id]/route.ts       # signed playback URL\n└── proxy.ts                         # global guard"
+          }
+        ],
+        "episodes": [
+          {
+            "id": "routes/1",
+            "number": 1,
+            "title": "Rendering strategy",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Route</th>\n<th>Strategy</th>\n<th>Cache</th>\n<th>Next.js primitive</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>/</code></td>\n<td>Static</td>\n<td><code>force-cache</code></td>\n<td><code>&#x3C;Image priority></code></td>\n</tr>\n<tr>\n<td><code>/signin</code>, <code>/signup</code></td>\n<td>Dynamic</td>\n<td>—</td>\n<td>Auth.js</td>\n</tr>\n<tr>\n<td><code>/profiles</code></td>\n<td>Dynamic per user</td>\n<td>—</td>\n<td><code>cookies()</code></td>\n</tr>\n<tr>\n<td><code>/browse</code></td>\n<td>RSC streaming</td>\n<td><code>cacheTag('catalog')</code> + <code>cacheLife('hours')</code></td>\n<td><code>use cache</code> + <code>&#x3C;Suspense></code></td>\n</tr>\n<tr>\n<td><code>/browse/my-list</code></td>\n<td>Dynamic per profile</td>\n<td>—</td>\n<td><code>cookies()</code></td>\n</tr>\n<tr>\n<td><code>/genre/[slug]</code></td>\n<td><code>generateStaticParams</code> top 30</td>\n<td><code>cacheTag('catalog')</code></td>\n<td><a href=\"nextjs.md\">nextjs.md §13</a></td>\n</tr>\n<tr>\n<td><code>/title/[id]</code></td>\n<td><code>generateStaticParams</code> top 500</td>\n<td><code>cacheTag('title:{id}')</code></td>\n<td><code>generateMetadata</code></td>\n</tr>\n<tr>\n<td><code>/search</code></td>\n<td>Dynamic</td>\n<td>—</td>\n<td><code>useSearchParams</code></td>\n</tr>\n<tr>\n<td><code>/watch/[id]</code></td>\n<td>Dynamic</td>\n<td>—</td>\n<td><code>after()</code> for logs</td>\n</tr>\n<tr>\n<td><code>/account</code></td>\n<td>Dynamic</td>\n<td><code>cacheTag('sub:{userId}')</code></td>\n<td>—</td>\n</tr>\n<tr>\n<td><code>/api/stripe/webhook</code></td>\n<td>Route Handler</td>\n<td>—</td>\n<td><code>revalidateTag</code></td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "flows",
@@ -430,7 +746,181 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Flujos Principales",
+        "tagline": "Seis flujos críticos secuenciados con Mermaid.",
+        "excerpt": "Sign-in OAuth + PKCE, validación de sesión, selección de perfil, reproducción, webhook Stripe, sign out.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "flows/1",
+            "number": 1,
+            "title": "Sign-in con Google (OAuth 2.0 + PKCE + OIDC)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as Usuario\n    participant B as Browser\n    participant N as Next.js (Auth.js)\n    participant G as Google OAuth\n    participant DB as PostgreSQL\n\n    U->>B: Click \"Continuar con Google\"\n    B->>N: GET /api/auth/signin/google\n    Note over N: Genera code_verifier, code_challenge=SHA256(verifier),<br/>state, nonce (32 bytes random cada uno)\n    N-->>B: Set-Cookie __Host-authjs.pkce.code_verifier,<br/>__Host-authjs.state, __Host-authjs.nonce<br/>(httpOnly, secure, sameSite=lax, 10 min)\n    N-->>B: 302 accounts.google.com/o/oauth2/v2/auth?<br/>response_type=code&scope=openid email profile&<br/>code_challenge=...&code_challenge_method=S256&<br/>state=...&nonce=...\n    B->>G: GET authorize endpoint\n    G-->>U: Consent screen (primera vez)\n    U->>G: Approve\n    G-->>B: 302 /api/auth/callback/google?code=...&state=...\n    B->>N: GET callback\n    Note over N: 1. Valida state == cookie<br/>2. Lee code_verifier de cookie\n    N->>G: POST /token (code + code_verifier + secret)\n    G-->>N: { id_token, access_token }\n    Note over N: 3. Verifica firma id_token vs JWK Google<br/>4. Valida iss, aud, exp, nonce<br/>5. Valida email_verified === true\n    N->>DB: Upsert user + account\n    alt Usuario nuevo\n        N->>DB: INSERT users + INSERT profiles (default)\n    else Email existe con otro provider\n        N-->>B: 302 /signin?error=OAuthAccountNotLinked\n    end\n    Note over N: Genera JWT sesión (HS256, AUTH_SECRET, 30d)\n    N-->>B: Clear cookies temp; Set-Cookie __Secure-authjs.session-token<br/>302 /profiles",
+                "id": "flows-1-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/2",
+            "number": 2,
+            "title": "Validación de Sesión en cada Request (proxy.ts)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "flowchart TD\n    A[Request a /browse, /watch, ...] --> B{¿Ruta pública?}\n    B -- Sí --> Z[Forward al RSC]\n    B -- No --> C{¿Cookie de sesión?}\n    C -- No --> D[302 /signin]\n    C -- Sí --> E{¿JWT firma + exp válida?}\n    E -- No --> F[Clear-Cookie + 302 /signin]\n    E -- Sí --> G{¿Ruta requiere<br/>perfil activo?}\n    G -- No --> Z\n    G -- Sí --> H{¿active_profile cookie?}\n    H -- No --> I[302 /profiles]\n    H -- Sí --> J{¿exp - now < 7d?}\n    J -- Sí --> K[Renovar JWT<br/>Set-Cookie nuevo]\n    J -- No --> Z\n    K --> Z",
+                "id": "flows-2-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/3",
+            "number": 3,
+            "title": "Selección de Perfil",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as Usuario\n    participant B as Browser\n    participant N as Next.js\n    participant DB as Postgres\n\n    U->>B: Llega a /profiles ya autenticado\n    B->>N: GET /profiles\n    N->>DB: SELECT profiles WHERE userId = jwt.sub\n    DB-->>N: [perfil1, perfil2, ...]\n    N-->>B: HTML grid de perfiles\n    U->>B: Click \"Diego\"\n    B->>N: Server Function selectProfile(id)\n    Note over N: Verifica que profileId pertenece a jwt.sub\n    alt Perfil con PIN\n        N-->>B: Render PinDialog\n        U->>B: Ingresa PIN\n        B->>N: selectProfile(id, pin)\n        N->>DB: bcrypt.compare(pin, profile.pinHash)\n        alt PIN incorrecto\n            N->>N: Rate limit check<br/>(5 fallos / 15 min)\n            N-->>B: 401 + mensaje\n        end\n    end\n    N-->>B: Set-Cookie active_profile=id; 302 /browse",
+                "id": "flows-3-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/4",
+            "number": 4,
+            "title": "Reproducción de Video",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as Usuario\n    participant B as Browser\n    participant N as Next.js (/watch/[id])\n    participant API as /api/playback/[id]\n    participant DB as Postgres\n    participant M as Mux\n    participant P as /api/progress\n\n    U->>B: Click play en card\n    B->>N: GET /watch/[titleId]\n    N->>DB: Verifica subscription activa + age rating vs profile.isKid\n    alt Sin sub activa\n        N-->>B: 302 /account\n    else Title bloqueado por kids\n        N-->>B: 403 / not-found\n    end\n    N->>DB: SELECT watch_progress<br/>WHERE profileId+titleId\n    DB-->>N: positionSec (resume)\n    N->>API: Internal: firma playback URL\n    API->>M: JWT firmado con MUX_SIGNING_PRIVATE_KEY\n    M-->>API: Signed URL HLS\n    API-->>N: { url, exp }\n    N-->>B: HTML con <Player startAt={pos} url={signed}/>\n    B->>B: hls.js carga manifest, reproduce\n    loop cada 10s\n        B->>P: POST /api/progress { titleId, sec }\n        Note over P: after() → DB write no bloquea respuesta\n        P-->>B: 204\n    end\n    B->>P: beforeunload → beacon final",
+                "id": "flows-4-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/5",
+            "number": 5,
+            "title": "Webhook de Stripe (alta/baja de subscripción)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    participant S as Stripe\n    participant W as /api/stripe/webhook\n    participant DB as Postgres\n    participant C as Next.js Cache\n\n    S->>W: POST event { type, data }\n    Note over W: Verifica firma con STRIPE_WEBHOOK_SECRET<br/>Idempotencia por event.id en tabla webhook_events\n    alt Firma inválida\n        W-->>S: 400\n    end\n    alt customer.subscription.created/updated\n        W->>DB: UPSERT subscriptions\n    else customer.subscription.deleted\n        W->>DB: UPDATE status='canceled'\n    end\n    W->>C: revalidateTag('sub:{userId}', 'max')\n    W-->>S: 200 OK",
+                "id": "flows-5-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/6",
+            "number": 6,
+            "title": "Sign Out",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as Usuario\n    participant B as Browser\n    participant N as Next.js\n    participant G as Google (opcional)\n\n    U->>B: Click \"Cerrar sesión\"\n    B->>N: POST /api/auth/signout\n    opt Revocación remota\n        N->>G: POST /revoke?token=access_token\n    end\n    N-->>B: Set-Cookie session-token=; Max-Age=0<br/>active_profile=; Max-Age=0<br/>302 /signin",
+                "id": "flows-6-mermaid-1"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Main Flows",
+        "tagline": "Six critical flows sequenced with Mermaid.",
+        "excerpt": "Sign-in OAuth + PKCE, session validation, profile selection, playback, Stripe webhook, sign out.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "flows/1",
+            "number": 1,
+            "title": "Sign-in with Google (OAuth 2.0 + PKCE + OIDC)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as User\n    participant B as Browser\n    participant N as Next.js (Auth.js)\n    participant G as Google OAuth\n    participant DB as PostgreSQL\n\n    U->>B: Click \"Continue with Google\"\n    B->>N: GET /api/auth/signin/google\n    Note over N: Generates code_verifier, code_challenge=SHA256(verifier),<br/>state, nonce (32 random bytes each)\n    N-->>B: Set-Cookie __Host-authjs.pkce.code_verifier,<br/>__Host-authjs.state, __Host-authjs.nonce<br/>(httpOnly, secure, sameSite=lax, 10 min)\n    N-->>B: 302 accounts.google.com/o/oauth2/v2/auth?<br/>response_type=code&scope=openid email profile&<br/>code_challenge=...&code_challenge_method=S256&<br/>state=...&nonce=...\n    B->>G: GET authorize endpoint\n    G-->>U: Consent screen (first time)\n    U->>G: Approve\n    G-->>B: 302 /api/auth/callback/google?code=...&state=...\n    B->>N: GET callback\n    Note over N: 1. Validates state == cookie<br/>2. Reads code_verifier from cookie\n    N->>G: POST /token (code + code_verifier + secret)\n    G-->>N: { id_token, access_token }\n    Note over N: 3. Verifies id_token signature vs Google JWK<br/>4. Validates iss, aud, exp, nonce<br/>5. Validates email_verified === true\n    N->>DB: Upsert user + account\n    alt New user\n        N->>DB: INSERT users + INSERT profiles (default)\n    else Email exists with another provider\n        N-->>B: 302 /signin?error=OAuthAccountNotLinked\n    end\n    Note over N: Generates session JWT (HS256, AUTH_SECRET, 30d)\n    N-->>B: Clear temp cookies; Set-Cookie __Secure-authjs.session-token<br/>302 /profiles",
+                "id": "flows-1-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/2",
+            "number": 2,
+            "title": "Session Validation on Every Request (proxy.ts)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "flowchart TD\n    A[Request to /browse, /watch, ...] --> B{Public route?}\n    B -- Yes --> Z[Forward to RSC]\n    B -- No --> C{Session cookie?}\n    C -- No --> D[302 /signin]\n    C -- Yes --> E{JWT signature + exp valid?}\n    E -- No --> F[Clear-Cookie + 302 /signin]\n    E -- Yes --> G{Route requires<br/>active profile?}\n    G -- No --> Z\n    G -- Yes --> H{active_profile cookie?}\n    H -- No --> I[302 /profiles]\n    H -- Yes --> J{exp - now < 7d?}\n    J -- Yes --> K[Renew JWT<br/>Set new Cookie]\n    J -- No --> Z\n    K --> Z",
+                "id": "flows-2-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/3",
+            "number": 3,
+            "title": "Profile Selection",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as User\n    participant B as Browser\n    participant N as Next.js\n    participant DB as Postgres\n\n    U->>B: Arrives at /profiles already authenticated\n    B->>N: GET /profiles\n    N->>DB: SELECT profiles WHERE userId = jwt.sub\n    DB-->>N: [profile1, profile2, ...]\n    N-->>B: HTML profile grid\n    U->>B: Click \"Diego\"\n    B->>N: Server Function selectProfile(id)\n    Note over N: Verifies profileId belongs to jwt.sub\n    alt Profile with PIN\n        N-->>B: Render PinDialog\n        U->>B: Enter PIN\n        B->>N: selectProfile(id, pin)\n        N->>DB: bcrypt.compare(pin, profile.pinHash)\n        alt Incorrect PIN\n            N->>N: Rate limit check<br/>(5 failures / 15 min)\n            N-->>B: 401 + message\n        end\n    end\n    N-->>B: Set-Cookie active_profile=id; 302 /browse",
+                "id": "flows-3-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/4",
+            "number": 4,
+            "title": "Video Playback",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as User\n    participant B as Browser\n    participant N as Next.js (/watch/[id])\n    participant API as /api/playback/[id]\n    participant DB as Postgres\n    participant M as Mux\n    participant P as /api/progress\n\n    U->>B: Click play on card\n    B->>N: GET /watch/[titleId]\n    N->>DB: Verify active subscription + age rating vs profile.isKid\n    alt No active subscription\n        N-->>B: 302 /account\n    else Title blocked for kids\n        N-->>B: 403 / not-found\n    end\n    N->>DB: SELECT watch_progress<br/>WHERE profileId+titleId\n    DB-->>N: positionSec (resume)\n    N->>API: Internal: sign playback URL\n    API->>M: JWT signed with MUX_SIGNING_PRIVATE_KEY\n    M-->>API: Signed HLS URL\n    API-->>N: { url, exp }\n    N-->>B: HTML with <Player startAt={pos} url={signed}/>\n    B->>B: hls.js loads manifest, plays\n    loop every 10s\n        B->>P: POST /api/progress { titleId, sec }\n        Note over P: after() → DB write does not block response\n        P-->>B: 204\n    end\n    B->>P: beforeunload → final beacon",
+                "id": "flows-4-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/5",
+            "number": 5,
+            "title": "Stripe Webhook (subscription signup/cancellation)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    participant S as Stripe\n    participant W as /api/stripe/webhook\n    participant DB as Postgres\n    participant C as Next.js Cache\n\n    S->>W: POST event { type, data }\n    Note over W: Verifies signature with STRIPE_WEBHOOK_SECRET<br/>Idempotency by event.id in webhook_events table\n    alt Invalid signature\n        W-->>S: 400\n    end\n    alt customer.subscription.created/updated\n        W->>DB: UPSERT subscriptions\n    else customer.subscription.deleted\n        W->>DB: UPDATE status='canceled'\n    end\n    W->>C: revalidateTag('sub:{userId}', 'max')\n    W-->>S: 200 OK",
+                "id": "flows-5-mermaid-1"
+              }
+            ]
+          },
+          {
+            "id": "flows/6",
+            "number": 6,
+            "title": "Sign Out",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "mermaid",
+                "source": "sequenceDiagram\n    autonumber\n    actor U as User\n    participant B as Browser\n    participant N as Next.js\n    participant G as Google (optional)\n\n    U->>B: Click \"Sign out\"\n    B->>N: POST /api/auth/signout\n    opt Remote revocation\n        N->>G: POST /revoke?token=access_token\n    end\n    N-->>B: Set-Cookie session-token=; Max-Age=0<br/>active_profile=; Max-Age=0<br/>302 /signin",
+                "id": "flows-6-mermaid-1"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "cross-cutting",
@@ -537,7 +1027,173 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Aspectos Transversales",
+        "tagline": "Caching, mutaciones, proxy, imágenes y SEO.",
+        "excerpt": "Cache Components con cacheTag, Server Functions, proxy.ts guard, next/image y metadata SEO.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "cross-cutting/1",
+            "number": 1,
+            "title": "Caching (Cache Components)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Capa</th>\n<th>Mecanismo</th>\n<th>Invalidación</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Filas de catálogo</td>\n<td><code>use cache</code> + <code>cacheTag('catalog')</code> + <code>cacheLife('hours')</code></td>\n<td>Cron TMDB → <code>revalidateTag('catalog', 'max')</code></td>\n</tr>\n<tr>\n<td>Detalle de título</td>\n<td><code>cacheTag('title:{id}')</code></td>\n<td>Admin → <code>revalidateTag('title:{id}')</code></td>\n</tr>\n<tr>\n<td>My List</td>\n<td><strong>NO cacheado</strong></td>\n<td>—</td>\n</tr>\n<tr>\n<td>Continue Watching</td>\n<td><strong>NO cacheado</strong></td>\n<td>—</td>\n</tr>\n<tr>\n<td>Subscripción</td>\n<td><code>cacheTag('sub:{userId}')</code></td>\n<td>Stripe webhook</td>\n</tr>\n<tr>\n<td>Búsqueda</td>\n<td><strong>NO cacheado server-side</strong> (Meilisearch &#x3C; 50ms)</td>\n<td>—</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/2",
+            "number": 2,
+            "title": "Server Functions (mutaciones)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/profiles/actions.ts (ejemplo)</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">'use server'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { z } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'zod'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { auth } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/auth'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { cookies } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/headers'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { redirect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/navigation'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">const</span><span style=\"color:#79B8FF\"> SelectSchema</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> z.</span><span style=\"color:#B392F0\">object</span><span style=\"color:#E1E4E8\">({ profileId: z.</span><span style=\"color:#B392F0\">string</span><span style=\"color:#E1E4E8\">().</span><span style=\"color:#B392F0\">uuid</span><span style=\"color:#E1E4E8\">(), pin: z.</span><span style=\"color:#B392F0\">string</span><span style=\"color:#E1E4E8\">().</span><span style=\"color:#B392F0\">optional</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> async</span><span style=\"color:#F97583\"> function</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">input</span><span style=\"color:#F97583\">:</span><span style=\"color:#B392F0\"> z</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">infer</span><span style=\"color:#E1E4E8\">&#x3C;</span><span style=\"color:#F97583\">typeof</span><span style=\"color:#E1E4E8\"> SelectSchema>) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> session</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> auth</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">session?.user) </span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> data</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> SelectSchema.</span><span style=\"color:#B392F0\">parse</span><span style=\"color:#E1E4E8\">(input)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#E1E4E8\"> db.query.profiles.</span><span style=\"color:#B392F0\">findFirst</span><span style=\"color:#E1E4E8\">({</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    where: </span><span style=\"color:#B392F0\">and</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">eq</span><span style=\"color:#E1E4E8\">(profiles.id, data.profileId), </span><span style=\"color:#B392F0\">eq</span><span style=\"color:#E1E4E8\">(profiles.userId, session.user.id))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">profile) </span><span style=\"color:#F97583\">throw</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> Error</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Profile not found'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (profile.pinHash </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#F97583\"> !</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">await</span><span style=\"color:#E1E4E8\"> bcrypt.</span><span style=\"color:#B392F0\">compare</span><span style=\"color:#E1E4E8\">(data.pin </span><span style=\"color:#F97583\">??</span><span style=\"color:#9ECBFF\"> ''</span><span style=\"color:#E1E4E8\">, profile.pinHash))) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    throw</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> Error</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Invalid PIN'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  (</span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> cookies</span><span style=\"color:#E1E4E8\">()).</span><span style=\"color:#B392F0\">set</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">, profile.id, {</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    httpOnly: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\">, secure: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\">, sameSite: </span><span style=\"color:#9ECBFF\">'lax'</span><span style=\"color:#E1E4E8\">, path: </span><span style=\"color:#9ECBFF\">'/'</span><span style=\"color:#E1E4E8\">, maxAge: </span><span style=\"color:#79B8FF\">60</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 60</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 24</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 30</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "// app/(app)/profiles/actions.ts (ejemplo)\n'use server'\nimport { z } from 'zod'\nimport { auth } from '@/auth'\nimport { cookies } from 'next/headers'\nimport { redirect } from 'next/navigation'\n\nconst SelectSchema = z.object({ profileId: z.string().uuid(), pin: z.string().optional() })\n\nexport async function selectProfile(input: z.infer<typeof SelectSchema>) {\n  const session = await auth()\n  if (!session?.user) redirect('/signin')\n\n  const data = SelectSchema.parse(input)\n  const profile = await db.query.profiles.findFirst({\n    where: and(eq(profiles.id, data.profileId), eq(profiles.userId, session.user.id))\n  })\n  if (!profile) throw new Error('Profile not found')\n  if (profile.pinHash && !(await bcrypt.compare(data.pin ?? '', profile.pinHash))) {\n    throw new Error('Invalid PIN')\n  }\n\n  (await cookies()).set('active_profile', profile.id, {\n    httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 30,\n  })\n  redirect('/browse')\n}"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Otras Server Functions: <code>addToList</code>, <code>removeFromList</code>, <code>rate</code>, <code>createProfile</code>, <code>updateProfile</code>, <code>setPin</code>.</p>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/3",
+            "number": 3,
+            "title": "proxy.ts (guard único)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { auth } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/auth'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { NextResponse } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/server'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">const</span><span style=\"color:#79B8FF\"> PUBLIC</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> [</span><span style=\"color:#9ECBFF\">'/'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/signup'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/api/auth'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/api/stripe/webhook'</span><span style=\"color:#E1E4E8\">]</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> default</span><span style=\"color:#B392F0\"> auth</span><span style=\"color:#E1E4E8\">((</span><span style=\"color:#FFAB70\">req</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#E1E4E8\"> { </span><span style=\"color:#79B8FF\">pathname</span><span style=\"color:#E1E4E8\"> } </span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\"> req.nextUrl</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#79B8FF\">PUBLIC</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">some</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">p</span><span style=\"color:#F97583\"> =></span><span style=\"color:#E1E4E8\"> pathname </span><span style=\"color:#F97583\">===</span><span style=\"color:#E1E4E8\"> p </span><span style=\"color:#F97583\">||</span><span style=\"color:#E1E4E8\"> pathname.</span><span style=\"color:#B392F0\">startsWith</span><span style=\"color:#E1E4E8\">(p </span><span style=\"color:#F97583\">+</span><span style=\"color:#9ECBFF\"> '/'</span><span style=\"color:#E1E4E8\">))) </span><span style=\"color:#F97583\">return</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">req.auth) </span><span style=\"color:#F97583\">return</span><span style=\"color:#E1E4E8\"> NextResponse.</span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">new</span><span style=\"color:#B392F0\"> URL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">, req.url))</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> needsProfile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#F97583\">^</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">(browse</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">watch</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">title</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">account)</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(pathname)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> req.cookies.</span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">)?.value</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (needsProfile </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#F97583\"> !</span><span style=\"color:#E1E4E8\">profile </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#E1E4E8\"> pathname </span><span style=\"color:#F97583\">!==</span><span style=\"color:#9ECBFF\"> '/profiles'</span><span style=\"color:#E1E4E8\">) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    return</span><span style=\"color:#E1E4E8\"> NextResponse.</span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">new</span><span style=\"color:#B392F0\"> URL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/profiles'</span><span style=\"color:#E1E4E8\">, req.url))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> const</span><span style=\"color:#79B8FF\"> config</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  matcher: [</span><span style=\"color:#9ECBFF\">'/((?!_next/static|_next/image|favicon.ico|.*</span><span style=\"color:#79B8FF\">\\\\</span><span style=\"color:#9ECBFF\">.(?:png|jpg|svg)$).*)'</span><span style=\"color:#E1E4E8\">],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "import { auth } from '@/auth'\nimport { NextResponse } from 'next/server'\n\nconst PUBLIC = ['/', '/signin', '/signup', '/api/auth', '/api/stripe/webhook']\n\nexport default auth((req) => {\n  const { pathname } = req.nextUrl\n  if (PUBLIC.some(p => pathname === p || pathname.startsWith(p + '/'))) return\n  if (!req.auth) return NextResponse.redirect(new URL('/signin', req.url))\n\n  const needsProfile = /^\\/(browse|watch|title|account)/.test(pathname)\n  const profile = req.cookies.get('active_profile')?.value\n  if (needsProfile && !profile && pathname !== '/profiles') {\n    return NextResponse.redirect(new URL('/profiles', req.url))\n  }\n})\n\nexport const config = {\n  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\\\.(?:png|jpg|svg)$).*)'],\n}"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/4",
+            "number": 4,
+            "title": "Imágenes",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "js",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// next.config.js</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">images</span><span style=\"color:#E1E4E8\">: {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  remotePatterns</span><span style=\"color:#E1E4E8\">: [</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'image.tmdb.org'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'image.mux.com'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'lh3.googleusercontent.com'</span><span style=\"color:#E1E4E8\"> }, </span><span style=\"color:#6A737D\">// avatar Google</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  ],</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  formats</span><span style=\"color:#E1E4E8\">: [</span><span style=\"color:#9ECBFF\">'image/avif'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'image/webp'</span><span style=\"color:#E1E4E8\">],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "// next.config.js\nimages: {\n  remotePatterns: [\n    { protocol: 'https', hostname: 'image.tmdb.org' },\n    { protocol: 'https', hostname: 'image.mux.com' },\n    { protocol: 'https', hostname: 'lh3.googleusercontent.com' }, // avatar Google\n  ],\n  formats: ['image/avif', 'image/webp'],\n}"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Hero: <code>priority</code>. Cards: lazy + <code>sizes=\"(max-width: 768px) 50vw, 20vw\"</code>.</p>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/5",
+            "number": 5,
+            "title": "SEO",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><code>generateMetadata</code> en <code>/title/[id]</code> con <code>openGraph</code> (poster), Twitter card y <code>alternates.canonical</code>. Rutas autenticadas: <code>robots: { index: false }</code>.</p>"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Cross-cutting Concerns",
+        "tagline": "Caching, mutations, proxy, images, and SEO.",
+        "excerpt": "Cache Components with cacheTag, Server Functions, proxy.ts guard, next/image, and SEO metadata.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "cross-cutting/1",
+            "number": 1,
+            "title": "Caching (Cache Components)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Layer</th>\n<th>Mechanism</th>\n<th>Invalidation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Catalog rows</td>\n<td><code>use cache</code> + <code>cacheTag('catalog')</code> + <code>cacheLife('hours')</code></td>\n<td>TMDB cron → <code>revalidateTag('catalog', 'max')</code></td>\n</tr>\n<tr>\n<td>Title detail</td>\n<td><code>cacheTag('title:{id}')</code></td>\n<td>Admin → <code>revalidateTag('title:{id}')</code></td>\n</tr>\n<tr>\n<td>My List</td>\n<td><strong>NOT cached</strong></td>\n<td>—</td>\n</tr>\n<tr>\n<td>Continue Watching</td>\n<td><strong>NOT cached</strong></td>\n<td>—</td>\n</tr>\n<tr>\n<td>Subscription</td>\n<td><code>cacheTag('sub:{userId}')</code></td>\n<td>Stripe webhook</td>\n</tr>\n<tr>\n<td>Search</td>\n<td><strong>NOT cached server-side</strong> (Meilisearch &#x3C; 50ms)</td>\n<td>—</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/2",
+            "number": 2,
+            "title": "Server Functions (mutations)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/profiles/actions.ts (example)</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">'use server'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { z } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'zod'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { auth } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/auth'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { cookies } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/headers'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { redirect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/navigation'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">const</span><span style=\"color:#79B8FF\"> SelectSchema</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> z.</span><span style=\"color:#B392F0\">object</span><span style=\"color:#E1E4E8\">({ profileId: z.</span><span style=\"color:#B392F0\">string</span><span style=\"color:#E1E4E8\">().</span><span style=\"color:#B392F0\">uuid</span><span style=\"color:#E1E4E8\">(), pin: z.</span><span style=\"color:#B392F0\">string</span><span style=\"color:#E1E4E8\">().</span><span style=\"color:#B392F0\">optional</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> async</span><span style=\"color:#F97583\"> function</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">input</span><span style=\"color:#F97583\">:</span><span style=\"color:#B392F0\"> z</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">infer</span><span style=\"color:#E1E4E8\">&#x3C;</span><span style=\"color:#F97583\">typeof</span><span style=\"color:#E1E4E8\"> SelectSchema>) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> session</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> auth</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">session?.user) </span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> data</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> SelectSchema.</span><span style=\"color:#B392F0\">parse</span><span style=\"color:#E1E4E8\">(input)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#E1E4E8\"> db.query.profiles.</span><span style=\"color:#B392F0\">findFirst</span><span style=\"color:#E1E4E8\">({</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    where: </span><span style=\"color:#B392F0\">and</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">eq</span><span style=\"color:#E1E4E8\">(profiles.id, data.profileId), </span><span style=\"color:#B392F0\">eq</span><span style=\"color:#E1E4E8\">(profiles.userId, session.user.id))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">profile) </span><span style=\"color:#F97583\">throw</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> Error</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Profile not found'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (profile.pinHash </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#F97583\"> !</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">await</span><span style=\"color:#E1E4E8\"> bcrypt.</span><span style=\"color:#B392F0\">compare</span><span style=\"color:#E1E4E8\">(data.pin </span><span style=\"color:#F97583\">??</span><span style=\"color:#9ECBFF\"> ''</span><span style=\"color:#E1E4E8\">, profile.pinHash))) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    throw</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> Error</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Invalid PIN'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  (</span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> cookies</span><span style=\"color:#E1E4E8\">()).</span><span style=\"color:#B392F0\">set</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">, profile.id, {</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    httpOnly: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\">, secure: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\">, sameSite: </span><span style=\"color:#9ECBFF\">'lax'</span><span style=\"color:#E1E4E8\">, path: </span><span style=\"color:#9ECBFF\">'/'</span><span style=\"color:#E1E4E8\">, maxAge: </span><span style=\"color:#79B8FF\">60</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 60</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 24</span><span style=\"color:#F97583\"> *</span><span style=\"color:#79B8FF\"> 30</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "// app/(app)/profiles/actions.ts (example)\n'use server'\nimport { z } from 'zod'\nimport { auth } from '@/auth'\nimport { cookies } from 'next/headers'\nimport { redirect } from 'next/navigation'\n\nconst SelectSchema = z.object({ profileId: z.string().uuid(), pin: z.string().optional() })\n\nexport async function selectProfile(input: z.infer<typeof SelectSchema>) {\n  const session = await auth()\n  if (!session?.user) redirect('/signin')\n\n  const data = SelectSchema.parse(input)\n  const profile = await db.query.profiles.findFirst({\n    where: and(eq(profiles.id, data.profileId), eq(profiles.userId, session.user.id))\n  })\n  if (!profile) throw new Error('Profile not found')\n  if (profile.pinHash && !(await bcrypt.compare(data.pin ?? '', profile.pinHash))) {\n    throw new Error('Invalid PIN')\n  }\n\n  (await cookies()).set('active_profile', profile.id, {\n    httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 30,\n  })\n  redirect('/browse')\n}"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Other Server Functions: <code>addToList</code>, <code>removeFromList</code>, <code>rate</code>, <code>createProfile</code>, <code>updateProfile</code>, <code>setPin</code>.</p>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/3",
+            "number": 3,
+            "title": "proxy.ts (single guard)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { auth } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/auth'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { NextResponse } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'next/server'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">const</span><span style=\"color:#79B8FF\"> PUBLIC</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> [</span><span style=\"color:#9ECBFF\">'/'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/signup'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/api/auth'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'/api/stripe/webhook'</span><span style=\"color:#E1E4E8\">]</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> default</span><span style=\"color:#B392F0\"> auth</span><span style=\"color:#E1E4E8\">((</span><span style=\"color:#FFAB70\">req</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#E1E4E8\"> { </span><span style=\"color:#79B8FF\">pathname</span><span style=\"color:#E1E4E8\"> } </span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\"> req.nextUrl</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#79B8FF\">PUBLIC</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">some</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">p</span><span style=\"color:#F97583\"> =></span><span style=\"color:#E1E4E8\"> pathname </span><span style=\"color:#F97583\">===</span><span style=\"color:#E1E4E8\"> p </span><span style=\"color:#F97583\">||</span><span style=\"color:#E1E4E8\"> pathname.</span><span style=\"color:#B392F0\">startsWith</span><span style=\"color:#E1E4E8\">(p </span><span style=\"color:#F97583\">+</span><span style=\"color:#9ECBFF\"> '/'</span><span style=\"color:#E1E4E8\">))) </span><span style=\"color:#F97583\">return</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">req.auth) </span><span style=\"color:#F97583\">return</span><span style=\"color:#E1E4E8\"> NextResponse.</span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">new</span><span style=\"color:#B392F0\"> URL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">, req.url))</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> needsProfile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#F97583\">^</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">(browse</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">watch</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">title</span><span style=\"color:#F97583\">|</span><span style=\"color:#DBEDFF\">account)</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">.</span><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(pathname)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> req.cookies.</span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">)?.value</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  if</span><span style=\"color:#E1E4E8\"> (needsProfile </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#F97583\"> !</span><span style=\"color:#E1E4E8\">profile </span><span style=\"color:#F97583\">&#x26;&#x26;</span><span style=\"color:#E1E4E8\"> pathname </span><span style=\"color:#F97583\">!==</span><span style=\"color:#9ECBFF\"> '/profiles'</span><span style=\"color:#E1E4E8\">) {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    return</span><span style=\"color:#E1E4E8\"> NextResponse.</span><span style=\"color:#B392F0\">redirect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">new</span><span style=\"color:#B392F0\"> URL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/profiles'</span><span style=\"color:#E1E4E8\">, req.url))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">export</span><span style=\"color:#F97583\"> const</span><span style=\"color:#79B8FF\"> config</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  matcher: [</span><span style=\"color:#9ECBFF\">'/((?!_next/static|_next/image|favicon.ico|.*</span><span style=\"color:#79B8FF\">\\\\</span><span style=\"color:#9ECBFF\">.(?:png|jpg|svg)$).*)'</span><span style=\"color:#E1E4E8\">],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "import { auth } from '@/auth'\nimport { NextResponse } from 'next/server'\n\nconst PUBLIC = ['/', '/signin', '/signup', '/api/auth', '/api/stripe/webhook']\n\nexport default auth((req) => {\n  const { pathname } = req.nextUrl\n  if (PUBLIC.some(p => pathname === p || pathname.startsWith(p + '/'))) return\n  if (!req.auth) return NextResponse.redirect(new URL('/signin', req.url))\n\n  const needsProfile = /^\\/(browse|watch|title|account)/.test(pathname)\n  const profile = req.cookies.get('active_profile')?.value\n  if (needsProfile && !profile && pathname !== '/profiles') {\n    return NextResponse.redirect(new URL('/profiles', req.url))\n  }\n})\n\nexport const config = {\n  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\\\.(?:png|jpg|svg)$).*)'],\n}"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/4",
+            "number": 4,
+            "title": "Images",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "js",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// next.config.js</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">images</span><span style=\"color:#E1E4E8\">: {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  remotePatterns</span><span style=\"color:#E1E4E8\">: [</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'image.tmdb.org'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'image.mux.com'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    { protocol: </span><span style=\"color:#9ECBFF\">'https'</span><span style=\"color:#E1E4E8\">, hostname: </span><span style=\"color:#9ECBFF\">'lh3.googleusercontent.com'</span><span style=\"color:#E1E4E8\"> }, </span><span style=\"color:#6A737D\">// Google avatar</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  ],</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  formats</span><span style=\"color:#E1E4E8\">: [</span><span style=\"color:#9ECBFF\">'image/avif'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'image/webp'</span><span style=\"color:#E1E4E8\">],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "// next.config.js\nimages: {\n  remotePatterns: [\n    { protocol: 'https', hostname: 'image.tmdb.org' },\n    { protocol: 'https', hostname: 'image.mux.com' },\n    { protocol: 'https', hostname: 'lh3.googleusercontent.com' }, // Google avatar\n  ],\n  formats: ['image/avif', 'image/webp'],\n}"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Hero: <code>priority</code>. Cards: lazy + <code>sizes=\"(max-width: 768px) 50vw, 20vw\"</code>.</p>"
+              }
+            ]
+          },
+          {
+            "id": "cross-cutting/5",
+            "number": 5,
+            "title": "SEO",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><code>generateMetadata</code> on <code>/title/[id]</code> with <code>openGraph</code> (poster), Twitter card and <code>alternates.canonical</code>. Authenticated routes: <code>robots: { index: false }</code>.</p>"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "components",
@@ -683,7 +1339,251 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Inventario de Componentes",
+        "tagline": "Cada Server y Client Component, mapeado.",
+        "excerpt": "Layout, Browse, Title detail, Player, Search, Auth & Profiles, Account y System components.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p><strong>Anotación:</strong> (S) Server Component / (C) Client Component.</p>"
+          }
+        ],
+        "episodes": [
+          {
+            "id": "components/1",
+            "number": 1,
+            "title": "Foundation",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>Logo</code> (S), <code>Avatar</code> (S), <code>Skeleton</code> (S)</li>\n<li>shadcn/ui: <code>Button</code>, <code>Input</code>, <code>Select</code>, <code>Dialog</code>, <code>Tooltip</code>, <code>Toast</code> (C donde interactivo)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/2",
+            "number": 2,
+            "title": "Layout",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>TopNav</code> (C) — hides on scroll, transparent sobre hero</li>\n<li><code>ProfileMenu</code> (C) — switch profile, account, sign out</li>\n<li><code>MobileNav</code> (C)</li>\n<li><code>Footer</code> (S)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/3",
+            "number": 3,
+            "title": "Browse",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>Hero</code> (S) — featured + Play/More Info</li>\n<li><code>Row</code> (S, async streaming)</li>\n<li><code>RowSkeleton</code> (S)</li>\n<li><code>Card</code> (C, lazy) — hover trailer preview</li>\n<li><code>CardModal</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/4",
+            "number": 4,
+            "title": "Title detail",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>TitleHero</code> (S)</li>\n<li><code>EpisodeList</code> (S) + <code>EpisodeRow</code> (C)</li>\n<li><code>MoreLikeThis</code> (S)</li>\n<li><code>RatingControls</code> (C, optimistic)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/5",
+            "number": 5,
+            "title": "Player",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>PlayerShell</code> (C, hls.js)</li>\n<li><code>ControlBar</code> (C), <code>SeekBar</code> (C), <code>SubtitlesMenu</code> (C)</li>\n<li><code>NextUp</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/6",
+            "number": 6,
+            "title": "Search",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>SearchBar</code> (C, <code>useSearchParams</code>)</li>\n<li><code>SearchResultsGrid</code> (S, streamed)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/7",
+            "number": 7,
+            "title": "Auth & profiles",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>GoogleSignInButton</code> (C)</li>\n<li><code>ProfilePicker</code> (S), <code>ProfileForm</code> (C), <code>PinDialog</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/8",
+            "number": 8,
+            "title": "Account",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>PlanCard</code> (S), <code>BillingPortalButton</code> (C), <code>DeviceList</code> (S)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/9",
+            "number": 9,
+            "title": "System",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>app/error.tsx</code> (C), <code>app/not-found.tsx</code> (S), <code>app/loading.tsx</code> (S) por segmento</li>\n</ul>"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Component Inventory",
+        "tagline": "Every Server and Client Component, mapped.",
+        "excerpt": "Layout, Browse, Title detail, Player, Search, Auth & Profiles, Account, and System components.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p><strong>Annotation:</strong> (S) Server Component / (C) Client Component.</p>"
+          }
+        ],
+        "episodes": [
+          {
+            "id": "components/1",
+            "number": 1,
+            "title": "Foundation",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>Logo</code> (S), <code>Avatar</code> (S), <code>Skeleton</code> (S)</li>\n<li>shadcn/ui: <code>Button</code>, <code>Input</code>, <code>Select</code>, <code>Dialog</code>, <code>Tooltip</code>, <code>Toast</code> (C where interactive)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/2",
+            "number": 2,
+            "title": "Layout",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>TopNav</code> (C) — hides on scroll, transparent over hero</li>\n<li><code>ProfileMenu</code> (C) — switch profile, account, sign out</li>\n<li><code>MobileNav</code> (C)</li>\n<li><code>Footer</code> (S)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/3",
+            "number": 3,
+            "title": "Browse",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>Hero</code> (S) — featured + Play/More Info</li>\n<li><code>Row</code> (S, async streaming)</li>\n<li><code>RowSkeleton</code> (S)</li>\n<li><code>Card</code> (C, lazy) — hover trailer preview</li>\n<li><code>CardModal</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/4",
+            "number": 4,
+            "title": "Title detail",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>TitleHero</code> (S)</li>\n<li><code>EpisodeList</code> (S) + <code>EpisodeRow</code> (C)</li>\n<li><code>MoreLikeThis</code> (S)</li>\n<li><code>RatingControls</code> (C, optimistic)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/5",
+            "number": 5,
+            "title": "Player",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>PlayerShell</code> (C, hls.js)</li>\n<li><code>ControlBar</code> (C), <code>SeekBar</code> (C), <code>SubtitlesMenu</code> (C)</li>\n<li><code>NextUp</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/6",
+            "number": 6,
+            "title": "Search",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>SearchBar</code> (C, <code>useSearchParams</code>)</li>\n<li><code>SearchResultsGrid</code> (S, streamed)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/7",
+            "number": 7,
+            "title": "Auth & profiles",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>GoogleSignInButton</code> (C)</li>\n<li><code>ProfilePicker</code> (S), <code>ProfileForm</code> (C), <code>PinDialog</code> (C)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/8",
+            "number": 8,
+            "title": "Account",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>PlanCard</code> (S), <code>BillingPortalButton</code> (C), <code>DeviceList</code> (S)</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "components/9",
+            "number": 9,
+            "title": "System",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><code>app/error.tsx</code> (C), <code>app/not-found.tsx</code> (S), <code>app/loading.tsx</code> (S) per segment</li>\n</ul>"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "testing",
@@ -963,7 +1863,513 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Estrategia de Testing",
+        "tagline": "Pirámide completa: unit, component, integration, E2E, security.",
+        "excerpt": "Vitest + RTL + Testcontainers + Playwright + axe + Lighthouse + k6 + Snyk. Coverage gate ≥ 80%.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "testing/1",
+            "number": 1,
+            "title": "Pirámide de testing",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "text",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>                 /\\</span></span>\n<span class=\"line\"><span>                /E2\\         ~10–20  Playwright  (flujos críticos)</span></span>\n<span class=\"line\"><span>               /----\\</span></span>\n<span class=\"line\"><span>              /Integ.\\       ~50–100 Vitest + DB test container</span></span>\n<span class=\"line\"><span>             /--------\\</span></span>\n<span class=\"line\"><span>            /Component \\    ~150–300 Vitest + RTL</span></span>\n<span class=\"line\"><span>           /------------\\</span></span>\n<span class=\"line\"><span>          /     Unit     \\  ~500+    Vitest (puro)</span></span>\n<span class=\"line\"><span>         /----------------\\</span></span></code></pre>",
+                "raw": "                 /\\\n                /E2\\         ~10–20  Playwright  (flujos críticos)\n               /----\\\n              /Integ.\\       ~50–100 Vitest + DB test container\n             /--------\\\n            /Component \\    ~150–300 Vitest + RTL\n           /------------\\\n          /     Unit     \\  ~500+    Vitest (puro)\n         /----------------\\"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Regla:</strong> un bug nuevo se cubre con un test del nivel más bajo posible que pueda detectarlo en el futuro.</p>"
+              }
+            ]
+          },
+          {
+            "id": "testing/2",
+            "number": 2,
+            "title": "Tooling",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Capa</th>\n<th>Herramienta</th>\n<th>Para qué</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Unit</td>\n<td><strong>Vitest</strong></td>\n<td>Funciones puras, utils, schemas Zod, helpers de auth.</td>\n</tr>\n<tr>\n<td>Component</td>\n<td><strong>Vitest + React Testing Library + jest-dom</strong></td>\n<td>Componentes UI en aislamiento.</td>\n</tr>\n<tr>\n<td>RSC</td>\n<td><strong>Vitest</strong> con <code>@testing-library/react</code> server harness</td>\n<td>Render de Server Components con mocks de <code>cookies()</code>/<code>headers()</code>.</td>\n</tr>\n<tr>\n<td>Integration</td>\n<td><strong>Vitest + Testcontainers (Postgres)</strong></td>\n<td>Server Functions y Route Handlers contra una DB real efímera.</td>\n</tr>\n<tr>\n<td>E2E</td>\n<td><strong>Playwright</strong></td>\n<td>Flujos completos en browser (Chromium, Firefox, WebKit).</td>\n</tr>\n<tr>\n<td>Visual regression</td>\n<td><strong>Playwright <code>toHaveScreenshot</code></strong></td>\n<td>Capturas de cards, hero, player.</td>\n</tr>\n<tr>\n<td>Accessibility</td>\n<td><strong><code>@axe-core/playwright</code></strong></td>\n<td>Auditoría a11y en cada test E2E.</td>\n</tr>\n<tr>\n<td>Mocking HTTP</td>\n<td><strong>MSW (Mock Service Worker)</strong></td>\n<td>Mocks de TMDB, Mux, Stripe en unit/component/integration.</td>\n</tr>\n<tr>\n<td>Load testing</td>\n<td><strong>k6</strong></td>\n<td>API de progress + signed URLs.</td>\n</tr>\n<tr>\n<td>Security</td>\n<td><strong>OWASP ZAP</strong>, <code>npm audit</code>, <strong>Snyk</strong></td>\n<td>Pipeline de seguridad en CI.</td>\n</tr>\n<tr>\n<td>Performance</td>\n<td><strong>Lighthouse CI</strong></td>\n<td>LCP &#x3C; 2.5s en <code>/browse</code>, CLS &#x3C; 0.1.</td>\n</tr>\n<tr>\n<td>Coverage</td>\n<td><strong>Vitest c8 / istanbul</strong></td>\n<td>Gate: ≥ 80% líneas en <code>lib/</code>.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "testing/3",
+            "number": 3,
+            "title": "Unit tests (Vitest)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Objetivo:</strong> lógica pura sin dependencias externas. Rápido (&#x3C; 1ms por test).</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// lib/auth/__tests__/jwt.test.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { describe, it, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { decodeSessionJWT } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../jwt'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'decodeSessionJWT'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns null for missing token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">undefined</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toBeNull</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns null for expired token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> token</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> signJWT</span><span style=\"color:#E1E4E8\">({ sub: </span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">, exp: </span><span style=\"color:#79B8FF\">1</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(token)).</span><span style=\"color:#B392F0\">toBeNull</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns claims for valid token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> token</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> signJWT</span><span style=\"color:#E1E4E8\">({ sub: </span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">, exp: Math.</span><span style=\"color:#B392F0\">floor</span><span style=\"color:#E1E4E8\">(Date.</span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">()</span><span style=\"color:#F97583\">/</span><span style=\"color:#79B8FF\">1000</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">+</span><span style=\"color:#79B8FF\"> 60</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(token)?.sub).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// lib/auth/__tests__/jwt.test.ts\nimport { describe, it, expect } from 'vitest'\nimport { decodeSessionJWT } from '../jwt'\n\ndescribe('decodeSessionJWT', () => {\n  it('returns null for missing token', () => {\n    expect(decodeSessionJWT(undefined)).toBeNull()\n  })\n  it('returns null for expired token', () => {\n    const token = signJWT({ sub: 'u1', exp: 1 })\n    expect(decodeSessionJWT(token)).toBeNull()\n  })\n  it('returns claims for valid token', () => {\n    const token = signJWT({ sub: 'u1', exp: Math.floor(Date.now()/1000) + 60 })\n    expect(decodeSessionJWT(token)?.sub).toBe('u1')\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Cobertura prioritaria:</strong></p>\n<ul>\n<li><code>lib/auth/*</code> — decode JWT, helpers de cookies, validación de roles.</li>\n<li><code>lib/zod/*</code> — todos los schemas (boundary cases, valores inválidos).</li>\n<li><code>lib/mux/sign.ts</code> — firma de URLs.</li>\n<li><code>lib/cache/*</code> — claves y tags.</li>\n<li><code>lib/recommendations/*</code> — scoring functions.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/4",
+            "number": 4,
+            "title": "Component tests (Vitest + RTL)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Objetivo:</strong> componentes Client en aislamiento. Props in → DOM/eventos out.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "tsx",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// components/__tests__/RatingControls.test.tsx</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { render, screen } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@testing-library/react'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> userEvent </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@testing-library/user-event'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { RatingControls } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../RatingControls'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'&#x3C;RatingControls>'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'shows the current rating'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"up\"</span><span style=\"color:#B392F0\"> onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()} />)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">thumbs up</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toHaveAttribute</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'aria-pressed'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'true'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'calls onRate with new value on click'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> onRate</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{</span><span style=\"color:#79B8FF\">null</span><span style=\"color:#E1E4E8\">} </span><span style=\"color:#B392F0\">onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{onRate} />)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> userEvent.</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">love</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }))</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(onRate).</span><span style=\"color:#B392F0\">toHaveBeenCalledWith</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'t1'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'love'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'is keyboard accessible'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{</span><span style=\"color:#79B8FF\">null</span><span style=\"color:#E1E4E8\">} </span><span style=\"color:#B392F0\">onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()} />)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> userEvent.</span><span style=\"color:#B392F0\">tab</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">thumbs up</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toHaveFocus</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// components/__tests__/RatingControls.test.tsx\nimport { render, screen } from '@testing-library/react'\nimport userEvent from '@testing-library/user-event'\nimport { RatingControls } from '../RatingControls'\n\ndescribe('<RatingControls>', () => {\n  it('shows the current rating', () => {\n    render(<RatingControls titleId=\"t1\" initialValue=\"up\" onRate={vi.fn()} />)\n    expect(screen.getByRole('button', { name: /thumbs up/i })).toHaveAttribute('aria-pressed', 'true')\n  })\n  it('calls onRate with new value on click', async () => {\n    const onRate = vi.fn()\n    render(<RatingControls titleId=\"t1\" initialValue={null} onRate={onRate} />)\n    await userEvent.click(screen.getByRole('button', { name: /love/i }))\n    expect(onRate).toHaveBeenCalledWith('t1', 'love')\n  })\n  it('is keyboard accessible', async () => {\n    render(<RatingControls titleId=\"t1\" initialValue={null} onRate={vi.fn()} />)\n    await userEvent.tab()\n    expect(screen.getByRole('button', { name: /thumbs up/i })).toHaveFocus()\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Cobertura prioritaria:</strong></p>\n<ul>\n<li><code>Card</code> — hover preview se dispara con debounce, no en touch devices.</li>\n<li><code>SearchBar</code> — debounce 200ms, URL se actualiza vía <code>router.replace</code>.</li>\n<li><code>PlayerShell</code> — controles aparecen en hover/focus, ocultos por defecto, atajos de teclado (space=play, ← →=seek).</li>\n<li><code>ProfilePicker</code> — selección, PIN dialog cuando aplica.</li>\n<li><code>PinDialog</code> — bloqueo después de 5 intentos.</li>\n<li><code>CardModal</code> — focus trap, ESC cierra.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/5",
+            "number": 5,
+            "title": "Server Component tests",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p>RSC se testean ejecutando el componente directamente y aserciendo sobre el <code>ReactNode</code>/HTML generado.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "tsx",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/browse/__tests__/page.test.tsx</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { renderToString } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'react-dom/server'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> BrowsePage </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../page'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { vi } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">vi.</span><span style=\"color:#B392F0\">mock</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'next/headers'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  cookies</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">: (</span><span style=\"color:#FFAB70\">k</span><span style=\"color:#F97583\">:</span><span style=\"color:#79B8FF\"> string</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> k </span><span style=\"color:#F97583\">===</span><span style=\"color:#9ECBFF\"> 'active_profile'</span><span style=\"color:#F97583\"> ?</span><span style=\"color:#E1E4E8\"> { value: </span><span style=\"color:#9ECBFF\">'p1'</span><span style=\"color:#E1E4E8\"> } </span><span style=\"color:#F97583\">:</span><span style=\"color:#79B8FF\"> null</span><span style=\"color:#E1E4E8\"> }),</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">vi.</span><span style=\"color:#B392F0\">mock</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'@/lib/db'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({ db: { </span><span style=\"color:#6A737D\">/* stub queries */</span><span style=\"color:#E1E4E8\"> } }))</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'renders Trending row with first 10 titles'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> html</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> renderToString</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> BrowsePage</span><span style=\"color:#E1E4E8\">())</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(html).</span><span style=\"color:#B392F0\">toMatch</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">Trending Now</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(html.</span><span style=\"color:#B392F0\">match</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">data-title-card</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">g</span><span style=\"color:#E1E4E8\">)?.</span><span style=\"color:#79B8FF\">length</span><span style=\"color:#E1E4E8\">).</span><span style=\"color:#B392F0\">toBeGreaterThanOrEqual</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">10</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// app/(app)/browse/__tests__/page.test.tsx\nimport { renderToString } from 'react-dom/server'\nimport BrowsePage from '../page'\nimport { vi } from 'vitest'\n\nvi.mock('next/headers', () => ({\n  cookies: async () => ({ get: (k: string) => k === 'active_profile' ? { value: 'p1' } : null }),\n}))\nvi.mock('@/lib/db', () => ({ db: { /* stub queries */ } }))\n\nit('renders Trending row with first 10 titles', async () => {\n  const html = renderToString(await BrowsePage())\n  expect(html).toMatch(/Trending Now/)\n  expect(html.match(/data-title-card/g)?.length).toBeGreaterThanOrEqual(10)\n})"
+              }
+            ]
+          },
+          {
+            "id": "testing/6",
+            "number": 6,
+            "title": "Integration tests (Server Functions + Route Handlers)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Objetivo:</strong> validar la frontera servidor↔DB. Usa Postgres real vía Testcontainers, sin mocks de DB.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/profiles/__tests__/actions.integration.test.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { describe, it, beforeAll, afterAll, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { startPostgres } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/test/containers'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { selectProfile } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../actions'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">let</span><span style=\"color:#B392F0\"> stop</span><span style=\"color:#F97583\">:</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#B392F0\"> Promise</span><span style=\"color:#E1E4E8\">&#x3C;</span><span style=\"color:#79B8FF\">void</span><span style=\"color:#E1E4E8\">></span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">beforeAll</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> { stop </span><span style=\"color:#F97583\">=</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> startPostgres</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">afterAll</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> { </span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> stop</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'selectProfile'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'sets active_profile cookie when profile belongs to user'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> user</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(user.id)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(user, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">      expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">getCookie</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(profile.id)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'throws when profile belongs to another user'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> userA</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> userB</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profileB</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(userB.id)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(userA, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profileB.id })).rejects.</span><span style=\"color:#B392F0\">toThrow</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">not found</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'requires PIN when profile.pinHash is set'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> user</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(user.id, { pin: </span><span style=\"color:#9ECBFF\">'1234'</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(user, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id })).rejects.</span><span style=\"color:#B392F0\">toThrow</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">PIN</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id, pin: </span><span style=\"color:#9ECBFF\">'1234'</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#6A737D\">// ok</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// app/(app)/profiles/__tests__/actions.integration.test.ts\nimport { describe, it, beforeAll, afterAll, expect } from 'vitest'\nimport { startPostgres } from '@/test/containers'\nimport { selectProfile } from '../actions'\n\nlet stop: () => Promise<void>\nbeforeAll(async () => { stop = await startPostgres() })\nafterAll(async () => { await stop() })\n\ndescribe('selectProfile', () => {\n  it('sets active_profile cookie when profile belongs to user', async () => {\n    const user = await createUserFixture()\n    const profile = await createProfileFixture(user.id)\n    await withSession(user, async () => {\n      await selectProfile({ profileId: profile.id })\n      expect(getCookie('active_profile')).toBe(profile.id)\n    })\n  })\n  it('throws when profile belongs to another user', async () => {\n    const userA = await createUserFixture()\n    const userB = await createUserFixture()\n    const profileB = await createProfileFixture(userB.id)\n    await withSession(userA, async () => {\n      await expect(selectProfile({ profileId: profileB.id })).rejects.toThrow(/not found/i)\n    })\n  })\n  it('requires PIN when profile.pinHash is set', async () => {\n    const user = await createUserFixture()\n    const profile = await createProfileFixture(user.id, { pin: '1234' })\n    await withSession(user, async () => {\n      await expect(selectProfile({ profileId: profile.id })).rejects.toThrow(/PIN/)\n      await selectProfile({ profileId: profile.id, pin: '1234' }) // ok\n    })\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Cobertura prioritaria:</strong></p>\n<ul>\n<li><code>/api/stripe/webhook</code> — firma válida/inválida, idempotencia, cada tipo de evento.</li>\n<li><code>/api/playback/[id]</code> — sin sub → 403; kids + R-rated → 403; con sub válida → URL firmada.</li>\n<li><code>/api/progress</code> — escribe <code>watch_progress</code>; nunca bloquea respuesta (verificar tiempo &#x3C; 50ms).</li>\n<li><code>/api/sync/tmdb</code> — autenticación con cron secret, upsert correcto, idempotente.</li>\n<li>Auth.js callback — <code>email_verified=false</code> → rechazado.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/7",
+            "number": 7,
+            "title": "E2E tests (Playwright)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Objetivo:</strong> validar flujos completos de usuario. Tests críticos solamente.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// e2e/auth.spec.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { test, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@playwright/test'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">test.</span><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Authentication'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Google sign-in → profile select → browse'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#FFAB70\">context</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> mockGoogleOAuth</span><span style=\"color:#E1E4E8\">(context, { email: </span><span style=\"color:#9ECBFF\">'demo@ex.com'</span><span style=\"color:#E1E4E8\">, sub: </span><span style=\"color:#9ECBFF\">'g_123'</span><span style=\"color:#E1E4E8\">, email_verified: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">continuar con google</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">profiles</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">demo</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">browse</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'heading'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">trending now</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toBeVisible</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'rejects unverified email'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#FFAB70\">context</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> mockGoogleOAuth</span><span style=\"color:#E1E4E8\">(context, { email: </span><span style=\"color:#9ECBFF\">'spoof@ex.com'</span><span style=\"color:#E1E4E8\">, email_verified: </span><span style=\"color:#79B8FF\">false</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">continuar con google</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">error=EmailNotVerified</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'rejects invalid OAuth state (CSRF)'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">request</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> res</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#E1E4E8\"> request.</span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/api/auth/callback/google?code=abc&#x26;state=invalid'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(res.</span><span style=\"color:#B392F0\">status</span><span style=\"color:#E1E4E8\">()).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">400</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// e2e/auth.spec.ts\nimport { test, expect } from '@playwright/test'\n\ntest.describe('Authentication', () => {\n  test('Google sign-in → profile select → browse', async ({ page, context }) => {\n    await mockGoogleOAuth(context, { email: 'demo@ex.com', sub: 'g_123', email_verified: true })\n    await page.goto('/signin')\n    await page.getByRole('button', { name: /continuar con google/i }).click()\n    await expect(page).toHaveURL(/\\/profiles/)\n    await page.getByRole('button', { name: /demo/i }).click()\n    await expect(page).toHaveURL(/\\/browse/)\n    await expect(page.getByRole('heading', { name: /trending now/i })).toBeVisible()\n  })\n\n  test('rejects unverified email', async ({ page, context }) => {\n    await mockGoogleOAuth(context, { email: 'spoof@ex.com', email_verified: false })\n    await page.goto('/signin')\n    await page.getByRole('button', { name: /continuar con google/i }).click()\n    await expect(page).toHaveURL(/error=EmailNotVerified/)\n  })\n\n  test('rejects invalid OAuth state (CSRF)', async ({ request }) => {\n    const res = await request.get('/api/auth/callback/google?code=abc&state=invalid')\n    expect(res.status()).toBe(400)\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Flujos a cubrir E2E:</strong></p>\n<ol>\n<li><strong>Auth:</strong> Google sign-in happy path, email no verificado, state inválido, account linking.</li>\n<li><strong>Profile:</strong> seleccionar perfil, crear perfil, PIN correcto/incorrecto, 5 intentos → lock.</li>\n<li><strong>Browse:</strong> navegar a <code>/browse</code>, scroll de fila, click en card, modal con info.</li>\n<li><strong>Player:</strong> play título, seek, resume desde otra sesión.</li>\n<li><strong>My List:</strong> agregar/quitar, refrescar, persiste.</li>\n<li><strong>Search:</strong> type-ahead, navegar a resultado.</li>\n<li><strong>Subscription:</strong> sin sub → bloqueo en <code>/watch/[id]</code>, checkout (Stripe test mode), unlock.</li>\n<li><strong>Parental:</strong> kids profile no ve R-rated.</li>\n<li><strong>Sign out:</strong> limpia cookies, redirige.</li>\n</ol>"
+              }
+            ]
+          },
+          {
+            "id": "testing/8",
+            "number": 8,
+            "title": "Visual regression",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p>Snapshots de Playwright en componentes visualmente estables (Hero, Card, Player chrome). Tolerancia 0.1%.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Hero matches snapshot'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">waitForSelector</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'[data-hero]'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page.</span><span style=\"color:#B392F0\">locator</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'[data-hero]'</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toHaveScreenshot</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'hero.png'</span><span style=\"color:#E1E4E8\">, { maxDiffPixelRatio: </span><span style=\"color:#79B8FF\">0.001</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "test('Hero matches snapshot', async ({ page }) => {\n  await page.goto('/browse')\n  await page.waitForSelector('[data-hero]')\n  await expect(page.locator('[data-hero]')).toHaveScreenshot('hero.png', { maxDiffPixelRatio: 0.001 })\n})"
+              }
+            ]
+          },
+          {
+            "id": "testing/9",
+            "number": 9,
+            "title": "Accessibility",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><code>@axe-core/playwright</code> en cada test E2E crítico. Falla la build si hay violaciones <code>serious</code> o <code>critical</code>.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> AxeBuilder </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@axe-core/playwright'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'browse page is accessible'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> results</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> AxeBuilder</span><span style=\"color:#E1E4E8\">({ page }).</span><span style=\"color:#B392F0\">analyze</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(results.violations.</span><span style=\"color:#B392F0\">filter</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">v</span><span style=\"color:#F97583\"> =></span><span style=\"color:#E1E4E8\"> [</span><span style=\"color:#9ECBFF\">'serious'</span><span style=\"color:#E1E4E8\">,</span><span style=\"color:#9ECBFF\">'critical'</span><span style=\"color:#E1E4E8\">].</span><span style=\"color:#B392F0\">includes</span><span style=\"color:#E1E4E8\">(v.impact</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">))).</span><span style=\"color:#B392F0\">toEqual</span><span style=\"color:#E1E4E8\">([])</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "import AxeBuilder from '@axe-core/playwright'\n\ntest('browse page is accessible', async ({ page }) => {\n  await page.goto('/browse')\n  const results = await new AxeBuilder({ page }).analyze()\n  expect(results.violations.filter(v => ['serious','critical'].includes(v.impact!))).toEqual([])\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Checklist manual de accesibilidad:</p>\n<ul>\n<li>Player completo navegable por teclado (Tab, Space, ←→↑↓, F, M).</li>\n<li>Filas con scroll horizontal por teclado.</li>\n<li>Modal con focus trap + ESC.</li>\n<li>Contraste ≥ 4.5:1 en texto, 3:1 en UI.</li>\n<li><code>prefers-reduced-motion</code> desactiva autoplay trailers.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/10",
+            "number": 10,
+            "title": "Performance",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><strong>Lighthouse CI</strong> en pipeline: budget LCP &#x3C; 2.5s, TBT &#x3C; 200ms, CLS &#x3C; 0.1, score Performance ≥ 90.</li>\n<li><strong>Web Vitals reales</strong> vía PostHog (<code>web-vitals</code> npm).</li>\n<li><strong>Load tests con k6:</strong>\n<ul>\n<li><code>/api/progress</code> — 1000 req/s sostenido, p99 &#x3C; 100ms.</li>\n<li><code>/api/playback/[id]</code> — 200 req/s, p99 &#x3C; 200ms.</li>\n</ul>\n</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/11",
+            "number": 11,
+            "title": "Security tests",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Test</th>\n<th>Herramienta</th>\n<th>Cuándo</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Dependencias vulnerables</td>\n<td><code>npm audit</code> + Snyk</td>\n<td>CI por PR</td>\n</tr>\n<tr>\n<td>Static analysis (SAST)</td>\n<td><code>eslint-plugin-security</code>, <code>semgrep</code></td>\n<td>CI por PR</td>\n</tr>\n<tr>\n<td>Secrets en código</td>\n<td><code>gitleaks</code></td>\n<td>pre-commit hook</td>\n</tr>\n<tr>\n<td>OWASP ZAP baseline</td>\n<td>ZAP CLI</td>\n<td>Nightly contra preview</td>\n</tr>\n<tr>\n<td>Headers de seguridad</td>\n<td><code>securityheaders.com</code> API en CI</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>Cookies con flags correctos</td>\n<td>Test E2E custom</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>JWT tampering</td>\n<td>E2E custom (modificar cookie, esperar 401)</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>CSRF en callback OAuth</td>\n<td>E2E (state inválido)</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>Replay del code OAuth</td>\n<td>Integration test</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>Rate limit de PIN</td>\n<td>E2E (6 intentos → lock)</td>\n<td>PR</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "testing/12",
+            "number": 12,
+            "title": "CI Pipeline (GitHub Actions)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "yaml",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\"># .github/workflows/ci.yml (esquemático)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">jobs</span><span style=\"color:#E1E4E8\">:</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  lint</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># eslint + tsc --noEmit + gitleaks</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  unit</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># vitest run --coverage (gate 80%)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  component</span><span style=\"color:#E1E4E8\">:   </span><span style=\"color:#6A737D\"># vitest run components/</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  integration</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#6A737D\"># vitest run --pool=forks (Testcontainers postgres)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  e2e</span><span style=\"color:#E1E4E8\">:         </span><span style=\"color:#6A737D\"># playwright test (3 browsers, paralelo)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  visual</span><span style=\"color:#E1E4E8\">:      </span><span style=\"color:#6A737D\"># playwright snapshots</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  a11y</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># axe en E2E</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  security</span><span style=\"color:#E1E4E8\">:    </span><span style=\"color:#6A737D\"># npm audit + snyk + zap baseline</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  lighthouse</span><span style=\"color:#E1E4E8\">:  </span><span style=\"color:#6A737D\"># lhci collect en preview deploy</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  bundle-size</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#6A737D\"># next-bundle-analyzer + size-limit gate</span></span></code></pre>",
+                "raw": "# .github/workflows/ci.yml (esquemático)\njobs:\n  lint:        # eslint + tsc --noEmit + gitleaks\n  unit:        # vitest run --coverage (gate 80%)\n  component:   # vitest run components/\n  integration: # vitest run --pool=forks (Testcontainers postgres)\n  e2e:         # playwright test (3 browsers, paralelo)\n  visual:      # playwright snapshots\n  a11y:        # axe en E2E\n  security:    # npm audit + snyk + zap baseline\n  lighthouse:  # lhci collect en preview deploy\n  bundle-size: # next-bundle-analyzer + size-limit gate"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Gates obligatorios para merge:</strong></p>\n<ul>\n<li>Cobertura unit ≥ 80% en <code>lib/</code>.</li>\n<li>0 errores de tipos, 0 errores eslint.</li>\n<li>0 violaciones a11y <code>serious</code>/<code>critical</code>.</li>\n<li>Lighthouse Performance ≥ 90 en <code>/browse</code>.</li>\n<li>Bundle JS inicial ≤ 200KB gzip.</li>\n<li>0 vulnerabilidades <code>high</code>/<code>critical</code>.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/13",
+            "number": 13,
+            "title": "Test data strategy",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><strong>Fixtures factory</strong> (<code>@/test/factories.ts</code>) para <code>user</code>, <code>profile</code>, <code>title</code>, <code>episode</code>, <code>subscription</code>.</li>\n<li><strong>Seeds determinísticas</strong> en Postgres test container: 50 títulos con tipos variados, 3 usuarios, 5 perfiles.</li>\n<li><strong>MSW handlers</strong> para TMDB y Mux con respuestas reales sanitizadas.</li>\n<li><strong>Stripe test mode</strong> para integration + E2E.</li>\n<li><strong>Mock OAuth provider</strong> (<code>mock-oauth2-server</code>) en E2E para no depender de Google.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/14",
+            "number": 14,
+            "title": "Estructura de archivos de test",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "text",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>src/</span></span>\n<span class=\"line\"><span>  lib/</span></span>\n<span class=\"line\"><span>    auth/</span></span>\n<span class=\"line\"><span>      jwt.ts</span></span>\n<span class=\"line\"><span>      jwt.test.ts                 ← unit, co-ubicado</span></span>\n<span class=\"line\"><span>  components/</span></span>\n<span class=\"line\"><span>    RatingControls.tsx</span></span>\n<span class=\"line\"><span>    RatingControls.test.tsx       ← component, co-ubicado</span></span>\n<span class=\"line\"><span>  app/(app)/profiles/</span></span>\n<span class=\"line\"><span>    actions.ts</span></span>\n<span class=\"line\"><span>    actions.test.ts               ← integration, co-ubicado</span></span>\n<span class=\"line\"><span>test/</span></span>\n<span class=\"line\"><span>  factories.ts</span></span>\n<span class=\"line\"><span>  containers.ts                   ← Testcontainers setup</span></span>\n<span class=\"line\"><span>  msw/</span></span>\n<span class=\"line\"><span>    handlers.ts</span></span>\n<span class=\"line\"><span>e2e/</span></span>\n<span class=\"line\"><span>  auth.spec.ts</span></span>\n<span class=\"line\"><span>  browse.spec.ts</span></span>\n<span class=\"line\"><span>  player.spec.ts</span></span>\n<span class=\"line\"><span>  subscription.spec.ts</span></span>\n<span class=\"line\"><span>  fixtures/</span></span>\n<span class=\"line\"><span>    mock-oauth.ts</span></span></code></pre>",
+                "raw": "src/\n  lib/\n    auth/\n      jwt.ts\n      jwt.test.ts                 ← unit, co-ubicado\n  components/\n    RatingControls.tsx\n    RatingControls.test.tsx       ← component, co-ubicado\n  app/(app)/profiles/\n    actions.ts\n    actions.test.ts               ← integration, co-ubicado\ntest/\n  factories.ts\n  containers.ts                   ← Testcontainers setup\n  msw/\n    handlers.ts\ne2e/\n  auth.spec.ts\n  browse.spec.ts\n  player.spec.ts\n  subscription.spec.ts\n  fixtures/\n    mock-oauth.ts"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Testing Strategy",
+        "tagline": "The full pyramid: unit, component, integration, E2E, security.",
+        "excerpt": "Vitest + RTL + Testcontainers + Playwright + axe + Lighthouse + k6 + Snyk. Coverage gate ≥ 80%.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "testing/1",
+            "number": 1,
+            "title": "Testing pyramid",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "text",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>                 /\\</span></span>\n<span class=\"line\"><span>                /E2\\         ~10–20  Playwright  (critical flows)</span></span>\n<span class=\"line\"><span>               /----\\</span></span>\n<span class=\"line\"><span>              /Integ.\\       ~50–100 Vitest + DB test container</span></span>\n<span class=\"line\"><span>             /--------\\</span></span>\n<span class=\"line\"><span>            /Component \\    ~150–300 Vitest + RTL</span></span>\n<span class=\"line\"><span>           /------------\\</span></span>\n<span class=\"line\"><span>          /     Unit     \\  ~500+    Vitest (pure)</span></span>\n<span class=\"line\"><span>         /----------------\\</span></span></code></pre>",
+                "raw": "                 /\\\n                /E2\\         ~10–20  Playwright  (critical flows)\n               /----\\\n              /Integ.\\       ~50–100 Vitest + DB test container\n             /--------\\\n            /Component \\    ~150–300 Vitest + RTL\n           /------------\\\n          /     Unit     \\  ~500+    Vitest (pure)\n         /----------------\\"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Rule:</strong> a new bug is covered by a test at the lowest level that can detect it in the future.</p>"
+              }
+            ]
+          },
+          {
+            "id": "testing/2",
+            "number": 2,
+            "title": "Tooling",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Layer</th>\n<th>Tool</th>\n<th>Purpose</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Unit</td>\n<td><strong>Vitest</strong></td>\n<td>Pure functions, utils, Zod schemas, auth helpers.</td>\n</tr>\n<tr>\n<td>Component</td>\n<td><strong>Vitest + React Testing Library + jest-dom</strong></td>\n<td>UI components in isolation.</td>\n</tr>\n<tr>\n<td>RSC</td>\n<td><strong>Vitest</strong> with <code>@testing-library/react</code> server harness</td>\n<td>Render Server Components with <code>cookies()</code>/<code>headers()</code> mocks.</td>\n</tr>\n<tr>\n<td>Integration</td>\n<td><strong>Vitest + Testcontainers (Postgres)</strong></td>\n<td>Server Functions and Route Handlers against a real ephemeral DB.</td>\n</tr>\n<tr>\n<td>E2E</td>\n<td><strong>Playwright</strong></td>\n<td>Full browser flows (Chromium, Firefox, WebKit).</td>\n</tr>\n<tr>\n<td>Visual regression</td>\n<td><strong>Playwright <code>toHaveScreenshot</code></strong></td>\n<td>Snapshots of cards, hero, player.</td>\n</tr>\n<tr>\n<td>Accessibility</td>\n<td><strong><code>@axe-core/playwright</code></strong></td>\n<td>a11y audit on every E2E test.</td>\n</tr>\n<tr>\n<td>HTTP mocking</td>\n<td><strong>MSW (Mock Service Worker)</strong></td>\n<td>TMDB, Mux, Stripe mocks in unit/component/integration.</td>\n</tr>\n<tr>\n<td>Load testing</td>\n<td><strong>k6</strong></td>\n<td>progress API + signed URLs.</td>\n</tr>\n<tr>\n<td>Security</td>\n<td><strong>OWASP ZAP</strong>, <code>npm audit</code>, <strong>Snyk</strong></td>\n<td>Security pipeline in CI.</td>\n</tr>\n<tr>\n<td>Performance</td>\n<td><strong>Lighthouse CI</strong></td>\n<td>LCP &#x3C; 2.5s on <code>/browse</code>, CLS &#x3C; 0.1.</td>\n</tr>\n<tr>\n<td>Coverage</td>\n<td><strong>Vitest c8 / istanbul</strong></td>\n<td>Gate: ≥ 80% lines in <code>lib/</code>.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "testing/3",
+            "number": 3,
+            "title": "Unit tests (Vitest)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Goal:</strong> pure logic without external dependencies. Fast (&#x3C; 1ms per test).</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// lib/auth/__tests__/jwt.test.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { describe, it, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { decodeSessionJWT } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../jwt'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'decodeSessionJWT'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns null for missing token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">undefined</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toBeNull</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns null for expired token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> token</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> signJWT</span><span style=\"color:#E1E4E8\">({ sub: </span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">, exp: </span><span style=\"color:#79B8FF\">1</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(token)).</span><span style=\"color:#B392F0\">toBeNull</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'returns claims for valid token'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> token</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> signJWT</span><span style=\"color:#E1E4E8\">({ sub: </span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">, exp: Math.</span><span style=\"color:#B392F0\">floor</span><span style=\"color:#E1E4E8\">(Date.</span><span style=\"color:#B392F0\">now</span><span style=\"color:#E1E4E8\">()</span><span style=\"color:#F97583\">/</span><span style=\"color:#79B8FF\">1000</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">+</span><span style=\"color:#79B8FF\"> 60</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">decodeSessionJWT</span><span style=\"color:#E1E4E8\">(token)?.sub).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'u1'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// lib/auth/__tests__/jwt.test.ts\nimport { describe, it, expect } from 'vitest'\nimport { decodeSessionJWT } from '../jwt'\n\ndescribe('decodeSessionJWT', () => {\n  it('returns null for missing token', () => {\n    expect(decodeSessionJWT(undefined)).toBeNull()\n  })\n  it('returns null for expired token', () => {\n    const token = signJWT({ sub: 'u1', exp: 1 })\n    expect(decodeSessionJWT(token)).toBeNull()\n  })\n  it('returns claims for valid token', () => {\n    const token = signJWT({ sub: 'u1', exp: Math.floor(Date.now()/1000) + 60 })\n    expect(decodeSessionJWT(token)?.sub).toBe('u1')\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Priority coverage:</strong></p>\n<ul>\n<li><code>lib/auth/*</code> — decode JWT, cookie helpers, role validation.</li>\n<li><code>lib/zod/*</code> — all schemas (boundary cases, invalid values).</li>\n<li><code>lib/mux/sign.ts</code> — URL signing.</li>\n<li><code>lib/cache/*</code> — keys and tags.</li>\n<li><code>lib/recommendations/*</code> — scoring functions.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/4",
+            "number": 4,
+            "title": "Component tests (Vitest + RTL)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Goal:</strong> Client components in isolation. Props in → DOM/events out.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "tsx",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// components/__tests__/RatingControls.test.tsx</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { render, screen } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@testing-library/react'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> userEvent </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@testing-library/user-event'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { RatingControls } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../RatingControls'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'&#x3C;RatingControls>'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'shows the current rating'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"up\"</span><span style=\"color:#B392F0\"> onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()} />)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">thumbs up</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toHaveAttribute</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'aria-pressed'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'true'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'calls onRate with new value on click'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> onRate</span><span style=\"color:#F97583\"> =</span><span style=\"color:#E1E4E8\"> vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{</span><span style=\"color:#79B8FF\">null</span><span style=\"color:#E1E4E8\">} </span><span style=\"color:#B392F0\">onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{onRate} />)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> userEvent.</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">love</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }))</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(onRate).</span><span style=\"color:#B392F0\">toHaveBeenCalledWith</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'t1'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#9ECBFF\">'love'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'is keyboard accessible'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    render</span><span style=\"color:#E1E4E8\">(&#x3C;</span><span style=\"color:#79B8FF\">RatingControls</span><span style=\"color:#B392F0\"> titleId</span><span style=\"color:#F97583\">=</span><span style=\"color:#9ECBFF\">\"t1\"</span><span style=\"color:#B392F0\"> initialValue</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{</span><span style=\"color:#79B8FF\">null</span><span style=\"color:#E1E4E8\">} </span><span style=\"color:#B392F0\">onRate</span><span style=\"color:#F97583\">=</span><span style=\"color:#E1E4E8\">{vi.</span><span style=\"color:#B392F0\">fn</span><span style=\"color:#E1E4E8\">()} />)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> userEvent.</span><span style=\"color:#B392F0\">tab</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(screen.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">thumbs up</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toHaveFocus</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// components/__tests__/RatingControls.test.tsx\nimport { render, screen } from '@testing-library/react'\nimport userEvent from '@testing-library/user-event'\nimport { RatingControls } from '../RatingControls'\n\ndescribe('<RatingControls>', () => {\n  it('shows the current rating', () => {\n    render(<RatingControls titleId=\"t1\" initialValue=\"up\" onRate={vi.fn()} />)\n    expect(screen.getByRole('button', { name: /thumbs up/i })).toHaveAttribute('aria-pressed', 'true')\n  })\n  it('calls onRate with new value on click', async () => {\n    const onRate = vi.fn()\n    render(<RatingControls titleId=\"t1\" initialValue={null} onRate={onRate} />)\n    await userEvent.click(screen.getByRole('button', { name: /love/i }))\n    expect(onRate).toHaveBeenCalledWith('t1', 'love')\n  })\n  it('is keyboard accessible', async () => {\n    render(<RatingControls titleId=\"t1\" initialValue={null} onRate={vi.fn()} />)\n    await userEvent.tab()\n    expect(screen.getByRole('button', { name: /thumbs up/i })).toHaveFocus()\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Priority coverage:</strong></p>\n<ul>\n<li><code>Card</code> — hover preview fires with debounce, not on touch devices.</li>\n<li><code>SearchBar</code> — 200ms debounce, URL updated via <code>router.replace</code>.</li>\n<li><code>PlayerShell</code> — controls appear on hover/focus, hidden by default, keyboard shortcuts (space=play, ← →=seek).</li>\n<li><code>ProfilePicker</code> — selection, PIN dialog when applicable.</li>\n<li><code>PinDialog</code> — locked after 5 attempts.</li>\n<li><code>CardModal</code> — focus trap, ESC closes.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/5",
+            "number": 5,
+            "title": "Server Component tests",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p>RSC are tested by executing the component directly and asserting on the generated <code>ReactNode</code>/HTML.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "tsx",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/browse/__tests__/page.test.tsx</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { renderToString } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'react-dom/server'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> BrowsePage </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../page'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { vi } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">vi.</span><span style=\"color:#B392F0\">mock</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'next/headers'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  cookies</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">: (</span><span style=\"color:#FFAB70\">k</span><span style=\"color:#F97583\">:</span><span style=\"color:#79B8FF\"> string</span><span style=\"color:#E1E4E8\">) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> k </span><span style=\"color:#F97583\">===</span><span style=\"color:#9ECBFF\"> 'active_profile'</span><span style=\"color:#F97583\"> ?</span><span style=\"color:#E1E4E8\"> { value: </span><span style=\"color:#9ECBFF\">'p1'</span><span style=\"color:#E1E4E8\"> } </span><span style=\"color:#F97583\">:</span><span style=\"color:#79B8FF\"> null</span><span style=\"color:#E1E4E8\"> }),</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}))</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">vi.</span><span style=\"color:#B392F0\">mock</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'@/lib/db'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> ({ db: { </span><span style=\"color:#6A737D\">/* stub queries */</span><span style=\"color:#E1E4E8\"> } }))</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'renders Trending row with first 10 titles'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> html</span><span style=\"color:#F97583\"> =</span><span style=\"color:#B392F0\"> renderToString</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> BrowsePage</span><span style=\"color:#E1E4E8\">())</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(html).</span><span style=\"color:#B392F0\">toMatch</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">Trending Now</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(html.</span><span style=\"color:#B392F0\">match</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">data-title-card</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">g</span><span style=\"color:#E1E4E8\">)?.</span><span style=\"color:#79B8FF\">length</span><span style=\"color:#E1E4E8\">).</span><span style=\"color:#B392F0\">toBeGreaterThanOrEqual</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">10</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// app/(app)/browse/__tests__/page.test.tsx\nimport { renderToString } from 'react-dom/server'\nimport BrowsePage from '../page'\nimport { vi } from 'vitest'\n\nvi.mock('next/headers', () => ({\n  cookies: async () => ({ get: (k: string) => k === 'active_profile' ? { value: 'p1' } : null }),\n}))\nvi.mock('@/lib/db', () => ({ db: { /* stub queries */ } }))\n\nit('renders Trending row with first 10 titles', async () => {\n  const html = renderToString(await BrowsePage())\n  expect(html).toMatch(/Trending Now/)\n  expect(html.match(/data-title-card/g)?.length).toBeGreaterThanOrEqual(10)\n})"
+              }
+            ]
+          },
+          {
+            "id": "testing/6",
+            "number": 6,
+            "title": "Integration tests (Server Functions + Route Handlers)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Goal:</strong> validate the server↔DB boundary. Uses real Postgres via Testcontainers, no DB mocks.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// app/(app)/profiles/__tests__/actions.integration.test.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { describe, it, beforeAll, afterAll, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> 'vitest'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { startPostgres } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@/test/containers'</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { selectProfile } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '../actions'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#F97583\">let</span><span style=\"color:#B392F0\"> stop</span><span style=\"color:#F97583\">:</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#B392F0\"> Promise</span><span style=\"color:#E1E4E8\">&#x3C;</span><span style=\"color:#79B8FF\">void</span><span style=\"color:#E1E4E8\">></span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">beforeAll</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> { stop </span><span style=\"color:#F97583\">=</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> startPostgres</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">afterAll</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> { </span><span style=\"color:#F97583\">await</span><span style=\"color:#B392F0\"> stop</span><span style=\"color:#E1E4E8\">() })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'selectProfile'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'sets active_profile cookie when profile belongs to user'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> user</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(user.id)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(user, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">      expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">getCookie</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'active_profile'</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(profile.id)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'throws when profile belongs to another user'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> userA</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> userB</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profileB</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(userB.id)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(userA, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profileB.id })).rejects.</span><span style=\"color:#B392F0\">toThrow</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">not found</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  it</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'requires PIN when profile.pinHash is set'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> user</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createUserFixture</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> profile</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#B392F0\"> createProfileFixture</span><span style=\"color:#E1E4E8\">(user.id, { pin: </span><span style=\"color:#9ECBFF\">'1234'</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> withSession</span><span style=\"color:#E1E4E8\">(user, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#B392F0\">selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id })).rejects.</span><span style=\"color:#B392F0\">toThrow</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">PIN</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">      await</span><span style=\"color:#B392F0\"> selectProfile</span><span style=\"color:#E1E4E8\">({ profileId: profile.id, pin: </span><span style=\"color:#9ECBFF\">'1234'</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#6A737D\">// ok</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// app/(app)/profiles/__tests__/actions.integration.test.ts\nimport { describe, it, beforeAll, afterAll, expect } from 'vitest'\nimport { startPostgres } from '@/test/containers'\nimport { selectProfile } from '../actions'\n\nlet stop: () => Promise<void>\nbeforeAll(async () => { stop = await startPostgres() })\nafterAll(async () => { await stop() })\n\ndescribe('selectProfile', () => {\n  it('sets active_profile cookie when profile belongs to user', async () => {\n    const user = await createUserFixture()\n    const profile = await createProfileFixture(user.id)\n    await withSession(user, async () => {\n      await selectProfile({ profileId: profile.id })\n      expect(getCookie('active_profile')).toBe(profile.id)\n    })\n  })\n  it('throws when profile belongs to another user', async () => {\n    const userA = await createUserFixture()\n    const userB = await createUserFixture()\n    const profileB = await createProfileFixture(userB.id)\n    await withSession(userA, async () => {\n      await expect(selectProfile({ profileId: profileB.id })).rejects.toThrow(/not found/i)\n    })\n  })\n  it('requires PIN when profile.pinHash is set', async () => {\n    const user = await createUserFixture()\n    const profile = await createProfileFixture(user.id, { pin: '1234' })\n    await withSession(user, async () => {\n      await expect(selectProfile({ profileId: profile.id })).rejects.toThrow(/PIN/)\n      await selectProfile({ profileId: profile.id, pin: '1234' }) // ok\n    })\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Priority coverage:</strong></p>\n<ul>\n<li><code>/api/stripe/webhook</code> — valid/invalid signature, idempotency, each event type.</li>\n<li><code>/api/playback/[id]</code> — no subscription → 403; kids + R-rated → 403; valid subscription → signed URL.</li>\n<li><code>/api/progress</code> — writes <code>watch_progress</code>; never blocks response (verify time &#x3C; 50ms).</li>\n<li><code>/api/sync/tmdb</code> — authentication with cron secret, correct upsert, idempotent.</li>\n<li>Auth.js callback — <code>email_verified=false</code> → rejected.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/7",
+            "number": 7,
+            "title": "E2E tests (Playwright)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><strong>Goal:</strong> validate complete user flows. Critical tests only.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\">// e2e/auth.spec.ts</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> { test, expect } </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@playwright/test'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">test.</span><span style=\"color:#B392F0\">describe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Authentication'</span><span style=\"color:#E1E4E8\">, () </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Google sign-in → profile select → browse'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#FFAB70\">context</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> mockGoogleOAuth</span><span style=\"color:#E1E4E8\">(context, { email: </span><span style=\"color:#9ECBFF\">'demo@ex.com'</span><span style=\"color:#E1E4E8\">, sub: </span><span style=\"color:#9ECBFF\">'g_123'</span><span style=\"color:#E1E4E8\">, email_verified: </span><span style=\"color:#79B8FF\">true</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">continuar con google</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">profiles</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">demo</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#85E89D;font-weight:bold\">\\/</span><span style=\"color:#DBEDFF\">browse</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'heading'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">trending now</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> })).</span><span style=\"color:#B392F0\">toBeVisible</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'rejects unverified email'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#FFAB70\">context</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> mockGoogleOAuth</span><span style=\"color:#E1E4E8\">(context, { email: </span><span style=\"color:#9ECBFF\">'spoof@ex.com'</span><span style=\"color:#E1E4E8\">, email_verified: </span><span style=\"color:#79B8FF\">false</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/signin'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">getByRole</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'button'</span><span style=\"color:#E1E4E8\">, { name:</span><span style=\"color:#9ECBFF\"> /</span><span style=\"color:#DBEDFF\">continuar con google</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#F97583\">i</span><span style=\"color:#E1E4E8\"> }).</span><span style=\"color:#B392F0\">click</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page).</span><span style=\"color:#B392F0\">toHaveURL</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#DBEDFF\">error=EmailNotVerified</span><span style=\"color:#9ECBFF\">/</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'rejects invalid OAuth state (CSRF)'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">request</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">    const</span><span style=\"color:#79B8FF\"> res</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#E1E4E8\"> request.</span><span style=\"color:#B392F0\">get</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/api/auth/callback/google?code=abc&#x26;state=invalid'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">    expect</span><span style=\"color:#E1E4E8\">(res.</span><span style=\"color:#B392F0\">status</span><span style=\"color:#E1E4E8\">()).</span><span style=\"color:#B392F0\">toBe</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#79B8FF\">400</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "// e2e/auth.spec.ts\nimport { test, expect } from '@playwright/test'\n\ntest.describe('Authentication', () => {\n  test('Google sign-in → profile select → browse', async ({ page, context }) => {\n    await mockGoogleOAuth(context, { email: 'demo@ex.com', sub: 'g_123', email_verified: true })\n    await page.goto('/signin')\n    await page.getByRole('button', { name: /continuar con google/i }).click()\n    await expect(page).toHaveURL(/\\/profiles/)\n    await page.getByRole('button', { name: /demo/i }).click()\n    await expect(page).toHaveURL(/\\/browse/)\n    await expect(page.getByRole('heading', { name: /trending now/i })).toBeVisible()\n  })\n\n  test('rejects unverified email', async ({ page, context }) => {\n    await mockGoogleOAuth(context, { email: 'spoof@ex.com', email_verified: false })\n    await page.goto('/signin')\n    await page.getByRole('button', { name: /continuar con google/i }).click()\n    await expect(page).toHaveURL(/error=EmailNotVerified/)\n  })\n\n  test('rejects invalid OAuth state (CSRF)', async ({ request }) => {\n    const res = await request.get('/api/auth/callback/google?code=abc&state=invalid')\n    expect(res.status()).toBe(400)\n  })\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>E2E flows to cover:</strong></p>\n<ol>\n<li><strong>Auth:</strong> Google sign-in happy path, unverified email, invalid state, account linking.</li>\n<li><strong>Profile:</strong> select profile, create profile, correct/incorrect PIN, 5 attempts → lock.</li>\n<li><strong>Browse:</strong> navigate to <code>/browse</code>, row scroll, click on card, modal with info.</li>\n<li><strong>Player:</strong> play title, seek, resume from another session.</li>\n<li><strong>My List:</strong> add/remove, refresh, persists.</li>\n<li><strong>Search:</strong> type-ahead, navigate to result.</li>\n<li><strong>Subscription:</strong> no subscription → blocked at <code>/watch/[id]</code>, checkout (Stripe test mode), unlock.</li>\n<li><strong>Parental:</strong> kids profile cannot see R-rated content.</li>\n<li><strong>Sign out:</strong> clears cookies, redirects.</li>\n</ol>"
+              }
+            ]
+          },
+          {
+            "id": "testing/8",
+            "number": 8,
+            "title": "Visual regression",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p>Playwright snapshots on visually stable components (Hero, Card, Player chrome). 0.1% tolerance.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'Hero matches snapshot'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">waitForSelector</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'[data-hero]'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#B392F0\"> expect</span><span style=\"color:#E1E4E8\">(page.</span><span style=\"color:#B392F0\">locator</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'[data-hero]'</span><span style=\"color:#E1E4E8\">)).</span><span style=\"color:#B392F0\">toHaveScreenshot</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'hero.png'</span><span style=\"color:#E1E4E8\">, { maxDiffPixelRatio: </span><span style=\"color:#79B8FF\">0.001</span><span style=\"color:#E1E4E8\"> })</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "test('Hero matches snapshot', async ({ page }) => {\n  await page.goto('/browse')\n  await page.waitForSelector('[data-hero]')\n  await expect(page.locator('[data-hero]')).toHaveScreenshot('hero.png', { maxDiffPixelRatio: 0.001 })\n})"
+              }
+            ]
+          },
+          {
+            "id": "testing/9",
+            "number": 9,
+            "title": "Accessibility",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<p><code>@axe-core/playwright</code> on every critical E2E test. Fails the build if there are <code>serious</code> or <code>critical</code> violations.</p>"
+              },
+              {
+                "kind": "code",
+                "lang": "ts",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#F97583\">import</span><span style=\"color:#E1E4E8\"> AxeBuilder </span><span style=\"color:#F97583\">from</span><span style=\"color:#9ECBFF\"> '@axe-core/playwright'</span></span>\n<span class=\"line\"></span>\n<span class=\"line\"><span style=\"color:#B392F0\">test</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'browse page is accessible'</span><span style=\"color:#E1E4E8\">, </span><span style=\"color:#F97583\">async</span><span style=\"color:#E1E4E8\"> ({ </span><span style=\"color:#FFAB70\">page</span><span style=\"color:#E1E4E8\"> }) </span><span style=\"color:#F97583\">=></span><span style=\"color:#E1E4E8\"> {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  await</span><span style=\"color:#E1E4E8\"> page.</span><span style=\"color:#B392F0\">goto</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'/browse'</span><span style=\"color:#E1E4E8\">)</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  const</span><span style=\"color:#79B8FF\"> results</span><span style=\"color:#F97583\"> =</span><span style=\"color:#F97583\"> await</span><span style=\"color:#F97583\"> new</span><span style=\"color:#B392F0\"> AxeBuilder</span><span style=\"color:#E1E4E8\">({ page }).</span><span style=\"color:#B392F0\">analyze</span><span style=\"color:#E1E4E8\">()</span></span>\n<span class=\"line\"><span style=\"color:#B392F0\">  expect</span><span style=\"color:#E1E4E8\">(results.violations.</span><span style=\"color:#B392F0\">filter</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#FFAB70\">v</span><span style=\"color:#F97583\"> =></span><span style=\"color:#E1E4E8\"> [</span><span style=\"color:#9ECBFF\">'serious'</span><span style=\"color:#E1E4E8\">,</span><span style=\"color:#9ECBFF\">'critical'</span><span style=\"color:#E1E4E8\">].</span><span style=\"color:#B392F0\">includes</span><span style=\"color:#E1E4E8\">(v.impact</span><span style=\"color:#F97583\">!</span><span style=\"color:#E1E4E8\">))).</span><span style=\"color:#B392F0\">toEqual</span><span style=\"color:#E1E4E8\">([])</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">})</span></span></code></pre>",
+                "raw": "import AxeBuilder from '@axe-core/playwright'\n\ntest('browse page is accessible', async ({ page }) => {\n  await page.goto('/browse')\n  const results = await new AxeBuilder({ page }).analyze()\n  expect(results.violations.filter(v => ['serious','critical'].includes(v.impact!))).toEqual([])\n})"
+              },
+              {
+                "kind": "prose",
+                "html": "<p>Manual accessibility checklist:</p>\n<ul>\n<li>Player fully navigable by keyboard (Tab, Space, ←→↑↓, F, M).</li>\n<li>Rows with horizontal scroll via keyboard.</li>\n<li>Modal with focus trap + ESC.</li>\n<li>Contrast ≥ 4.5:1 on text, 3:1 on UI.</li>\n<li><code>prefers-reduced-motion</code> disables trailer autoplay.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/10",
+            "number": 10,
+            "title": "Performance",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><strong>Lighthouse CI</strong> in pipeline: budget LCP &#x3C; 2.5s, TBT &#x3C; 200ms, CLS &#x3C; 0.1, Performance score ≥ 90.</li>\n<li><strong>Real Web Vitals</strong> via PostHog (<code>web-vitals</code> npm).</li>\n<li><strong>Load tests with k6:</strong>\n<ul>\n<li><code>/api/progress</code> — sustained 1000 req/s, p99 &#x3C; 100ms.</li>\n<li><code>/api/playback/[id]</code> — 200 req/s, p99 &#x3C; 200ms.</li>\n</ul>\n</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/11",
+            "number": 11,
+            "title": "Security tests",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Test</th>\n<th>Tool</th>\n<th>When</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Vulnerable dependencies</td>\n<td><code>npm audit</code> + Snyk</td>\n<td>CI per PR</td>\n</tr>\n<tr>\n<td>Static analysis (SAST)</td>\n<td><code>eslint-plugin-security</code>, <code>semgrep</code></td>\n<td>CI per PR</td>\n</tr>\n<tr>\n<td>Secrets in code</td>\n<td><code>gitleaks</code></td>\n<td>pre-commit hook</td>\n</tr>\n<tr>\n<td>OWASP ZAP baseline</td>\n<td>ZAP CLI</td>\n<td>Nightly against preview</td>\n</tr>\n<tr>\n<td>Security headers</td>\n<td><code>securityheaders.com</code> API in CI</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>Cookies with correct flags</td>\n<td>Custom E2E test</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>JWT tampering</td>\n<td>Custom E2E (modify cookie, expect 401)</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>CSRF in OAuth callback</td>\n<td>E2E (invalid state)</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>OAuth code replay</td>\n<td>Integration test</td>\n<td>PR</td>\n</tr>\n<tr>\n<td>PIN rate limit</td>\n<td>E2E (6 attempts → lock)</td>\n<td>PR</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "testing/12",
+            "number": 12,
+            "title": "CI Pipeline (GitHub Actions)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "yaml",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#6A737D\"># .github/workflows/ci.yml (schematic)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">jobs</span><span style=\"color:#E1E4E8\">:</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  lint</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># eslint + tsc --noEmit + gitleaks</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  unit</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># vitest run --coverage (gate 80%)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  component</span><span style=\"color:#E1E4E8\">:   </span><span style=\"color:#6A737D\"># vitest run components/</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  integration</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#6A737D\"># vitest run --pool=forks (Testcontainers postgres)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  e2e</span><span style=\"color:#E1E4E8\">:         </span><span style=\"color:#6A737D\"># playwright test (3 browsers, parallel)</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  visual</span><span style=\"color:#E1E4E8\">:      </span><span style=\"color:#6A737D\"># playwright snapshots</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  a11y</span><span style=\"color:#E1E4E8\">:        </span><span style=\"color:#6A737D\"># axe in E2E</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  security</span><span style=\"color:#E1E4E8\">:    </span><span style=\"color:#6A737D\"># npm audit + snyk + zap baseline</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  lighthouse</span><span style=\"color:#E1E4E8\">:  </span><span style=\"color:#6A737D\"># lhci collect on preview deploy</span></span>\n<span class=\"line\"><span style=\"color:#85E89D\">  bundle-size</span><span style=\"color:#E1E4E8\">: </span><span style=\"color:#6A737D\"># next-bundle-analyzer + size-limit gate</span></span></code></pre>",
+                "raw": "# .github/workflows/ci.yml (schematic)\njobs:\n  lint:        # eslint + tsc --noEmit + gitleaks\n  unit:        # vitest run --coverage (gate 80%)\n  component:   # vitest run components/\n  integration: # vitest run --pool=forks (Testcontainers postgres)\n  e2e:         # playwright test (3 browsers, parallel)\n  visual:      # playwright snapshots\n  a11y:        # axe in E2E\n  security:    # npm audit + snyk + zap baseline\n  lighthouse:  # lhci collect on preview deploy\n  bundle-size: # next-bundle-analyzer + size-limit gate"
+              },
+              {
+                "kind": "prose",
+                "html": "<p><strong>Required gates for merge:</strong></p>\n<ul>\n<li>Unit coverage ≥ 80% in <code>lib/</code>.</li>\n<li>0 type errors, 0 eslint errors.</li>\n<li>0 a11y <code>serious</code>/<code>critical</code> violations.</li>\n<li>Lighthouse Performance ≥ 90 on <code>/browse</code>.</li>\n<li>Initial JS bundle ≤ 200KB gzip.</li>\n<li>0 <code>high</code>/<code>critical</code> vulnerabilities.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/13",
+            "number": 13,
+            "title": "Test data strategy",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ul>\n<li><strong>Fixture factory</strong> (<code>@/test/factories.ts</code>) for <code>user</code>, <code>profile</code>, <code>title</code>, <code>episode</code>, <code>subscription</code>.</li>\n<li><strong>Deterministic seeds</strong> in Postgres test container: 50 titles with varied types, 3 users, 5 profiles.</li>\n<li><strong>MSW handlers</strong> for TMDB and Mux with sanitized real responses.</li>\n<li><strong>Stripe test mode</strong> for integration + E2E.</li>\n<li><strong>Mock OAuth provider</strong> (<code>mock-oauth2-server</code>) in E2E to avoid Google dependency.</li>\n</ul>"
+              }
+            ]
+          },
+          {
+            "id": "testing/14",
+            "number": 14,
+            "title": "Test file structure",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "text",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span>src/</span></span>\n<span class=\"line\"><span>  lib/</span></span>\n<span class=\"line\"><span>    auth/</span></span>\n<span class=\"line\"><span>      jwt.ts</span></span>\n<span class=\"line\"><span>      jwt.test.ts                 ← unit, co-located</span></span>\n<span class=\"line\"><span>  components/</span></span>\n<span class=\"line\"><span>    RatingControls.tsx</span></span>\n<span class=\"line\"><span>    RatingControls.test.tsx       ← component, co-located</span></span>\n<span class=\"line\"><span>  app/(app)/profiles/</span></span>\n<span class=\"line\"><span>    actions.ts</span></span>\n<span class=\"line\"><span>    actions.test.ts               ← integration, co-located</span></span>\n<span class=\"line\"><span>test/</span></span>\n<span class=\"line\"><span>  factories.ts</span></span>\n<span class=\"line\"><span>  containers.ts                   ← Testcontainers setup</span></span>\n<span class=\"line\"><span>  msw/</span></span>\n<span class=\"line\"><span>    handlers.ts</span></span>\n<span class=\"line\"><span>e2e/</span></span>\n<span class=\"line\"><span>  auth.spec.ts</span></span>\n<span class=\"line\"><span>  browse.spec.ts</span></span>\n<span class=\"line\"><span>  player.spec.ts</span></span>\n<span class=\"line\"><span>  subscription.spec.ts</span></span>\n<span class=\"line\"><span>  fixtures/</span></span>\n<span class=\"line\"><span>    mock-oauth.ts</span></span></code></pre>",
+                "raw": "src/\n  lib/\n    auth/\n      jwt.ts\n      jwt.test.ts                 ← unit, co-located\n  components/\n    RatingControls.tsx\n    RatingControls.test.tsx       ← component, co-located\n  app/(app)/profiles/\n    actions.ts\n    actions.test.ts               ← integration, co-located\ntest/\n  factories.ts\n  containers.ts                   ← Testcontainers setup\n  msw/\n    handlers.ts\ne2e/\n  auth.spec.ts\n  browse.spec.ts\n  player.spec.ts\n  subscription.spec.ts\n  fixtures/\n    mock-oauth.ts"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "security",
@@ -1049,7 +2455,125 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Seguridad",
+        "tagline": "20 amenazas, 20 mitigaciones — defense in depth.",
+        "excerpt": "CSRF, PKCE, JWT en httpOnly, CSP estricta, rate limit, Mux signed URLs, idempotencia de webhooks.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "security/1",
+            "number": 1,
+            "title": "Amenazas y mitigaciones",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Amenaza</th>\n<th>Mitigación</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>CSRF en callback OAuth</td>\n<td><code>state</code> aleatorio en cookie <code>__Host-</code>.</td>\n</tr>\n<tr>\n<td>2</td>\n<td>Authorization code interception</td>\n<td><strong>PKCE S256</strong> obligatorio.</td>\n</tr>\n<tr>\n<td>3</td>\n<td>Replay del ID token</td>\n<td><code>nonce</code> aleatorio validado vs JWT.</td>\n</tr>\n<tr>\n<td>4</td>\n<td>ID token falsificado</td>\n<td>Verificar firma JWS vs JWK Google + <code>iss</code>/<code>aud</code>/<code>exp</code>.</td>\n</tr>\n<tr>\n<td>5</td>\n<td>Email no verificado</td>\n<td>Rechazar si <code>email_verified !== true</code>.</td>\n</tr>\n<tr>\n<td>6</td>\n<td>Account takeover vía linking</td>\n<td><code>allowDangerousEmailAccountLinking: false</code>.</td>\n</tr>\n<tr>\n<td>7</td>\n<td>Open redirect en <code>callbackUrl</code></td>\n<td>Auth.js valida mismo origen.</td>\n</tr>\n<tr>\n<td>8</td>\n<td>XSS robando JWT</td>\n<td>Cookie <code>httpOnly</code> + CSP estricta.</td>\n</tr>\n<tr>\n<td>9</td>\n<td>Cookie sin TLS</td>\n<td><code>secure: true</code> + prefijo <code>__Secure-</code>/<code>__Host-</code>.</td>\n</tr>\n<tr>\n<td>10</td>\n<td>CSRF en Server Functions</td>\n<td><code>sameSite=lax</code> + token CSRF de Auth.js.</td>\n</tr>\n<tr>\n<td>11</td>\n<td>Session fixation</td>\n<td>Nuevo JWT después de cada login.</td>\n</tr>\n<tr>\n<td>12</td>\n<td>Brute force PIN</td>\n<td>Rate limit 5 intentos / 15 min por (IP, profileId).</td>\n</tr>\n<tr>\n<td>13</td>\n<td>Clickjacking</td>\n<td><code>X-Frame-Options: DENY</code> + CSP <code>frame-ancestors 'none'</code>.</td>\n</tr>\n<tr>\n<td>14</td>\n<td>Stripe webhook spoof</td>\n<td>Verificar firma con <code>STRIPE_WEBHOOK_SECRET</code>.</td>\n</tr>\n<tr>\n<td>15</td>\n<td>Mux signed URL leak</td>\n<td>TTL 4h + <code>playback_restriction</code> por IP/UA.</td>\n</tr>\n<tr>\n<td>16</td>\n<td>Logs con tokens</td>\n<td>Redactar <code>Authorization</code>, <code>Cookie</code>, <code>id_token</code>, <code>access_token</code>.</td>\n</tr>\n<tr>\n<td>17</td>\n<td>SQL injection</td>\n<td>Drizzle parameterized queries (sin string concat).</td>\n</tr>\n<tr>\n<td>18</td>\n<td>Dependencias vulnerables</td>\n<td>Snyk + <code>npm audit</code> en CI.</td>\n</tr>\n<tr>\n<td>19</td>\n<td>Bypass del proxy.ts</td>\n<td><code>matcher</code> cubre todo excepto assets; auth re-validada en cada Server Function.</td>\n</tr>\n<tr>\n<td>20</td>\n<td>Edad de contenido (kids)</td>\n<td>Gate server-side en <code>/watch/[id]</code> además del UI.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "security/2",
+            "number": 2,
+            "title": "Cookies — configuración",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Cookie</th>\n<th>Prefijo</th>\n<th>httpOnly</th>\n<th>secure</th>\n<th>sameSite</th>\n<th>maxAge</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Sesión</td>\n<td><code>__Secure-authjs.session-token</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>30d</td>\n</tr>\n<tr>\n<td>PKCE verifier</td>\n<td><code>__Host-authjs.pkce.code_verifier</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>OAuth state</td>\n<td><code>__Host-authjs.state</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>OAuth nonce</td>\n<td><code>__Host-authjs.nonce</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>CSRF token</td>\n<td><code>__Host-authjs.csrf-token</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>sesión</td>\n</tr>\n<tr>\n<td>Active profile</td>\n<td><code>active_profile</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>30d</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "security/3",
+            "number": 3,
+            "title": "Headers de seguridad (next.config.js)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "js",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#E1E4E8\">async </span><span style=\"color:#B392F0\">headers</span><span style=\"color:#E1E4E8\">() {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  return</span><span style=\"color:#E1E4E8\"> [{</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    source: </span><span style=\"color:#9ECBFF\">'/(.*)'</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    headers: [</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Strict-Transport-Security'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'max-age=63072000; includeSubDomains; preload'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'X-Frame-Options'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'DENY'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'X-Content-Type-Options'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'nosniff'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Referrer-Policy'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'strict-origin-when-cross-origin'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Permissions-Policy'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'camera=(), microphone=(), geolocation=()'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Content-Security-Policy'</span><span style=\"color:#E1E4E8\">, value: [</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"default-src 'self'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"img-src 'self' https://image.tmdb.org https://lh3.googleusercontent.com data:\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"media-src https://stream.mux.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"script-src 'self' 'nonce-{NONCE}'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"style-src 'self' 'unsafe-inline'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"connect-src 'self' https://accounts.google.com https://oauth2.googleapis.com https://api.mux.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"frame-ancestors 'none'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"form-action 'self' https://accounts.google.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      ].</span><span style=\"color:#B392F0\">join</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'; '</span><span style=\"color:#E1E4E8\">) },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    ],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }]</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "async headers() {\n  return [{\n    source: '/(.*)',\n    headers: [\n      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },\n      { key: 'X-Frame-Options', value: 'DENY' },\n      { key: 'X-Content-Type-Options', value: 'nosniff' },\n      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },\n      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },\n      { key: 'Content-Security-Policy', value: [\n        \"default-src 'self'\",\n        \"img-src 'self' https://image.tmdb.org https://lh3.googleusercontent.com data:\",\n        \"media-src https://stream.mux.com\",\n        \"script-src 'self' 'nonce-{NONCE}'\",\n        \"style-src 'self' 'unsafe-inline'\",\n        \"connect-src 'self' https://accounts.google.com https://oauth2.googleapis.com https://api.mux.com\",\n        \"frame-ancestors 'none'\",\n        \"form-action 'self' https://accounts.google.com\",\n      ].join('; ') },\n    ],\n  }]\n}"
+              }
+            ]
+          },
+          {
+            "id": "security/4",
+            "number": 4,
+            "title": "Rate limiting (Upstash Redis)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Endpoint</th>\n<th>Límite</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>/api/auth/signin/google</code></td>\n<td>10 req/min por IP</td>\n</tr>\n<tr>\n<td><code>/api/auth/callback/google</code></td>\n<td>20 req/min por IP</td>\n</tr>\n<tr>\n<td>PIN de perfil</td>\n<td>5 intentos / 15 min por (IP, profileId)</td>\n</tr>\n<tr>\n<td><code>/api/progress</code></td>\n<td>12 req/min por sesión (heartbeat cada 10s + margen)</td>\n</tr>\n<tr>\n<td><code>/api/search</code></td>\n<td>60 req/min por sesión</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Security",
+        "tagline": "20 threats, 20 mitigations — defense in depth.",
+        "excerpt": "CSRF, PKCE, JWT in httpOnly, strict CSP, rate limiting, signed Mux URLs, webhook idempotency.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "security/1",
+            "number": 1,
+            "title": "Threats and mitigations",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>#</th>\n<th>Threat</th>\n<th>Mitigation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>CSRF in OAuth callback</td>\n<td>Random <code>state</code> in <code>__Host-</code> cookie.</td>\n</tr>\n<tr>\n<td>2</td>\n<td>Authorization code interception</td>\n<td><strong>PKCE S256</strong> mandatory.</td>\n</tr>\n<tr>\n<td>3</td>\n<td>ID token replay</td>\n<td>Random <code>nonce</code> validated against JWT.</td>\n</tr>\n<tr>\n<td>4</td>\n<td>Forged ID token</td>\n<td>Verify JWS signature against Google JWK + <code>iss</code>/<code>aud</code>/<code>exp</code>.</td>\n</tr>\n<tr>\n<td>5</td>\n<td>Unverified email</td>\n<td>Reject if <code>email_verified !== true</code>.</td>\n</tr>\n<tr>\n<td>6</td>\n<td>Account takeover via linking</td>\n<td><code>allowDangerousEmailAccountLinking: false</code>.</td>\n</tr>\n<tr>\n<td>7</td>\n<td>Open redirect in <code>callbackUrl</code></td>\n<td>Auth.js validates same origin.</td>\n</tr>\n<tr>\n<td>8</td>\n<td>XSS stealing JWT</td>\n<td><code>httpOnly</code> cookie + strict CSP.</td>\n</tr>\n<tr>\n<td>9</td>\n<td>Cookie without TLS</td>\n<td><code>secure: true</code> + <code>__Secure-</code>/<code>__Host-</code> prefix.</td>\n</tr>\n<tr>\n<td>10</td>\n<td>CSRF in Server Functions</td>\n<td><code>sameSite=lax</code> + Auth.js CSRF token.</td>\n</tr>\n<tr>\n<td>11</td>\n<td>Session fixation</td>\n<td>New JWT after every login.</td>\n</tr>\n<tr>\n<td>12</td>\n<td>PIN brute force</td>\n<td>Rate limit 5 attempts / 15 min per (IP, profileId).</td>\n</tr>\n<tr>\n<td>13</td>\n<td>Clickjacking</td>\n<td><code>X-Frame-Options: DENY</code> + CSP <code>frame-ancestors 'none'</code>.</td>\n</tr>\n<tr>\n<td>14</td>\n<td>Stripe webhook spoofing</td>\n<td>Verify signature with <code>STRIPE_WEBHOOK_SECRET</code>.</td>\n</tr>\n<tr>\n<td>15</td>\n<td>Mux signed URL leak</td>\n<td>4h TTL + <code>playback_restriction</code> by IP/UA.</td>\n</tr>\n<tr>\n<td>16</td>\n<td>Tokens in logs</td>\n<td>Redact <code>Authorization</code>, <code>Cookie</code>, <code>id_token</code>, <code>access_token</code>.</td>\n</tr>\n<tr>\n<td>17</td>\n<td>SQL injection</td>\n<td>Drizzle parameterized queries (no string concat).</td>\n</tr>\n<tr>\n<td>18</td>\n<td>Vulnerable dependencies</td>\n<td>Snyk + <code>npm audit</code> in CI.</td>\n</tr>\n<tr>\n<td>19</td>\n<td>proxy.ts bypass</td>\n<td><code>matcher</code> covers everything except assets; auth re-validated in every Server Function.</td>\n</tr>\n<tr>\n<td>20</td>\n<td>Content age (kids)</td>\n<td>Server-side gate on <code>/watch/[id]</code> in addition to UI.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "security/2",
+            "number": 2,
+            "title": "Cookies — configuration",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Cookie</th>\n<th>Prefix</th>\n<th>httpOnly</th>\n<th>secure</th>\n<th>sameSite</th>\n<th>maxAge</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Session</td>\n<td><code>__Secure-authjs.session-token</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>30d</td>\n</tr>\n<tr>\n<td>PKCE verifier</td>\n<td><code>__Host-authjs.pkce.code_verifier</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>OAuth state</td>\n<td><code>__Host-authjs.state</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>OAuth nonce</td>\n<td><code>__Host-authjs.nonce</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>10 min</td>\n</tr>\n<tr>\n<td>CSRF token</td>\n<td><code>__Host-authjs.csrf-token</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>session</td>\n</tr>\n<tr>\n<td>Active profile</td>\n<td><code>active_profile</code></td>\n<td>✅</td>\n<td>✅</td>\n<td>lax</td>\n<td>30d</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "security/3",
+            "number": 3,
+            "title": "Security headers (next.config.js)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "code",
+                "lang": "js",
+                "html": "<pre class=\"shiki github-dark\" style=\"background-color:#24292e;color:#e1e4e8\" tabindex=\"0\"><code><span class=\"line\"><span style=\"color:#E1E4E8\">async </span><span style=\"color:#B392F0\">headers</span><span style=\"color:#E1E4E8\">() {</span></span>\n<span class=\"line\"><span style=\"color:#F97583\">  return</span><span style=\"color:#E1E4E8\"> [{</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    source: </span><span style=\"color:#9ECBFF\">'/(.*)'</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    headers: [</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Strict-Transport-Security'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'max-age=63072000; includeSubDomains; preload'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'X-Frame-Options'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'DENY'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'X-Content-Type-Options'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'nosniff'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Referrer-Policy'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'strict-origin-when-cross-origin'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Permissions-Policy'</span><span style=\"color:#E1E4E8\">, value: </span><span style=\"color:#9ECBFF\">'camera=(), microphone=(), geolocation=()'</span><span style=\"color:#E1E4E8\"> },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      { key: </span><span style=\"color:#9ECBFF\">'Content-Security-Policy'</span><span style=\"color:#E1E4E8\">, value: [</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"default-src 'self'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"img-src 'self' https://image.tmdb.org https://lh3.googleusercontent.com data:\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"media-src https://stream.mux.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"script-src 'self' 'nonce-{NONCE}'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"style-src 'self' 'unsafe-inline'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"connect-src 'self' https://accounts.google.com https://oauth2.googleapis.com https://api.mux.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"frame-ancestors 'none'\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#9ECBFF\">        \"form-action 'self' https://accounts.google.com\"</span><span style=\"color:#E1E4E8\">,</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">      ].</span><span style=\"color:#B392F0\">join</span><span style=\"color:#E1E4E8\">(</span><span style=\"color:#9ECBFF\">'; '</span><span style=\"color:#E1E4E8\">) },</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">    ],</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">  }]</span></span>\n<span class=\"line\"><span style=\"color:#E1E4E8\">}</span></span></code></pre>",
+                "raw": "async headers() {\n  return [{\n    source: '/(.*)',\n    headers: [\n      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },\n      { key: 'X-Frame-Options', value: 'DENY' },\n      { key: 'X-Content-Type-Options', value: 'nosniff' },\n      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },\n      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },\n      { key: 'Content-Security-Policy', value: [\n        \"default-src 'self'\",\n        \"img-src 'self' https://image.tmdb.org https://lh3.googleusercontent.com data:\",\n        \"media-src https://stream.mux.com\",\n        \"script-src 'self' 'nonce-{NONCE}'\",\n        \"style-src 'self' 'unsafe-inline'\",\n        \"connect-src 'self' https://accounts.google.com https://oauth2.googleapis.com https://api.mux.com\",\n        \"frame-ancestors 'none'\",\n        \"form-action 'self' https://accounts.google.com\",\n      ].join('; ') },\n    ],\n  }]\n}"
+              }
+            ]
+          },
+          {
+            "id": "security/4",
+            "number": 4,
+            "title": "Rate limiting (Upstash Redis)",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Endpoint</th>\n<th>Limit</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>/api/auth/signin/google</code></td>\n<td>10 req/min per IP</td>\n</tr>\n<tr>\n<td><code>/api/auth/callback/google</code></td>\n<td>20 req/min per IP</td>\n</tr>\n<tr>\n<td>Profile PIN</td>\n<td>5 attempts / 15 min per (IP, profileId)</td>\n</tr>\n<tr>\n<td><code>/api/progress</code></td>\n<td>12 req/min per session (heartbeat every 10s + margin)</td>\n</tr>\n<tr>\n<td><code>/api/search</code></td>\n<td>60 req/min per session</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "roadmap",
@@ -1093,7 +2617,41 @@ export const sections: Section[] = [
         "html": "<table>\n<thead>\n<tr>\n<th>Fase</th>\n<th>Días</th>\n<th>Entregable</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>0. Foundation</strong></td>\n<td>1</td>\n<td><code>create-next-app</code>, Drizzle + Neon, shadcn, eslint+husky, security headers.</td>\n</tr>\n<tr>\n<td><strong>1. Auth + Profiles</strong></td>\n<td>2–4</td>\n<td>Google OAuth, <code>proxy.ts</code>, <code>/profiles</code> picker, PIN.</td>\n</tr>\n<tr>\n<td><strong>2. Catalog ingestion</strong></td>\n<td>5–6</td>\n<td><code>/api/sync/tmdb</code>, Vercel Cron, Meilisearch sync.</td>\n</tr>\n<tr>\n<td><strong>3. Browse</strong></td>\n<td>7–9</td>\n<td>Hero + Rows con streaming, <code>use cache</code> + <code>cacheTag</code>, Card hover.</td>\n</tr>\n<tr>\n<td><strong>4. Title detail + My List</strong></td>\n<td>10–11</td>\n<td><code>/title/[id]</code>, <code>generateMetadata</code>, watchlist, ratings.</td>\n</tr>\n<tr>\n<td><strong>5. Player</strong></td>\n<td>12–15</td>\n<td>Mux signed URLs, hls.js shell, <code>/api/progress</code>, Continue Watching.</td>\n</tr>\n<tr>\n<td><strong>6. Search</strong></td>\n<td>16–17</td>\n<td>SearchBar + Meilisearch results.</td>\n</tr>\n<tr>\n<td><strong>7. Subscriptions</strong></td>\n<td>18–20</td>\n<td>Stripe Checkout, Portal, Webhook + gate <code>/watch</code>.</td>\n</tr>\n<tr>\n<td><strong>8. Parental controls</strong></td>\n<td>21–22</td>\n<td>PIN, age rating filter, Kids UI variant.</td>\n</tr>\n<tr>\n<td><strong>9. Observability + polish</strong></td>\n<td>23–25</td>\n<td>Sentry, PostHog, Axiom, a11y, Lighthouse.</td>\n</tr>\n<tr>\n<td><strong>10. Testing hardening</strong></td>\n<td>26–28</td>\n<td>Cobertura unit 80%, E2E críticos, security pipeline.</td>\n</tr>\n<tr>\n<td><strong>11. Stretch</strong></td>\n<td>post-MVP</td>\n<td>Recomendaciones (pgvector), notifications, i18n.</td>\n</tr>\n</tbody>\n</table>"
       }
     ],
-    "episodes": []
+    "episodes": [],
+    "localized": {
+      "es": {
+        "title": "Secuencia de Implementación",
+        "tagline": "11 fases, cada una shippable, en 28 días.",
+        "excerpt": "Foundation → Auth → Catalog → Browse → Title → Player → Search → Subscriptions → Parental → Polish → Tests.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p>Cada fase es shippable y termina con una demo verificable.</p>"
+          },
+          {
+            "kind": "table",
+            "html": "<table>\n<thead>\n<tr>\n<th>Fase</th>\n<th>Días</th>\n<th>Entregable</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>0. Foundation</strong></td>\n<td>1</td>\n<td><code>create-next-app</code>, Drizzle + Neon, shadcn, eslint+husky, security headers.</td>\n</tr>\n<tr>\n<td><strong>1. Auth + Profiles</strong></td>\n<td>2–4</td>\n<td>Google OAuth, <code>proxy.ts</code>, <code>/profiles</code> picker, PIN.</td>\n</tr>\n<tr>\n<td><strong>2. Catalog ingestion</strong></td>\n<td>5–6</td>\n<td><code>/api/sync/tmdb</code>, Vercel Cron, Meilisearch sync.</td>\n</tr>\n<tr>\n<td><strong>3. Browse</strong></td>\n<td>7–9</td>\n<td>Hero + Rows con streaming, <code>use cache</code> + <code>cacheTag</code>, Card hover.</td>\n</tr>\n<tr>\n<td><strong>4. Title detail + My List</strong></td>\n<td>10–11</td>\n<td><code>/title/[id]</code>, <code>generateMetadata</code>, watchlist, ratings.</td>\n</tr>\n<tr>\n<td><strong>5. Player</strong></td>\n<td>12–15</td>\n<td>Mux signed URLs, hls.js shell, <code>/api/progress</code>, Continue Watching.</td>\n</tr>\n<tr>\n<td><strong>6. Search</strong></td>\n<td>16–17</td>\n<td>SearchBar + Meilisearch results.</td>\n</tr>\n<tr>\n<td><strong>7. Subscriptions</strong></td>\n<td>18–20</td>\n<td>Stripe Checkout, Portal, Webhook + gate <code>/watch</code>.</td>\n</tr>\n<tr>\n<td><strong>8. Parental controls</strong></td>\n<td>21–22</td>\n<td>PIN, age rating filter, Kids UI variant.</td>\n</tr>\n<tr>\n<td><strong>9. Observability + polish</strong></td>\n<td>23–25</td>\n<td>Sentry, PostHog, Axiom, a11y, Lighthouse.</td>\n</tr>\n<tr>\n<td><strong>10. Testing hardening</strong></td>\n<td>26–28</td>\n<td>Cobertura unit 80%, E2E críticos, security pipeline.</td>\n</tr>\n<tr>\n<td><strong>11. Stretch</strong></td>\n<td>post-MVP</td>\n<td>Recomendaciones (pgvector), notifications, i18n.</td>\n</tr>\n</tbody>\n</table>"
+          }
+        ],
+        "episodes": []
+      },
+      "en": {
+        "title": "Roadmap",
+        "tagline": "11 phases, each shippable, in 28 days.",
+        "excerpt": "Foundation → Auth → Catalog → Browse → Title → Player → Search → Subscriptions → Parental → Polish → Tests.",
+        "intro": [
+          {
+            "kind": "prose",
+            "html": "<p>Each phase is shippable and ends with a verifiable demo.</p>"
+          },
+          {
+            "kind": "table",
+            "html": "<table>\n<thead>\n<tr>\n<th>Phase</th>\n<th>Days</th>\n<th>Deliverable</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>0. Foundation</strong></td>\n<td>1</td>\n<td><code>create-next-app</code>, Drizzle + Neon, shadcn, eslint+husky, security headers.</td>\n</tr>\n<tr>\n<td><strong>1. Auth + Profiles</strong></td>\n<td>2–4</td>\n<td>Google OAuth, <code>proxy.ts</code>, <code>/profiles</code> picker, PIN.</td>\n</tr>\n<tr>\n<td><strong>2. Catalog ingestion</strong></td>\n<td>5–6</td>\n<td><code>/api/sync/tmdb</code>, Vercel Cron, Meilisearch sync.</td>\n</tr>\n<tr>\n<td><strong>3. Browse</strong></td>\n<td>7–9</td>\n<td>Hero + Rows with streaming, <code>use cache</code> + <code>cacheTag</code>, Card hover.</td>\n</tr>\n<tr>\n<td><strong>4. Title detail + My List</strong></td>\n<td>10–11</td>\n<td><code>/title/[id]</code>, <code>generateMetadata</code>, watchlist, ratings.</td>\n</tr>\n<tr>\n<td><strong>5. Player</strong></td>\n<td>12–15</td>\n<td>Mux signed URLs, hls.js shell, <code>/api/progress</code>, Continue Watching.</td>\n</tr>\n<tr>\n<td><strong>6. Search</strong></td>\n<td>16–17</td>\n<td>SearchBar + Meilisearch results.</td>\n</tr>\n<tr>\n<td><strong>7. Subscriptions</strong></td>\n<td>18–20</td>\n<td>Stripe Checkout, Portal, Webhook + <code>/watch</code> gate.</td>\n</tr>\n<tr>\n<td><strong>8. Parental controls</strong></td>\n<td>21–22</td>\n<td>PIN, age rating filter, Kids UI variant.</td>\n</tr>\n<tr>\n<td><strong>9. Observability + polish</strong></td>\n<td>23–25</td>\n<td>Sentry, PostHog, Axiom, a11y, Lighthouse.</td>\n</tr>\n<tr>\n<td><strong>10. Testing hardening</strong></td>\n<td>26–28</td>\n<td>80% unit coverage, critical E2E, security pipeline.</td>\n</tr>\n<tr>\n<td><strong>11. Stretch</strong></td>\n<td>post-MVP</td>\n<td>Recommendations (pgvector), notifications, i18n.</td>\n</tr>\n</tbody>\n</table>"
+          }
+        ],
+        "episodes": []
+      }
+    }
   },
   {
     "id": "risks",
@@ -1152,7 +2710,73 @@ export const sections: Section[] = [
           }
         ]
       }
-    ]
+    ],
+    "localized": {
+      "es": {
+        "title": "Riesgos y Preguntas Abiertas",
+        "tagline": "Lo que puede salir mal, y las preguntas sin responder.",
+        "excerpt": "Contenido licenciado, TMDB rate limits, canary de Cache Components, JWT revocation, scope abierto.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "risks/1",
+            "number": 1,
+            "title": "Riesgos",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Riesgo</th>\n<th>Mitigación</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Contenido licenciado — no podemos stream Netflix originals</td>\n<td>Mux sample assets + dominio público + clips propios. Aclarar en README.</td>\n</tr>\n<tr>\n<td>TMDB rate limit (50 req/s/IP)</td>\n<td>Sync nightly, nunca llamar TMDB en request path.</td>\n</tr>\n<tr>\n<td>Cache Components en canary de v16</td>\n<td>Pin de versión + fallback a <code>fetch({ next: { revalidate } })</code>.</td>\n</tr>\n<tr>\n<td>Stripe webhook delivery</td>\n<td>Retries de Stripe + idempotencia por <code>event.id</code>.</td>\n</tr>\n<tr>\n<td>QoE del player en redes lentas</td>\n<td>Mux Data alerta rebuffer > 2%, bitrate inicial bajo.</td>\n</tr>\n<tr>\n<td>JWT no se revoca instantáneamente</td>\n<td>TTL 30d + rotación de <code>AUTH_SECRET</code> ante incidente. Considerar <code>revoked_sessions</code> si crítico.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "risks/2",
+            "number": 2,
+            "title": "Preguntas abiertas",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ol>\n<li><strong>¿Solo Google, o también email/password?</strong> Plan actual cubre solo Google. Email/password agrega ~1 día (signup, reset, verify).</li>\n<li><strong>¿JWT-only sessions o también DB sessions?</strong> JWT por defecto. Pasamos a DB sessions si se requiere revocación inmediata.</li>\n<li><strong>¿Stripe live o test mode?</strong> Determina si es producción o portfolio demo.</li>\n<li><strong>¿Dominio de producción?</strong> Requerido para registrar redirect URI en Google.</li>\n<li><strong>¿Compliance (GDPR/CCPA)?</strong> Si sí: consentimiento explícito, export de datos, derecho al olvido.</li>\n<li><strong>¿Mobile-web only o React Native después?</strong> Influencia el diseño de la API de <code>/api/playback</code> y <code>/api/progress</code> ahora.</li>\n<li><strong>¿Coverage gate más alto que 80%?</strong> Algunos equipos usan 90% en <code>lib/</code>.</li>\n</ol>\n<p><strong>Confirma estos puntos y arrancamos en la Fase 0.</strong></p>\n<blockquote>\n<p><strong>Nota:</strong> Este documento reemplaza a <code>AUTH_PLAN.md</code> (contenido integrado en §7.1 y §11). Se puede eliminar.</p>\n</blockquote>"
+              }
+            ]
+          }
+        ]
+      },
+      "en": {
+        "title": "Risks & Open Questions",
+        "tagline": "What can go wrong, and the unanswered questions.",
+        "excerpt": "Licensed content, TMDB rate limits, Cache Components canary, JWT revocation, open scope.",
+        "intro": [],
+        "episodes": [
+          {
+            "id": "risks/1",
+            "number": 1,
+            "title": "Risks",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "table",
+                "html": "<table>\n<thead>\n<tr>\n<th>Risk</th>\n<th>Mitigation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Licensed content — cannot stream Netflix originals</td>\n<td>Mux sample assets + public domain + own clips. Clarify in README.</td>\n</tr>\n<tr>\n<td>TMDB rate limit (50 req/s/IP)</td>\n<td>Nightly sync, never call TMDB in request path.</td>\n</tr>\n<tr>\n<td>Cache Components on v16 canary</td>\n<td>Version pinning + fallback to <code>fetch({ next: { revalidate } })</code>.</td>\n</tr>\n<tr>\n<td>Stripe webhook delivery</td>\n<td>Stripe retries + idempotency by <code>event.id</code>.</td>\n</tr>\n<tr>\n<td>Player QoE on slow networks</td>\n<td>Mux Data alerts rebuffer > 2%, low initial bitrate.</td>\n</tr>\n<tr>\n<td>JWT not instantly revoked</td>\n<td>30d TTL + <code>AUTH_SECRET</code> rotation on incident. Consider <code>revoked_sessions</code> if critical.</td>\n</tr>\n</tbody>\n</table>"
+              }
+            ]
+          },
+          {
+            "id": "risks/2",
+            "number": 2,
+            "title": "Open questions",
+            "runtime": 1,
+            "blocks": [
+              {
+                "kind": "prose",
+                "html": "<ol>\n<li><strong>Google only, or also email/password?</strong> Current plan covers Google only. Email/password adds ~1 day (signup, reset, verify).</li>\n<li><strong>JWT-only sessions or also DB sessions?</strong> JWT by default. Switch to DB sessions if immediate revocation is required.</li>\n<li><strong>Stripe live or test mode?</strong> Determines whether this is production or a portfolio demo.</li>\n<li><strong>Production domain?</strong> Required to register the redirect URI with Google.</li>\n<li><strong>Compliance (GDPR/CCPA)?</strong> If yes: explicit consent, data export, right to erasure.</li>\n<li><strong>Mobile-web only or React Native later?</strong> Influences the API design of <code>/api/playback</code> and <code>/api/progress</code> now.</li>\n<li><strong>Coverage gate higher than 80%?</strong> Some teams use 90% in <code>lib/</code>.</li>\n</ol>\n<p><strong>Confirm these points and we start on Phase 0.</strong></p>\n<blockquote>\n<p><strong>Note:</strong> This document replaces <code>AUTH_PLAN.md</code> (content integrated in §7.1 and §11). It can be deleted.</p>\n</blockquote>"
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 ] as const satisfies Section[];
 
