@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { LOCALES, isLocale, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { LocaleProvider } from '@/i18n/LocaleProvider';
+import { SkipLink } from '@/components/layout/SkipLink';
+import { WebVitalsReporter } from '@/components/layout/WebVitalsReporter';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -42,5 +44,11 @@ export async function generateMetadata({
 export default async function LocaleLayout({ children, params }: Readonly<LayoutProps>) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  return <LocaleProvider locale={locale as Locale}>{children}</LocaleProvider>;
+  return (
+    <LocaleProvider locale={locale as Locale}>
+      <SkipLink />
+      <WebVitalsReporter />
+      {children}
+    </LocaleProvider>
+  );
 }

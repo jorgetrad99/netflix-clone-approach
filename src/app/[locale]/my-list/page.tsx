@@ -33,7 +33,7 @@ export default async function MyListPage({ params }: Readonly<PageProps>) {
   return (
     <>
       <TopNav />
-      <main className="bg-bg min-h-screen pt-20 pb-20">
+      <main id="main-content" className="bg-bg min-h-screen pt-20 pb-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{dict.myList.pageTitle}</h1>
           <MyListGrid />

@@ -47,7 +47,7 @@ export default async function SearchPage({ params, searchParams }: Readonly<Page
   return (
     <>
       <TopNav />
-      <main className="bg-bg min-h-screen pt-20 pb-20">
+      <main id="main-content" className="bg-bg min-h-screen pt-20 pb-20">
         <div className="mx-auto max-w-5xl px-4 md:px-8">
           <h1 className="mb-2 text-3xl font-bold tracking-tight md:text-4xl">
             {query ? dict.search.pageTitleResults : dict.search.pageTitleEmpty}

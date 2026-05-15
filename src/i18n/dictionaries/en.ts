@@ -20,6 +20,7 @@ export const en: Dictionary = {
     homeLink: 'Netflix Docs Viewer — home',
     languageLabel: 'Language',
     languageSwitch: 'Switch language',
+    skipToContent: 'Skip to content',
   },
   home: {
     eyebrow: (category: string) => `Featured · ${category}`,
@@ -88,6 +89,16 @@ export const en: Dictionary = {
     resultsCount: (n: number, q: string) => `${n} ${n === 1 ? 'result' : 'results'} for “${q}”`,
     error: (msg: string) => `Search is unavailable right now (${msg}). Try reloading.`,
     episodeBadge: '· episode',
+  },
+  errors: {
+    notFoundTitle: '404 · Not found',
+    notFoundBody:
+      "The page you're looking for doesn't exist or was moved. Head back to the catalog and try again.",
+    notFoundCta: 'Back to home',
+    fatalTitle: 'Something went wrong',
+    fatalBody: 'We hit an issue rendering this page. Reload or go back to the catalog.',
+    fatalRetry: 'Try again',
+    fatalHome: 'Go home',
   },
   myList: {
     pageTitle: 'My List',

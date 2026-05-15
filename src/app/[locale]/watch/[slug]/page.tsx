@@ -39,7 +39,7 @@ export default async function WatchPage({ params }: Readonly<PageProps>) {
     <>
       <TopNav />
       <ScrollProgressBar />
-      <main className="bg-bg pt-14">
+      <main id="main-content" className="bg-bg pt-14">
         <WatchHeader section={section} locale={locale} dict={dict} />
 
         <article className="mx-auto max-w-5xl px-4 py-10 md:px-8">

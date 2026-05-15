@@ -47,7 +47,7 @@ export default async function TitlePage({ params }: Readonly<PageProps>) {
   return (
     <>
       <TopNav />
-      <main>
+      <main id="main-content">
         <TitleHero section={section} locale={locale} dict={dict} />
         <Intro section={section} dict={dict} />
         <EpisodeList section={section} locale={locale} dict={dict} />

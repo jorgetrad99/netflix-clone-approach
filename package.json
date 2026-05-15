@@ -16,6 +16,9 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "test:e2e:a11y": "playwright test e2e/a11y.spec.ts",
+    "analyze": "cross-env ANALYZE=true next build",
+    "size": "size-limit",
     "prepare": "husky"
   },
   "dependencies": {
@@ -28,10 +31,14 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.6.0",
+    "web-vitals": "^5.2.0",
     "zustand": "^5.0.13"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@next/bundle-analyzer": "^16.2.6",
     "@playwright/test": "^1.49.1",
+    "@size-limit/preset-app": "^12.1.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -42,6 +49,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.3.4",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "eslint-config-prettier": "^9.1.0",
@@ -55,6 +63,7 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "shiki": "^4.0.2",
+    "size-limit": "^12.1.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.0",
     "typescript": "^5",

@@ -18,6 +18,7 @@ export const es = {
     homeLink: 'Netflix Docs Viewer — inicio',
     languageLabel: 'Idioma',
     languageSwitch: 'Cambiar idioma',
+    skipToContent: 'Saltar al contenido',
   },
   home: {
     eyebrow: (category: string) => `Destacado · ${category}`,
@@ -87,6 +88,16 @@ export const es = {
       `${n} ${n === 1 ? 'resultado' : 'resultados'} para “${q}”`,
     error: (msg: string) => `No pudimos buscar ahora (${msg}). Probá recargar.`,
     episodeBadge: '· episodio',
+  },
+  errors: {
+    notFoundTitle: '404 · No encontrado',
+    notFoundBody:
+      'La página que buscás no existe o fue movida. Volvé al catálogo y probá de nuevo.',
+    notFoundCta: 'Volver al inicio',
+    fatalTitle: 'Algo salió mal',
+    fatalBody: 'Tuvimos un problema renderizando esta página. Recargá o volvé al catálogo.',
+    fatalRetry: 'Reintentar',
+    fatalHome: 'Ir al inicio',
   },
   myList: {
     pageTitle: 'Mi lista',

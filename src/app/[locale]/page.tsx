@@ -47,7 +47,7 @@ export default async function HomePage({ params }: Readonly<PageProps>) {
   return (
     <>
       <TopNav />
-      <main className="pt-14">
+      <main id="main-content" className="pt-14">
         <section className="to-bg relative h-[60vh] min-h-105 w-full overflow-hidden bg-linear-to-b from-black/60 via-black/30">
           <div
             aria-hidden

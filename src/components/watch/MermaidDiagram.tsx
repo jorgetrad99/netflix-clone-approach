@@ -46,6 +46,9 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
   const [error, setError] = useState<string | null>(null);
   const [fullscreen, setFullscreen] = useState(false);
   const renderId = useRef(`mermaid-${id.replace(/[^a-zA-Z0-9]/g, '-')}`);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -70,11 +73,37 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
 
   useEffect(() => {
     if (!fullscreen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+    document.body.style.overflow = 'hidden';
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setFullscreen(false);
+      if (e.key === 'Escape') {
+        setFullscreen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+      previouslyFocused?.focus?.();
+    };
   }, [fullscreen]);
 
   if (error) {
@@ -107,6 +136,7 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
           <div className="text-fg-muted text-sm">{dict.watch.diagramRendering}</div>
         )}
         <button
+          ref={openerRef}
           type="button"
           onClick={() => setFullscreen(true)}
           aria-label={dict.watch.fullscreen}
@@ -118,11 +148,14 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
 
       {fullscreen && (
         <dialog
+          ref={dialogRef}
           open
+          aria-modal="true"
           aria-label={dict.watch.fullscreen}
           className="bg-bg/95 fixed inset-0 z-50 flex h-screen max-h-screen w-screen max-w-screen items-center justify-center p-6 backdrop-blur-sm"
         >
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={() => setFullscreen(false)}
             aria-label={dict.watch.closeFullscreen}
