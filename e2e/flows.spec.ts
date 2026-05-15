@@ -23,6 +23,38 @@ test.describe('navigation: home → title → watch', () => {
   });
 });
 
+test.describe('carousel navigation', () => {
+  test('carousel buttons scroll the row on click', async ({ page }) => {
+    await page.goto('/es');
+    const firstRowScrollContainer = page
+      .locator('section')
+      .filter({ has: page.getByRole('heading', { name: /top 10/i }) })
+      .locator('div.overflow-x-auto');
+
+    // Get initial scroll position
+    const initialScroll = await firstRowScrollContainer.evaluate((el) => el.scrollLeft);
+
+    // Hover to reveal buttons and click right button
+    await firstRowScrollContainer.hover();
+    const rightButton = page.getByRole('button', { name: /scroll right/i }).first();
+    await rightButton.click();
+
+    // Wait for scroll animation and verify position changed
+    await page.waitForTimeout(500);
+    const scrolledRight = await firstRowScrollContainer.evaluate((el) => el.scrollLeft);
+    expect(scrolledRight).toBeGreaterThan(initialScroll);
+
+    // Click left button to scroll back
+    await firstRowScrollContainer.hover();
+    const leftButton = page.getByRole('button', { name: /scroll left/i }).first();
+    await leftButton.click();
+
+    await page.waitForTimeout(500);
+    const scrolledLeft = await firstRowScrollContainer.evaluate((el) => el.scrollLeft);
+    expect(scrolledLeft).toBeLessThan(scrolledRight);
+  });
+});
+
 test.describe('search', () => {
   test('typing in the search bar debounces and pushes /search?q=', async ({ page }) => {
     await page.goto('/es');
