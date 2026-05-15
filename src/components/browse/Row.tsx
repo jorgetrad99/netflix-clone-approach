@@ -1,15 +1,23 @@
 import type { Section } from '@/content/types';
+import type { Locale } from '@/i18n/config';
 import { Card } from './Card';
 import { cn } from '@/lib/utils/cn';
 
 interface RowProps {
   title: string;
   sections: Section[];
+  locale: Locale;
   variant?: 'default' | 'top10';
   className?: string;
 }
 
-export function Row({ title, sections, variant = 'default', className }: Readonly<RowProps>) {
+export function Row({
+  title,
+  sections,
+  locale,
+  variant = 'default',
+  className,
+}: Readonly<RowProps>) {
   if (sections.length === 0) return null;
   return (
     <section aria-labelledby={`row-${slugify(title)}`} className={cn('relative', className)}>
@@ -29,6 +37,7 @@ export function Row({ title, sections, variant = 'default', className }: Readonl
           <Card
             key={section.id}
             section={section}
+            locale={locale}
             rank={variant === 'top10' ? idx + 1 : undefined}
           />
         ))}

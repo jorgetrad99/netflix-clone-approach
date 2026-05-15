@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { EpisodeList } from './EpisodeList';
+import { es } from '@/i18n/dictionaries/es';
 import type { Section } from '@/content/types';
 
 const baseSection: Section = {
@@ -40,27 +41,27 @@ const baseSection: Section = {
 
 describe('<EpisodeList>', () => {
   it('renders an "Episodios" heading and one row per episode', () => {
-    render(<EpisodeList section={baseSection} />);
+    render(<EpisodeList section={baseSection} locale="es" dict={es} />);
     expect(screen.getByRole('heading', { level: 2, name: /episodios/i })).toBeVisible();
     expect(screen.getAllByRole('listitem')).toHaveLength(2);
   });
 
-  it('each row links to /watch/[slug]#ep-N', () => {
-    render(<EpisodeList section={baseSection} />);
+  it('each row links to /[locale]/watch/[slug]#ep-N', () => {
+    render(<EpisodeList section={baseSection} locale="es" dict={es} />);
     const links = screen.getAllByRole('link');
-    expect(links[0]).toHaveAttribute('href', '/watch/flows#ep-1');
-    expect(links[1]).toHaveAttribute('href', '/watch/flows#ep-2');
+    expect(links[0]).toHaveAttribute('href', '/es/watch/flows#ep-1');
+    expect(links[1]).toHaveAttribute('href', '/es/watch/flows#ep-2');
   });
 
   it('shows runtime per episode', () => {
-    render(<EpisodeList section={baseSection} />);
+    render(<EpisodeList section={baseSection} locale="es" dict={es} />);
     expect(screen.getByText(/3 min/)).toBeVisible();
     expect(screen.getByText(/2 min/)).toBeVisible();
   });
 
   it('falls back to a no-episodes message when episodes is empty', () => {
     const empty: Section = { ...baseSection, episodes: [] };
-    render(<EpisodeList section={empty} />);
+    render(<EpisodeList section={empty} locale="es" dict={es} />);
     expect(screen.getByRole('heading', { level: 2, name: /sin episodios/i })).toBeVisible();
   });
 });

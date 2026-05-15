@@ -32,15 +32,21 @@ describe('<Card>', () => {
     vi.useRealTimers();
   });
 
-  it('links to the title detail route', () => {
-    render(<Card section={stubSection} />);
-    const link = screen.getByRole('link', { name: /abrir visión general/i });
-    expect(link).toHaveAttribute('href', '/title/overview');
+  it('links to the locale-prefixed title detail route', () => {
+    render(<Card section={stubSection} locale="es" />);
+    const link = screen.getByRole('link', { name: /más información sobre visión general/i });
+    expect(link).toHaveAttribute('href', '/es/title/overview');
+  });
+
+  it('respects the locale prop in the URL', () => {
+    render(<Card section={stubSection} locale="en" />);
+    const link = screen.getByRole('link');
+    expect(link).toHaveAttribute('href', '/en/title/overview');
   });
 
   it('keeps preview hidden initially and reveals it after hover delay', async () => {
-    render(<Card section={stubSection} />);
-    const link = screen.getByRole('link', { name: /abrir visión general/i });
+    render(<Card section={stubSection} locale="es" />);
+    const link = screen.getByRole('link');
     const preview = getPreview(link);
     expect(preview).not.toBeNull();
     expect(preview).toHaveAttribute('aria-hidden', 'true');
@@ -58,8 +64,8 @@ describe('<Card>', () => {
   });
 
   it('cancels the preview when mouse leaves before delay elapses', async () => {
-    render(<Card section={stubSection} />);
-    const link = screen.getByRole('link', { name: /abrir visión general/i });
+    render(<Card section={stubSection} locale="es" />);
+    const link = screen.getByRole('link');
     fireEvent.mouseEnter(link);
     await act(async () => {
       vi.advanceTimersByTime(200);
@@ -72,7 +78,7 @@ describe('<Card>', () => {
   });
 
   it('renders the rank number when provided', () => {
-    const { container } = render(<Card section={stubSection} rank={3} />);
+    const { container } = render(<Card section={stubSection} locale="es" rank={3} />);
     expect(container.textContent).toContain('3');
   });
 });

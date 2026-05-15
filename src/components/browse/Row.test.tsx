@@ -23,13 +23,13 @@ const makeSection = (id: string, title: string, rank?: number): Section => ({
 describe('<Row>', () => {
   it('renders the row title and one link per section', () => {
     const sections = [makeSection('overview', 'Visión General'), makeSection('flows', 'Flujos')];
-    render(<Row title="Imperdibles" sections={sections} />);
+    render(<Row title="Imperdibles" sections={sections} locale="es" />);
     expect(screen.getByRole('heading', { level: 2, name: /imperdibles/i })).toBeVisible();
     expect(screen.getAllByRole('link')).toHaveLength(2);
   });
 
   it('returns null when sections list is empty', () => {
-    const { container } = render(<Row title="Empty" sections={[]} />);
+    const { container } = render(<Row title="Empty" sections={[]} locale="es" />);
     expect(container).toBeEmptyDOMElement();
   });
 
@@ -39,7 +39,9 @@ describe('<Row>', () => {
       makeSection('b', 'Beta', 2),
       makeSection('c', 'Gamma', 3),
     ];
-    const { container } = render(<Row title="Top" sections={sections} variant="top10" />);
+    const { container } = render(
+      <Row title="Top" sections={sections} variant="top10" locale="es" />,
+    );
     const text = container.textContent ?? '';
     expect(text).toMatch(/1/);
     expect(text).toMatch(/2/);

@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import type { Section } from '@/content/types';
+import type { Locale } from '@/i18n/config';
+import { useDictionary } from '@/i18n/LocaleProvider';
 import { PosterCanvas } from '@/components/poster/PosterCanvas';
 import { CardPreview } from './CardPreview';
 import { cn } from '@/lib/utils/cn';
@@ -11,12 +13,14 @@ const PREVIEW_DELAY_MS = 400;
 
 interface CardProps {
   section: Section;
+  locale: Locale;
   className?: string;
   rank?: number;
 }
 
-export function Card({ section, className, rank }: Readonly<CardProps>) {
+export function Card({ section, locale, className, rank }: Readonly<CardProps>) {
   const [showPreview, setShowPreview] = useState(false);
+  const dict = useDictionary();
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const open = () => {
@@ -52,8 +56,8 @@ export function Card({ section, className, rank }: Readonly<CardProps>) {
         </span>
       )}
       <Link
-        href={`/title/${section.slug}`}
-        aria-label={`Abrir ${section.title}`}
+        href={`/${locale}/title/${section.slug}`}
+        aria-label={dict.title.moreInfoFor(section.title)}
         data-testid="section-card"
         onMouseEnter={open}
         onMouseLeave={close}
@@ -69,7 +73,7 @@ export function Card({ section, className, rank }: Readonly<CardProps>) {
         )}
       >
         <PosterCanvas spec={section.hero.poster} />
-        <CardPreview section={section} visible={showPreview} />
+        <CardPreview section={section} visible={showPreview} dict={dict} />
       </Link>
     </div>
   );

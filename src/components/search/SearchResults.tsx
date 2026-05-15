@@ -6,6 +6,7 @@ import { Sparkles } from 'lucide-react';
 import type { SearchHit } from '@/lib/search';
 import { getSearchEngine } from '@/lib/search';
 import type { SearchDoc, Section } from '@/content/types';
+import { useDictionary, useLocale } from '@/i18n/LocaleProvider';
 
 interface SearchResultsProps {
   query: string;
@@ -13,6 +14,8 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ query, recommended }: Readonly<SearchResultsProps>) {
+  const dict = useDictionary();
+  const locale = useLocale();
   const [hitsByQuery, setHitsByQuery] = useState<{ q: string; hits: SearchHit[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,7 +39,7 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
   if (error) {
     return (
       <div role="alert" className="text-fg-muted py-12 text-center">
-        No pudimos buscar ahora ({error}). Probá recargar.
+        {dict.search.error(error)}
       </div>
     );
   }
@@ -47,23 +50,20 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
         <div className="flex items-center gap-2">
           <Sparkles className="text-brand h-5 w-5" />
           <h2 id="recommended-heading" className="text-2xl font-bold tracking-tight">
-            Recomendados para vos
+            {dict.search.recommendedHeading}
           </h2>
         </div>
-        <p className="text-fg-muted">
-          Empezá tipeando para buscar entre {/* total docs */}los títulos y episodios. Mientras
-          tanto, estos son los más vistos:
-        </p>
+        <p className="text-fg-muted">{dict.search.recommendedIntro}</p>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {recommended.map((s) => (
             <li key={s.id}>
               <Link
-                href={`/title/${s.slug}`}
+                href={`/${locale}/title/${s.slug}`}
                 className="bg-bg-elevated hover:bg-bg-elevated/70 focus-visible:outline-brand block rounded-md p-4 transition-colors outline-none focus-visible:outline-2"
               >
                 <p className="text-fg-subtle text-xs tracking-widest uppercase">
                   {s.category}
-                  {s.meta.rank != null && ` · Top ${s.meta.rank}`}
+                  {s.meta.rank != null && ` · ${dict.title.rankBadge(s.meta.rank)}`}
                 </p>
                 <p className="mt-1 text-lg font-semibold">{s.title}</p>
                 <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{s.hero.tagline}</p>
@@ -78,7 +78,7 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
   if (hits == null) {
     return (
       <output className="text-fg-muted block py-12 text-center" aria-busy>
-        Buscando…
+        {dict.search.loading}
       </output>
     );
   }
@@ -86,24 +86,19 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
   if (hits.length === 0) {
     return (
       <section className="space-y-6 py-8">
-        <p className="text-fg-muted text-lg">
-          Sin resultados para <strong className="text-fg">“{query}”</strong>.
-        </p>
-        <Recommended sections={recommended} title="Tal vez te interese" />
+        <p className="text-fg-muted text-lg">{dict.search.noResults(query)}</p>
+        <Recommended sections={recommended} title={dict.search.maybe} locale={locale} />
       </section>
     );
   }
 
   return (
-    <section aria-label={`Resultados para ${query}`}>
-      <p className="text-fg-muted mb-6 text-sm">
-        {hits.length} resultado{hits.length === 1 ? '' : 's'} para{' '}
-        <strong className="text-fg">“{query}”</strong>
-      </p>
+    <section aria-label={`${dict.search.pageTitleResults}: ${query}`}>
+      <p className="text-fg-muted mb-6 text-sm">{dict.search.resultsCount(hits.length, query)}</p>
       <ul className="space-y-3">
         {hits.map(({ doc }) => (
           <li key={doc.id}>
-            <ResultLink doc={doc} />
+            <ResultLink doc={doc} locale={locale} episodeBadge={dict.search.episodeBadge} />
           </li>
         ))}
       </ul>
@@ -111,17 +106,23 @@ export function SearchResults({ query, recommended }: Readonly<SearchResultsProp
   );
 }
 
-function ResultLink({ doc }: Readonly<{ doc: SearchDoc }>) {
+interface ResultLinkProps {
+  doc: SearchDoc;
+  locale: string;
+  episodeBadge: string;
+}
+
+function ResultLink({ doc, locale, episodeBadge }: Readonly<ResultLinkProps>) {
   const href = doc.episodeId
-    ? `/watch/${doc.sectionId}#ep-${doc.episodeId.split('/')[1]}`
-    : `/title/${doc.sectionId}`;
+    ? `/${locale}/watch/${doc.sectionId}#ep-${doc.episodeId.split('/')[1]}`
+    : `/${locale}/title/${doc.sectionId}`;
   return (
     <Link
       href={href}
       className="bg-bg-elevated/40 hover:bg-bg-elevated focus-visible:outline-brand block rounded-md p-4 transition-colors outline-none focus-visible:outline-2"
     >
       <p className="text-fg-subtle text-xs tracking-widest uppercase">
-        {doc.category} {doc.episodeId && '· episodio'}
+        {doc.category} {doc.episodeId && episodeBadge}
       </p>
       <p className="mt-1 text-base font-semibold md:text-lg">{doc.title}</p>
       {doc.excerpt && <p className="text-fg-muted mt-1 line-clamp-2 text-sm">{doc.excerpt}</p>}
@@ -129,7 +130,13 @@ function ResultLink({ doc }: Readonly<{ doc: SearchDoc }>) {
   );
 }
 
-function Recommended({ sections, title }: Readonly<{ sections: Section[]; title: string }>) {
+interface RecommendedProps {
+  sections: Section[];
+  title: string;
+  locale: string;
+}
+
+function Recommended({ sections, title, locale }: Readonly<RecommendedProps>) {
   return (
     <div>
       <h3 className="mb-3 text-lg font-semibold">{title}</h3>
@@ -137,7 +144,7 @@ function Recommended({ sections, title }: Readonly<{ sections: Section[]; title:
         {sections.map((s) => (
           <li key={s.id}>
             <Link
-              href={`/title/${s.slug}`}
+              href={`/${locale}/title/${s.slug}`}
               className="bg-bg-elevated hover:bg-bg-elevated/70 block rounded-md p-4"
             >
               <p className="text-fg-subtle text-xs tracking-widest uppercase">{s.category}</p>

@@ -39,7 +39,7 @@ describe('<SearchBar>', () => {
     await act(async () => {
       vi.advanceTimersByTime(250);
     });
-    expect(pushSpy).toHaveBeenCalledWith('/search?q=OAuth');
+    expect(pushSpy).toHaveBeenCalledWith('/es/search?q=OAuth');
   });
 
   it('Escape closes and clears the input', () => {
@@ -58,6 +58,6 @@ describe('<SearchBar>', () => {
     const input = screen.getByRole('searchbox');
     fireEvent.change(input, { target: { value: 'Mux' } });
     fireEvent.keyDown(input, { key: 'Enter' });
-    expect(pushSpy).toHaveBeenCalledWith('/search?q=Mux');
+    expect(pushSpy).toHaveBeenCalledWith('/es/search?q=Mux');
   });
 });

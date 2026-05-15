@@ -5,43 +5,48 @@ import { TopNav } from '@/components/layout/TopNav';
 import { WatchHeader } from '@/components/watch/WatchHeader';
 import { ScrollProgressBar } from '@/components/watch/ScrollProgressBar';
 import { BlockRenderer } from '@/components/watch/BlockRenderer';
+import { LOCALES, isLocale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/get-dictionary';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }
 
 export function generateStaticParams() {
-  return SECTION_SLUGS.map((slug) => ({ slug }));
+  return LOCALES.flatMap((locale) => SECTION_SLUGS.map((slug) => ({ locale, slug })));
 }
 
 export async function generateMetadata({ params }: Readonly<PageProps>): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const section = sectionsBySlug[slug];
   if (!section) return { title: 'No encontrado' };
+  const dict = isLocale(locale) ? getDictionary(locale) : getDictionary('es');
   return {
-    title: `Reproducir · ${section.title}`,
+    title: `${dict.title.play} · ${section.title}`,
     description: section.excerpt,
     robots: { index: false, follow: true },
   };
 }
 
 export default async function WatchPage({ params }: Readonly<PageProps>) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
   const section = sectionsBySlug[slug];
   if (!section) notFound();
+  const dict = getDictionary(locale);
 
   return (
     <>
       <TopNav />
       <ScrollProgressBar />
       <main className="bg-bg pt-14">
-        <WatchHeader section={section} />
+        <WatchHeader section={section} locale={locale} dict={dict} />
 
         <article className="mx-auto max-w-5xl px-4 py-10 md:px-8">
           {section.intro.length > 0 && (
             <section aria-labelledby="intro" className="space-y-6">
               <h2 id="intro" className="sr-only">
-                Introducción
+                {dict.watch.introHeading}
               </h2>
               {section.intro.map((block, i) => (
                 <BlockRenderer key={`intro-${i}`} block={block} />
@@ -58,7 +63,7 @@ export default async function WatchPage({ params }: Readonly<PageProps>) {
             >
               <header className="mb-6">
                 <p className="text-fg-subtle text-xs tracking-widest uppercase">
-                  Episodio {ep.number} · {ep.runtime} min
+                  {dict.watch.episode(ep.number, ep.runtime)}
                 </p>
                 <h2
                   id={`ep-${ep.number}-title`}
@@ -76,9 +81,9 @@ export default async function WatchPage({ params }: Readonly<PageProps>) {
           ))}
 
           <footer className="text-fg-subtle border-border mt-20 flex items-center justify-between border-t pt-6 text-sm">
-            <span>Fin del capítulo · {section.meta.runtime} min de lectura</span>
+            <span>{dict.watch.chapterEnd(section.meta.runtime)}</span>
             <a href="#" className="hover:text-fg">
-              Volver arriba ↑
+              {dict.watch.backToTop}
             </a>
           </footer>
         </article>

@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
+import { es } from './src/i18n/dictionaries/es';
 
 afterEach(() => {
   cleanup();
@@ -23,3 +24,10 @@ vi.mock('next/navigation', async () => {
     usePathname: vi.fn(() => '/'),
   };
 });
+
+vi.mock('@/i18n/LocaleProvider', () => ({
+  LocaleProvider: ({ children }: { children: React.ReactNode }) => children,
+  useLocale: vi.fn(() => 'es'),
+  useDictionary: vi.fn(() => es),
+  useLocaleContext: vi.fn(() => ({ locale: 'es', dict: es })),
+}));

@@ -1,13 +1,15 @@
 import { Plus, Play, ChevronDown } from 'lucide-react';
 import type { Section } from '@/content/types';
+import type { Dictionary } from '@/i18n/dictionaries/es';
 import { cn } from '@/lib/utils/cn';
 
 interface CardPreviewProps {
   section: Section;
   visible: boolean;
+  dict: Dictionary;
 }
 
-export function CardPreview({ section, visible }: Readonly<CardPreviewProps>) {
+export function CardPreview({ section, visible, dict }: Readonly<CardPreviewProps>) {
   return (
     <div
       data-testid="card-preview"
@@ -25,21 +27,21 @@ export function CardPreview({ section, visible }: Readonly<CardPreviewProps>) {
       <div className="mt-1 flex items-center gap-2">
         <button
           type="button"
-          aria-label={`Reproducir ${section.title}`}
+          aria-label={`${dict.title.play} ${section.title}`}
           className="hover:bg-bg-elevated flex h-7 w-7 items-center justify-center rounded-full border border-white/40 bg-white text-black transition"
         >
           <Play className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
         </button>
         <button
           type="button"
-          aria-label={`Agregar ${section.title} a Mi lista`}
+          aria-label={dict.title.addToList(section.title)}
           className="hover:border-fg flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-white transition"
         >
           <Plus className="h-3.5 w-3.5" />
         </button>
         <button
           type="button"
-          aria-label={`Más información sobre ${section.title}`}
+          aria-label={dict.title.moreInfoFor(section.title)}
           className="hover:border-fg ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-white transition"
         >
           <ChevronDown className="h-3.5 w-3.5" />

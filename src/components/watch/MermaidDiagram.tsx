@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 import { Maximize2, X } from 'lucide-react';
+import { useDictionary } from '@/i18n/LocaleProvider';
 import { cn } from '@/lib/utils/cn';
 
 interface MermaidDiagramProps {
@@ -40,6 +41,7 @@ function ensureInit() {
 }
 
 export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramProps>) {
+  const dict = useDictionary();
   const [svg, setSvg] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [fullscreen, setFullscreen] = useState(false);
@@ -81,7 +83,7 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
         role="alert"
         className="bg-bg-elevated border-brand text-fg-muted rounded-md border-l-4 px-4 py-3 text-sm"
       >
-        <p className="text-brand mb-1 font-semibold">Error al renderizar el diagrama</p>
+        <p className="text-brand mb-1 font-semibold">{dict.watch.diagramError}</p>
         <pre className="font-mono text-xs whitespace-pre-wrap">{error}</pre>
       </div>
     );
@@ -102,12 +104,12 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
             dangerouslySetInnerHTML={{ __html: svg }}
           />
         ) : (
-          <div className="text-fg-muted text-sm">Procesando…</div>
+          <div className="text-fg-muted text-sm">{dict.watch.diagramRendering}</div>
         )}
         <button
           type="button"
           onClick={() => setFullscreen(true)}
-          aria-label="Ver diagrama en pantalla completa"
+          aria-label={dict.watch.fullscreen}
           className="bg-bg/80 hover:bg-bg absolute top-3 right-3 rounded-md p-2 opacity-0 transition group-hover:opacity-100 focus-visible:opacity-100"
         >
           <Maximize2 className="h-4 w-4" />
@@ -117,13 +119,13 @@ export default function MermaidDiagram({ source, id }: Readonly<MermaidDiagramPr
       {fullscreen && (
         <dialog
           open
-          aria-label="Diagrama en pantalla completa"
+          aria-label={dict.watch.fullscreen}
           className="bg-bg/95 fixed inset-0 z-50 flex h-screen max-h-screen w-screen max-w-screen items-center justify-center p-6 backdrop-blur-sm"
         >
           <button
             type="button"
             onClick={() => setFullscreen(false)}
-            aria-label="Cerrar pantalla completa"
+            aria-label={dict.watch.closeFullscreen}
             className="bg-bg-elevated hover:bg-bg-elevated/70 absolute top-4 right-4 rounded-full p-2"
           >
             <X className="h-5 w-5" />

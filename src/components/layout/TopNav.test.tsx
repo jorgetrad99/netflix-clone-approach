@@ -3,15 +3,25 @@ import { render, screen, act } from '@testing-library/react';
 import { TopNav } from './TopNav';
 
 describe('<TopNav>', () => {
-  it('renders logo + primary nav with the expected links', () => {
+  it('renders logo + primary nav with locale-prefixed links', () => {
     render(<TopNav />);
-    expect(screen.getByRole('link', { name: /netflix docs viewer — home/i })).toBeVisible();
-    expect(screen.getByRole('link', { name: /^home$/i })).toHaveAttribute('href', '/');
-    expect(screen.getByRole('link', { name: /security/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /netflix docs viewer — inicio/i })).toBeVisible();
+    expect(screen.getByRole('link', { name: /^inicio$/i })).toHaveAttribute('href', '/es');
+    expect(screen.getByRole('link', { name: /^seguridad$/i })).toHaveAttribute(
       'href',
-      '/browse/security',
+      '/es/title/security',
     );
-    expect(screen.getByRole('link', { name: /my list/i })).toHaveAttribute('href', '/my-list');
+    expect(screen.getByRole('link', { name: /^componentes$/i })).toHaveAttribute(
+      'href',
+      '/es/title/components',
+    );
+  });
+
+  it('mounts SearchBar (open trigger) and LocaleSwitcher (es+en buttons)', () => {
+    render(<TopNav />);
+    expect(screen.getByRole('button', { name: /abrir búsqueda/i })).toBeVisible();
+    expect(screen.getByRole('button', { name: /es/i })).toBeVisible();
+    expect(screen.getByRole('button', { name: /en/i })).toBeVisible();
   });
 
   it('toggles the solid-background class once user scrolls past 32px', () => {

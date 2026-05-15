@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { TitleHero } from './TitleHero';
+import { es } from '@/i18n/dictionaries/es';
+import { en } from '@/i18n/dictionaries/en';
 import type { Section } from '@/content/types';
 
 const flowsSection: Section = {
@@ -24,28 +26,36 @@ const flowsSection: Section = {
 };
 
 describe('<TitleHero>', () => {
-  it('renders the title, tagline, excerpt and runtime', () => {
-    render(<TitleHero section={flowsSection} />);
+  it('renders the title, tagline, excerpt and runtime in es', () => {
+    render(<TitleHero section={flowsSection} locale="es" dict={es} />);
     expect(screen.getByRole('heading', { level: 1, name: /flujos principales/i })).toBeVisible();
     expect(screen.getByText(/seis flujos críticos/i)).toBeVisible();
     expect(screen.getByText(/12 min/)).toBeVisible();
     expect(screen.getByText(/2 episodios/)).toBeVisible();
   });
 
+  it('renders English copy when given the en dict', () => {
+    render(<TitleHero section={flowsSection} locale="en" dict={en} />);
+    expect(screen.getByText(/2 episodes/)).toBeVisible();
+    expect(screen.getByRole('link', { name: /^play$/i })).toBeVisible();
+  });
+
   it('shows every meta badge', () => {
-    render(<TitleHero section={flowsSection} />);
+    render(<TitleHero section={flowsSection} locale="es" dict={es} />);
     expect(screen.getByText('Series')).toBeVisible();
     expect(screen.getByText('P0')).toBeVisible();
   });
 
-  it('renders Play button as a link to /watch/[slug]', () => {
-    render(<TitleHero section={flowsSection} />);
-    const play = screen.getByRole('link', { name: /reproducir/i });
-    expect(play).toHaveAttribute('href', '/watch/flows');
+  it('renders Play button as a link to /[locale]/watch/[slug]', () => {
+    render(<TitleHero section={flowsSection} locale="es" dict={es} />);
+    expect(screen.getByRole('link', { name: /reproducir/i })).toHaveAttribute(
+      'href',
+      '/es/watch/flows',
+    );
   });
 
   it('shows Top rank badge when section is in Top 10', () => {
-    render(<TitleHero section={flowsSection} />);
+    render(<TitleHero section={flowsSection} locale="es" dict={es} />);
     expect(screen.getByText(/top 3/i)).toBeVisible();
   });
 });

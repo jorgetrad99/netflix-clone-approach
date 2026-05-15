@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useDictionary } from '@/i18n/LocaleProvider';
 
 export function ScrollProgressBar() {
   const [progress, setProgress] = useState(0);
+  const dict = useDictionary();
 
   useEffect(() => {
     const update = () => {
@@ -26,7 +28,7 @@ export function ScrollProgressBar() {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(progress * 100)}
-      aria-label="Progreso de lectura"
+      aria-label={dict.watch.progressLabel}
       className="fixed inset-x-0 top-14 z-40 h-0.5 bg-transparent"
     >
       <div
