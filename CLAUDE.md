@@ -133,13 +133,29 @@ Aplicación **Next.js 16** que renderiza el contenido de [PLAN_NETFLIX_CLONE.md]
 npm run dev                # Next.js dev + content watcher
 npm run build              # prebuild → content:build, luego next build
 npm run content:build      # parser standalone
-npm run lint               # eslint + tsc --noEmit
-npm run test               # vitest run
+npm run lint               # eslint
+npm run typecheck          # tsc --noEmit
+npm run test               # vitest run (unit + component, jsdom)
 npm run test:watch
-npm run test:e2e           # playwright test
+npm run test:coverage      # vitest run --coverage (v8)
+npm run test:e2e           # playwright test (todos los specs)
+npm run test:e2e:a11y      # solo e2e/a11y.spec.ts (axe)
+npm run test:e2e:flows     # solo flows + player specs
 npm run test:e2e:ui        # playwright --ui
 npm run analyze            # next build con bundle analyzer
+npm run size               # size-limit (puede colgarse en Windows; usar en CI)
 ```
+
+**Pirámide de tests:**
+- `*.test.ts(x)` co-ubicado con su archivo → vitest unit/component (jsdom).
+- `e2e/*.spec.ts` → Playwright. El `webServer` del config arranca `npm run dev` solo.
+
+**Suites E2E:**
+- `a11y.spec.ts` — axe en 8 rutas + skip-link + redirect + locale switch.
+- `flows.spec.ts` — golden paths: home→title→watch, search debounce, my-list persiste tras reload, locale persiste al navegar.
+- `player.spec.ts` — mermaid renderiza SVG, fullscreen + ESC + focus restore, scroll progress, anchor `#ep-N`.
+
+**Coverage gate (plan §11):** `lib/` ≥ 80%. Estado actual: `lib/` 100%, `content/` ≥ 93%.
 
 > **No corras `npm run build` solo para verificar tipos.** Usá `npm run lint` (que incluye `tsc --noEmit`).
 
