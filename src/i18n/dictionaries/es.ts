@@ -34,6 +34,7 @@ export const es = {
     moreInfo: 'Más información',
     moreInfoFor: (title: string) => `Más información sobre ${title}`,
     addToList: (title: string) => `Agregar ${title} a Mi lista`,
+    removeFromList: (title: string) => `Quitar ${title} de Mi lista`,
     rankBadge: (n: number) => `★ Top ${n}`,
     essential: '● Esencial',
     important: '● Importante',
@@ -86,6 +87,19 @@ export const es = {
       `${n} ${n === 1 ? 'resultado' : 'resultados'} para “${q}”`,
     error: (msg: string) => `No pudimos buscar ahora (${msg}). Probá recargar.`,
     episodeBadge: '· episodio',
+  },
+  myList: {
+    pageTitle: 'Mi lista',
+    metaDescription: 'Tus títulos guardados, sincronizados con este navegador.',
+    headingWithCount: (n: number) => `Mi lista · ${n} ${n === 1 ? 'título' : 'títulos'}`,
+    headingEmpty: 'Mi lista',
+    emptyTitle: 'Tu lista está vacía',
+    emptyBody:
+      'Tocá el botón ＋ en cualquier título o card para guardarlo acá. Se sincroniza con localStorage en este navegador.',
+    emptyCta: 'Explorar el catálogo',
+    loading: 'Cargando tu lista…',
+    clearAll: 'Vaciar lista',
+    confirmClear: '¿Vaciar toda tu lista?',
   },
 };
 

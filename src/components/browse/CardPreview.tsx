@@ -1,6 +1,9 @@
-import { Plus, Play, ChevronDown } from 'lucide-react';
+'use client';
+
+import { Plus, Play, ChevronDown, Check } from 'lucide-react';
 import type { Section } from '@/content/types';
 import type { Dictionary } from '@/i18n/dictionaries/es';
+import { useIsInMyList, useMyListStore } from '@/lib/store/my-list';
 import { cn } from '@/lib/utils/cn';
 
 interface CardPreviewProps {
@@ -10,6 +13,9 @@ interface CardPreviewProps {
 }
 
 export function CardPreview({ section, visible, dict }: Readonly<CardPreviewProps>) {
+  const inList = useIsInMyList(section.id);
+  const toggle = useMyListStore((s) => s.toggle);
+
   return (
     <div
       data-testid="card-preview"
@@ -34,10 +40,18 @@ export function CardPreview({ section, visible, dict }: Readonly<CardPreviewProp
         </button>
         <button
           type="button"
-          aria-label={dict.title.addToList(section.title)}
+          aria-label={
+            inList ? dict.title.removeFromList(section.title) : dict.title.addToList(section.title)
+          }
+          aria-pressed={inList}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggle(section.id);
+          }}
           className="hover:border-fg flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-white transition"
         >
-          <Plus className="h-3.5 w-3.5" />
+          {inList ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
         </button>
         <button
           type="button"

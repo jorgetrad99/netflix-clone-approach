@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { Play, Plus, Info } from 'lucide-react';
+import { Play, Info } from 'lucide-react';
 import type { Section } from '@/content/types';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/dictionaries/es';
 import { PosterCanvas } from '@/components/poster/PosterCanvas';
+import { AddToListButton } from '@/components/my-list/AddToListButton';
 
 interface TitleHeroProps {
   section: Section;
@@ -62,13 +63,7 @@ export function TitleHero({ section, locale, dict }: Readonly<TitleHeroProps>) {
             <Info className="h-5 w-5" />
             {dict.title.moreInfo}
           </button>
-          <button
-            type="button"
-            aria-label={dict.title.addToList(section.title)}
-            className="hover:border-fg flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-black/30 text-white backdrop-blur transition"
-          >
-            <Plus className="h-5 w-5" />
-          </button>
+          <AddToListButton section={section} />
         </div>
       </div>
     </header>

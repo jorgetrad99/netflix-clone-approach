@@ -25,6 +25,7 @@ export function TopNav() {
     { href: `/${locale}/title/security`, label: dict.nav.security },
     { href: `/${locale}/title/components`, label: dict.nav.components },
     { href: `/${locale}/title/roadmap`, label: dict.nav.roadmap },
+    { href: `/${locale}/my-list`, label: dict.nav.myList },
   ];
 
   return (

@@ -36,6 +36,7 @@ export const en: Dictionary = {
     moreInfo: 'More info',
     moreInfoFor: (title: string) => `More info about ${title}`,
     addToList: (title: string) => `Add ${title} to My List`,
+    removeFromList: (title: string) => `Remove ${title} from My List`,
     rankBadge: (n: number) => `★ Top ${n}`,
     essential: '● Essential',
     important: '● Important',
@@ -87,5 +88,18 @@ export const en: Dictionary = {
     resultsCount: (n: number, q: string) => `${n} ${n === 1 ? 'result' : 'results'} for “${q}”`,
     error: (msg: string) => `Search is unavailable right now (${msg}). Try reloading.`,
     episodeBadge: '· episode',
+  },
+  myList: {
+    pageTitle: 'My List',
+    metaDescription: 'Your saved titles, synced with this browser.',
+    headingWithCount: (n: number) => `My List · ${n} ${n === 1 ? 'title' : 'titles'}`,
+    headingEmpty: 'My List',
+    emptyTitle: 'Your list is empty',
+    emptyBody:
+      'Tap the ＋ button on any title or card to save it here. It syncs with localStorage in this browser.',
+    emptyCta: 'Browse the catalog',
+    loading: 'Loading your list…',
+    clearAll: 'Clear list',
+    confirmClear: 'Clear your entire list?',
   },
 };
